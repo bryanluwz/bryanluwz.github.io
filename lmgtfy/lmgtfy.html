@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="author" content="Bryan">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>LMGTFY</title>
+	<link rel="stylesheet" type="text/css" href="../styles.css">
+	<link rel="stylesheet" type="text/css" href="lmgtfy.css">
+	<link rel="stylesheet" type="text/css" href="../menu-bar.css">
+	<link rel="icon" href="../assets/logo-square.png">
+</head>
+
+<body>
+	<div id="menu-bar" class="overlay">
+		<!-- Button to close menu -->
+		<a href="javascript::void(0)" class="closebtn" id="close-button">&times;</a>		
+
+		<!-- Overlay content -->
+		<div class="overlay-content">
+			<a href="../blog/blog.html">BLOG</a>
+			<a href="../food/food.html">FOOD</a>
+			<a href="../pictures/pictures.html">PICTURES</a>
+			<a href="../others/others.html">OTHERS</a>
+		</div>	
+	</div>
+
+	<header class="container-header" id="sticky-header">
+		<div class="container-menu" id="open-button">
+			<div class="menu-button">
+				<img src="../assets/menu.png" alt="menu" width="30px">
+			</div>
+			<div class="menu-text">
+				MENU
+			</div>
+			<script type="text/javascript" src="../menu-bar.js" charset=""></script>
+		</div>
+
+		<a class="container-logo" href="../index.html">
+			<img class="logo-image" src="../assets/logo.png" width="100" alt="Header Logo">
+			<h1 class="logo-text" id="logo-text">bryanlu.com was taken</h1>
+		</a>
+
+		<div class="container-links">
+			<a class="container-links-objects" href="../index.html#about">ABOUT</a>
+			<a class="container-links-objects" href="../blog/blog.html">BLOG</a>
+			<a class="container-links-objects" href="../food/food.html">FOOD</a>
+			<a class="container-links-objects" href="../pictures/pictures.html">PICTURES</a>
+		</div>
+	</header>
+
+	<main>
+		<div class="top-body">
+			<div class="top-hello">
+				LMGTFY
+			</div>
+			<div class="top-text">
+				I'm lazy. 
+				<br>
+				So I made this page to google stuff for me.
+				<br>
+				Enjoy! ;)
+			</div>
+			<div class="top-body-button" id="random-button">
+				TAKE ME TO A RANDOM WEBSITE!
+			</div>
+		</div>
+
+		<div class="container-about" id="about">
+			<div class="about-title">
+				LMGTFY
+			</div>
+			<div class="about-text">
+				Don't feel like googling stuff even though it'll just take a few seconds of your life to do so? Well do I have the solution for you, LMGTFY!!! 
+			</div>
+		</div>
+
+		<div class="container-link-boxes">
+			<div class="link-box-header">
+				Let me google that for you
+			</div>
+			<div class="link-box" style="flex-direction: column;">
+				<input type="text" name="lmgtfy-text" class="lmgtfy-textbox" id="lmgtfy" placeholder="Let me google this for you">
+				<a class="link-box-card" id="lb">
+					<div class="lbc-container" id="lmgtfy-box">
+						<div class="lbc-title">
+							LMGTFY
+						</div>
+						<div class="lbc-body">
+							Let me google that for you now!
+						</div>
+					</div>
+				</a>
+			</div>
+		</div>
+
+	</main>
+
+	<footer>
+		<div class="container-footer">
+			<p class="footer-copyright">© Bryan </p>
+		</div>
+	</footer>
+
+	<script type="text/javascript" src="../app.js" charset="utf-8"></script>
+	<script type="text/javascript" src="lmgtfy.js" charset="utf-8"></script>
+</body>
+</html>

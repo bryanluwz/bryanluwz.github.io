@@ -1,0 +1,15 @@
+.lmgtfy-textbox {
+	font-family: Source Sans Pro;
+	font-size: 20px;
+	font-weight: bolder;
+	text-align: center;
+	width: 500px;
+	border-radius: 10px;
+	margin: 10px;
+	color: #1f2833;
+	outline: none;
+}
+
+::placeholder {
+	color: #b0b0b0;
+}
