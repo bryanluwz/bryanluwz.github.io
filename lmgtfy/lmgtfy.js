@@ -1,5 +1,5 @@
-const lmgtfyInput = document.getElementById("lmgtfy");
-const lmgtfyBox = document.getElementById("lmgtfy-box");
+const lmgtfyInput = document.getElementById("lmgtfy-input");
+const lmgtfyBtn = document.getElementById("lmgtfy-button");
 
 function lmgtfyFunction() {
 	var searchString = "";
@@ -16,4 +16,11 @@ function lmgtfyFunction() {
 	window.location.href = httpString;
 }
 
-lmgtfyBox.addEventListener("click", lmgtfyFunction);
+function lmgtfyInputTrigger(event) {
+	if (event.keyCode == 13) {
+		lmgtfyFunction();
+	}
+}
+
+lmgtfyInput.addEventListener("keyup", (event) => { lmgtfyInputTrigger(event); });
+lmgtfyBtn.addEventListener("click", lmgtfyFunction);

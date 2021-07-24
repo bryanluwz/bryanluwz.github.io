@@ -99,9 +99,9 @@ a {
 
 .header-text-links {
 	margin: 0px 10px;
-	padding: 5px 0px;
+	padding: 30px 0px;
 	width: 450px;
-	height: 80px;
+	height: 120px;
 	position: absolute;
 	right: 5%;
 
@@ -214,19 +214,11 @@ a {
 	font-family: Anton, sans-serif;
 	font-size: 120px;
 	font-weight: normal;
-
-	overflow-y: hidden;
 }
 
 .top-content-intro {
 	margin: 10px 0px;
 	padding: 0px 0px;
-
-	overflow-y: hidden;
-}
-
-#random-quote {
-	overflow-y: hidden;
 }
 
 .top-content-rndbtn {
@@ -258,7 +250,7 @@ a {
 
 /* Page description */
 .page-description-container {
-	margin: 60px 5% 30px 5%;
+	margin: 30px 5%;
 	padding: 0px 0px;
 	width: 90%;
 	height: 200px;
@@ -301,69 +293,6 @@ a {
 	font-weight: normal;
 
 	border-left: 2px solid white;
-
-	transition: 0.4s ease;
-}
-
-/* Page content */
-.page-content-container {
-	margin: 30px 5%;
-	padding: 0px 20px;
-	width: 90%;
-	height: 250px;
-
-	display: flex;
-
-	background-color: #303944;
-	border-radius: 10px;
-
-	text-decoration: none;
-
-	color: white;
-	font-family: Source Sans Pro, sans-serif;
-
-	transition: 0.4s ease;
-}
-
-.page-content-container > img {
-	margin: 0px 10px;
-	padding: 0px 0px;
-	width: 200px;
-	height: 200px;
-
-	object-fit: cover;
-
-	align-self: center;
-
-	border-radius: 10px;
-
-	transition: 0.4s ease;
-}
-
-.page-content-description {
-	margin: 0px 5%;
-	padding: 50px 10px;
-	width: 60%;
-	height: 250px;
-
-	align-self: center;
-
-	display: flex;
-	flex-direction: column;
-
-	transition: 0.4s ease;
-}
-
-.page-content-description > h2 {
-	font-size: 40px;
-	font-weight: bolder;
-
-	transition: 0.4s ease;
-}
-
-.page-content-description > p {
-	font-size: 20px;
-	font-weight: normal;
 
 	transition: 0.4s ease;
 }
@@ -511,35 +440,10 @@ a {
 /* Change page description */
 @media screen and (max-width: 800px) {
 	.page-description-title {
-		font-size: 18px;
-	}
-
-	.page-description-content {
-		font-size: 12px;
-	}
-}
-
-/* Change others page content to width */
-@media screen and (max-width: 950px) {
-	.page-content-container {
-		height: 100px;
-	}
-
-	.page-content-container > img {
-		width: 60px;
-		height: 60px;
-	}
-
-	.page-content-description {
-		padding: 20px;
-		height: 100px;
-	}
-
-	.page-content-description > h2 {
 		font-size: 20px;
 	}
 
-	.page-content-description > p {
-		font-size: 12px;
+	.page-description-content {
+		font-size: 15px;
 	}
 }

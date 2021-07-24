@@ -1,89 +1,60 @@
-const randomButton_div = document.getElementById("random-button");
-var randomPages = ["https://www.youtube.com/watch?v=dQw4w9WgXcQ/", 
-				   	"https://xecom-my.github.io/",
-				   	"https://bjornlu.com/",
-				   	"https://github.com/bryanluwz/bryanluwz.github.io",
-				   	"https://letmegooglethat.com/?q=how+to+build+a+website",
-				  	"https://www.youtube.com/watch?v=gy1B3agGNxw",
-				   	"https://www.youtube.com/watch?v=G1IbRujko-A",
-				   	"https://longdogechallenge.com/",
-					"http://heeeeeeeey.com/",
-					"http://corndog.io/",
-					"https://alwaysjudgeabookbyitscover.com",
-					"http://eelslap.com/",
-					"http://endless.horse/",
-					"http://www.rrrgggbbb.com/",
-					"http://beesbeesbees.com/",
-					"http://www.koalastothemax.com/",
-					"http://randomcolour.com/",
-					"http://cat-bounce.com/",
-					"http://chrismckenzie.com/",
-					"https://thezen.zone/",
-					"http://ihasabucket.com/",
-					"http://corndogoncorndog.com/",
-					"https://pointerpointer.com",
-					"http://imaninja.com/",
-					"http://iamawesome.com/",
-					"http://unicodesnowmanforyou.com/",
-					"http://chillestmonkey.com/",
-					"http://www.crossdivisions.com/",
-					"http://tencents.info/",
-					"https://boringboringboring.com/",
-					"http://www.patience-is-a-virtue.org/",
-					"http://pixelsfighting.com/",
-					"http://isitwhite.com/",
-					"https://existentialcrisis.com/",
-					"http://onemillionlols.com/",
-					"http://www.omfgdogs.com/",
-					"http://oct82.com/",
-					"http://chihuahuaspin.com/",
-					"http://www.blankwindows.com/",
-					"http://dogs.are.the.most.moe/",
-					"http://tunnelsnakes.com/",
-					"http://www.trashloop.com/",
-					"http://www.ascii-middle-finger.com/",
-					"http://spaceis.cool/",
-					"http://www.donothingfor2minutes.com/",
-					"http://buildshruggie.com/",
-					"http://buzzybuzz.biz/",
-					"http://yeahlemons.com/",
-					"http://wowenwilsonquiz.com",
-					"https://thepigeon.org/",
-					"http://notdayoftheweek.com/",
-					"http://www.amialright.com/",
-					"http://nooooooooooooooo.com/",
-					"https://greatbignothing.com/",
-					"https://www.bouncingdvdlogo.com/",
-					"https://remoji.com/",
-					"http://papertoilet.com/"
-];
+// Sticky navigation bar
+const nav = document.getElementById("sticky-nav");
+const offsetTop = nav.offsetTop;
 
-function randomPage() {
-	randomIndex = Math.floor(Math.random() * randomPages.length);
-	window.location.href = randomPages[randomIndex];
+function stickyNav() {
+	if (window.pageYOffset > offsetTop) {
+		nav.style.background = "#262928";
+	} else {
+		nav.style.background = "none";
+	}
 }
 
-function randomButton() {
-	randomButton_div.addEventListener("click", randomPage);
+window.onscroll = stickyNav;
+
+// Random button
+const rndbtn = document.getElementById("rndbtn");
+
+// Random button
+const randomWebsites = ["https://www.youtube.com/watch?v=hI4dCXtW61c",
+						"https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+						"https://www.youtube.com/watch?v=G1IbRujko-A",
+						"https://www.youtube.com/watch?v=gy1B3agGNxw",
+						"https://www.youtube.com/watch?v=R93Uy0dQazE"];
+
+function randomWebsite() {
+	window.location = randomWebsites[Math.floor(Math.random() * randomWebsites.length)];
 }
 
-randomButton();
+rndbtn.addEventListener("click", randomWebsite);
 
-// =====================================================
+// Random about quote
+const quotes = ["Check out bjornlu.com!!",
+				"Check out xecom-my.github.io too!",
+				"Don't mind me, just filling up your page!",
+				"Help I'm being forced to progrsrmgsghfmmm....",
+				"Somebody once told me hands off my macaroni.",
+				"Does this splash work?",
+				"How many more are there?",
+				"ERROR 404 - CODE NOT FOUND",
+				"Itsa me, M A R I O!",
+				"I miss laksa :(",
+				"LOOK OUT BEHIND YOU!!",
+				"Beep boop GREETINGS FELLOW HUMANS..",
+				"I'll be back! 🔥🤖👍",
+				"I invented the shovel, it's a groundbreaking invention.",
+				"Barry don't wet my bed when I'm not there",
+				"Is it a bird? Is it a plane?",
+				"Alt + F4 to unlock secret website feature!",
+				"LOOK OUT!",
+				"↑ ↑ ↓ ↓ ← → ← → A B A B",
+				`Your lucky number is ${Math.floor(Math.random() * 10000)}`];
+				
+const rndQt = document.getElementById("random-quote");
 
-// const header = document.getElementById("sticky-header");
-// const sticky = header.offsetTop;
+function randomQuotes() {
+	quote = quotes[Math.floor(Math.random() * quotes.length)];
+	rndQt.innerHTML = quote;
+}
 
-// function stickyHeader() {
-// 	if (window.pageYOffset > sticky) {
-// 		header.classList.add("sticky");
-// 		header.style.background = "#1f2833";
-// 	} else {
-// 		header.classList.remove("sticky");
-// 		header.style.background = "none";
-// 	}
-// }
-
-// window.onscroll = stickyHeader;
-
-// =====================================================
+randomQuotes()
