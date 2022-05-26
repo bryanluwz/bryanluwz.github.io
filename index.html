@@ -1,211 +1,214 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
 <html>
+
 <head>
-	<meta charset="utf-8">
-	<meta name="author" content="Bryan">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>bryanlu.com was taken</title>
-	<link rel="icon" href="assets/logo.png">
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	<link rel="stylesheet" type="text/css" href="menu-bar.css">
+	<meta charset='utf-8'>
+	<meta http-equiv='X-UA-Compatible' content='IE=edge'>
+	<title>Page Title</title>
+	<meta name='viewport' content='width=device-width, initial-scale=1'>
+	<link rel='stylesheet' type='text/css' media='screen' href='./styles/styles.css'>
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+	<script src='./app/app.js'></script>
+	<script src='./app/header.js'></script>
+	<script src='./app/card-link-generator.js'></script>
 </head>
+
 <body>
-	<!-- Menu bar (only appears when width is smaller than 1000px) -->
-	<div id="menu-bar" class="overlay">
-		<!-- Button to close menu -->
-		<a href="javascript::void(0)" class="closebtn" id="close-button">&times;</a>		
+	<div class="container">
+		<div class="nav-wrapper sticky-init" id="sticky-header">
+			<div class="left-side">
+				<div class="nav-link-wrapper active-nav-link">
+					<a href="./index.html">Home</a>
+				</div>
 
-		<!-- Overlay content -->
-		<div class="overlay-content">
-			<a href="./blog/index.html">BLOG</a>
-			<a href="./pictures/index.html">PICTURES</a>
-			<a href="./LMGTFY/index.html">LMGTFY</a>
-			<a href="./others/index.html">OTHERS</a>
-		</div>	
+				<div class="nav-link-wrapper active-nav-link">
+					<a href="./blogs/contents.html">Blogs</a>
+				</div>
+
+				<div class="nav-link-wrapper active-nav-link">
+					<a href="./projects/contents.html">Projects</a>
+				</div>
+			</div>
+
+			<div class="right-side">
+				<a class="brand" href="./index.html">
+					bryanlu.com was taken
+				</a>
+			</div>
+		</div>
+
+		<div class="top-body-wrapper">
+			<div class="top-body-items">
+
+				<div class="top-body-h1">
+					HELLO
+				</div>
+
+				<div class="top-body-h2" id="random-splash-text"></div>
+
+				<div class="top-body-button" id="top-body-button">
+					WHAT DOES THIS BUTTON DO?
+				</div>
+
+			</div>
+
+		</div>
+
+		<div class="content-wrapper">
+			<div class="about-wrapper">
+				<div class="about-title">
+					About
+				</div>
+				<div class="about-subtitle">
+					I don't know what to put here. 
+					<br>
+					Erm... Welcome to my website I guess. o((>ω< ))o
+					<br>
+					Hope you have fun φ(゜▽゜*)♪
+				</div>
+			</div>
+		</div>
+
+		<div class="content-wrapper">
+			<div class="portfolio-header-wrapper">
+				<div class="portfolio-header-txt">
+					<div class="portfolio-title">
+						Posts and Stuff
+					</div>
+
+					<div class="portfolio-subtitle">
+						Is this a butterfly?
+					</div>
+				</div>
+				<a href="./blogs/contents.html" class="portfolio-header-button">
+					View All
+				</a>
+			</div>
+
+			<div class="portfolio-cards-wrapper" id="blogs-cards-wrapper">
+
+				<a class="portfolio-card-wrapper" href="./index.html">
+					<div class="img-txt-wrapper">
+						<div class="portfolio-card-txt">
+							<div class="title">Coding work for university</div>
+							<div class="subtitle">Man do I like to code</div>
+						</div>
+					</div>
+				</a>
+
+				<a class="portfolio-card-wrapper" href="./index.html">
+					<div class="img-txt-wrapper">
+						<div class="portfolio-card-txt">
+							<div class="title">PROJECT 2</div>
+							<div class="subtitle">I did another thing</div>
+						</div>
+					</div>
+				</a>
+
+				<a class="portfolio-card-wrapper" href="./index.html">
+					<div class="img-txt-wrapper">
+						<div class="portfolio-card-txt">
+							<div class="title">PROJECT 3</div>
+							<div class="subtitle">I sure did a thing</div>
+						</div>
+					</div>
+				</a>
+
+				<a class="portfolio-card-wrapper" href="./index.html">
+					<div class="img-txt-wrapper">
+						<div class="portfolio-card-txt">
+							<div class="title">PROJECT 4</div>
+							<div class="subtitle">I did not did a thing</div>
+						</div>
+					</div>
+				</a>
+
+			</div>
+		</div>
+
+		<div class="content-wrapper">
+			<div class="portfolio-header-wrapper">
+				<div class="portfolio-header-txt">
+					<div class="portfolio-title">
+						Projects
+					</div>
+
+					<div class="portfolio-subtitle">
+						Wonder what I do in my free time? Me too.
+					</div>
+				</div>
+				<a href="./projects/contents.html" class="portfolio-header-button">
+					View All
+				</a>
+			</div>
+
+			<div class="portfolio-cards-wrapper" id="projects-cards-wrapper">
+
+				<a class="portfolio-card-wrapper" href="./index.html">
+					<div class="img-txt-wrapper">
+						<img src="./images/rick_astley.png">
+						<div class="portfolio-card-txt">
+							<div class="title">Rock Paper Scissors</div>
+							<div class="subtitle">Rock Paper Scissors</div>
+						</div>
+					</div>
+				</a>
+
+				<a class="portfolio-card-wrapper" href="./index.html">
+					<div class="img-txt-wrapper">
+						<img src="./images/rick_astley.png">
+						<div class="portfolio-card-txt">
+							<div class="title">LMGTFY</div>
+							<div class="subtitle">Let me google that for you</div>
+						</div>
+					</div>
+				</a>
+
+				<a class="portfolio-card-wrapper" href="./index.html">
+					<div class="img-txt-wrapper">
+						<img src="./images/rick_astley.png">
+						<div class="portfolio-card-txt">
+							<div class="title">How not to UI</div>
+							<div class="subtitle">Terrible UI</div>
+						</div>
+					</div>
+				</a>
+
+				<a class="portfolio-card-wrapper" href="./index.html">
+					<div class="img-txt-wrapper">
+						<img src="./images/rick_astley.png">
+						<div class="portfolio-card-txt">
+							<div class="title">Is this aligned?</div>
+							<div class="subtitle">I did a thing</div>
+						</div>
+					</div>
+				</a>
+
+			</div>
+		</div>
+
+		<div class="nav-wrapper footer-wrapper">
+			<div class="left-side">
+				<div class="nav-link-wrapper active-nav-link">
+					<a href="https://github.com/bryanluwz">GitHub</a>
+				</div>
+
+				<div class="nav-link-wrapper active-nav-link dummy-button">
+					<a>LinkedIn</a>
+				</div>
+
+				<div class="nav-link-wrapper active-nav-link dummy-button">
+					<a>Bird App</a>
+				</div>
+
+			</div>
+
+			<div class="right-side">
+				© Bryan Lu
+			</div>
+		</div>
+
 	</div>
-
-	<!-- Navigation Panel -->
-	<nav class="header-nav" id="sticky-nav">
-		<div class="header-container">
-			<!-- Logo side -->
-			<div class="header-logo-container">  <!-- On the left of flex -->
-				<a href=""><img class="header-logo" src="./assets/logo.png" alt="logo"></img></a>
-				<a class="header-logo-text" href="">bryanlu.com was taken</a>
-			</div>
-			<!-- Links side -->
-			<div class="header-text-links">
-				<a class="header-text-link" href="./blog/index.html">
-					Blog
-				</a>
-				<a class="header-text-link" href="./pictures/index.html">
-					Pictures
-				</a>
-				<a class="header-text-link" href="./LMGTFY/index.html">
-					LMGTFY
-				</a>
-				<a class="header-text-link" href="./others/index.html">
-					Others
-				</a>
-			</div>
-			<!-- Links will turn into menu button when width is smaller than 1000px -->
-			<div class="menu-container" id="open-button">
-				<div class="menu-button">
-					<img src="./assets/menu.png" alt="menu" width="30px">
-				</div>
-				<div class="menu-text">
-					MENU
-				</div>
-			</div>
-		</div>
-	</nav>
-
-	<main>
-		<!-- Top content background, flex of heading, intro and random button -->
-		<div class="top-content-background">
-			<h2 class="top-content-heading">HELLO</h2>
-			<p class="top-content-intro">
-				<br>
-				<p id="random-quote"></p>
-				<br>
-			</p>
-			<div class="top-content-rndbtn" id="rndbtn">
-				TAKE ME TO A RANDOM WEBSITE
-			</div>
-		</div>
-		
-		<!-- Rough description of page -->
-		<div class="page-description-container">
-			<div class="page-description-title">
-				ABOUT
-			</div>
-			<div class="page-description-content">
-				I'm bored so I made this website!
-			</div>
-		</div>
-
-		<!-- Buttons -->
-		<div class="buttons-container">
-			<div class="buttons-title">
-				Buttons!
-			</div>
-
-			<a class="buttons-button" href="./blog/index.html">
-				<img src="assets/blog-thumbnail.jpg">
-				<div class="buttons-description">
-					<h2>
-						Blog
-					</h2>
-					<p>
-						I do some blogs
-					</p>
-				</div>
-			</a>
-
-			<a class="buttons-button" href="./pictures/index.html">
-				<img src="assets/pictures-thumbnail.jpg">
-				<div class="buttons-description">
-					<h2>
-						Pictures
-					</h2>
-					<p>
-						I took some pictures
-					</p>
-				</div>
-			</a>
-
-			<a class="buttons-button" href="./LMGTFY/index.html">
-				<img src="assets/lazy.jpg">
-				<div class="buttons-description">
-					<h2>
-						LMGTFY
-					</h2>
-					<p>
-						Let Me Google That For You
-					</p>
-				</div>
-			</a>
-
-			<a class="buttons-button" href="https://github.com/bryanluwz/bryanluwz.github.io">
-				<img src="assets/sauce.jpg">
-				<div class="buttons-description">
-					<h2>
-						Sauce
-					</h2>
-					<p>
-						Sweet and Sour Sauce
-					</p>
-				</div>
-			</a>
-		</div>
-
-		<!-- Some more buttons -->
-		<div class="buttons-container">
-			<div class="buttons-title">
-				Some more buttons
-			</div>
-
-			<a class="buttons-button" href="https://bjornlu.com">
-				<img src="assets/bjornlu.jpg">
-				<div class="buttons-description">
-					<h2>
-						bjornlu.com
-					</h2>
-					<p>
-						bjornlu.com was not taken
-					</p>
-				</div>
-			</a>
-
-			<a class="buttons-button" href="https://xecom-my.github.io">
-				<img src="assets/xecom.jpg">
-				<div class="buttons-description">
-					<h2>
-						Xecom
-					</h2>
-					<p>
-						Wanna rent a copier machine?
-					</p>
-				</div>
-			</a>
-		</div>
-	</main>
-
-	<!-- Footer -->
-	<footer>
-		<div class="footer-container">
-			<div class="footer-left">
-				© BRYAN LU 2021
-				<br>
-				Email: privateinformation@jeemail.com
-				<br>
-				Contact: +65 8888 8888
-			</div>
-			<div class="footer-right">
-				
-			</div>
-		</div>
-	</footer>
-
-	<script type="text/javascript" src="menu-bar.js" charset="utf-8"></script>
-	<script type="text/javascript" src="app.js" charset="utf-8"></script>
 </body>
+
 </html>
-
-
-<!-- BUG TRACKER:
-01: Menu button appears in wide screen mode after being pressed when in small width
-FIXED by using two classes instead (kinda stupid but hey it works!)
-
-
-
-
-
-
-
-
-
-
-
-
- -->

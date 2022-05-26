@@ -1,0 +1,53 @@
+@import "../../../styles/styles.css";
+
+.lmgtfy-header-title {
+    margin: 50px 20px 20px 20px;
+    font-size: var(--bigger-title-font-size);
+    text-align: center;
+}
+
+.lmgtfy-header-subtitle {
+    margin: 20px;
+    font-size: var(--subtitle-font-size);
+    text-align: center;
+}
+
+.lmgtfy-searchbox-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 200px;
+}
+
+.lmgtfy-searchbox {
+    width: 60%;
+    margin: 10px;
+    height: 30px;
+    background-color: #66fcf21b;
+    border-radius: 10px;
+    border: none;
+
+    color: white;
+    text-align: center;
+}
+
+.lmgtfy-searchbox-button {
+    font-size: var(--subtitle-font-size);
+    font-weight: lighter;
+    margin: 10px;
+    padding: 5px 15px;
+    border: 2px solid var(--bluegreen-color);
+    border-radius: 10px;
+    transition: 0.4s ease;
+}
+
+.lmgtfy-searchbox-button:hover {
+    cursor: pointer;
+    box-shadow: 0px 0px 10px #46dacf;
+    background-color: #66fcf24b;
+}
+
+.lmgtfy-searchbox:focus {
+    outline: none;
+}
