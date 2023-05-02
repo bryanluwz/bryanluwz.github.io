@@ -1,0 +1,33 @@
+.footer-container {
+    width: 100%;
+    height: 10vh;
+
+    background-color: var(--lavender-pastel-4);
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.footer-container-left {
+    width: 50%;
+
+    padding-left: 5%;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.footer-container-right {
+    width: 50%;
+
+    padding-right: 5%;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: right;
+}

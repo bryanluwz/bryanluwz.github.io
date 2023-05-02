@@ -7,24 +7,11 @@ export default class Header extends Component {
 	render() {
 		return (
 			<div className="header-container">
-				<div className="logo-container">
+				<Link className="logo-container" to={"/"}>
 					{/* Containes the logo, and logo title (interim) */}
-					<img className="logo-img" src="./something.png" alt="0.o" />
+					<img className="logo-img" src="./something.png" alt="nil" />
 					<div className="logo-title">bryanluwz :3</div>
-				</div>
-				<div className="nav-container">
-					{/* Contains the nav buttons -- About, Other stuff (interim) */}
-					<Link>
-						<button className="nav-button">
-							about
-						</button>
-					</Link>
-					<Link to={"/randomStuff"}>
-						<button className="nav-button">
-							random stuff
-						</button>
-					</Link>
-				</div>
+				</Link>
 			</div>
 		);
 	}

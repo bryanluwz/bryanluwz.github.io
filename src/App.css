@@ -5,7 +5,7 @@
     --h0-font-size: 2em;
     --h1-font-size: 1.5em;
     --h2-font-size: 1.25em;
-    --h3-font-size: 0.75em;
+    --h3-font-size: 1em;
 
     /* Font familt */
     font-family: "Poppins", sans-serif;
@@ -45,4 +45,13 @@
 
 body {
     margin: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+::selection {
+    background-color: var(--lavender-pastel-2);
+    color: white;
 }
