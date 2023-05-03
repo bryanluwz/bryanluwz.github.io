@@ -16,15 +16,16 @@ export default class HomePageCarousel extends Component {
 					stopOnHover={false}
 					interval={8000}
 					transitionTime={500}
+					showThumbs={false}
 
 					renderArrowPrev={(clickHandler, hasPrev) => {
 						return (
 							<button
 								className={"control-arrow-custom control-prev-custom"}
-								ariaLabel="previous slide / item"
+								aria-label="previous slide / item"
 								onClick={clickHandler}
 							>
-								<i class="fa fa-angle-left control-arrow-icon fa-2x" aria-hidden="true"></i>
+								<i className="fa fa-angle-left control-arrow-icon fa-2x" aria-hidden="true"></i>
 							</button>
 						);
 					}}
@@ -33,10 +34,10 @@ export default class HomePageCarousel extends Component {
 						return (
 							<button
 								className={"control-arrow-custom control-next-custom"}
-								ariaLabel="next slide / item"
+								aria-label="next slide / item"
 								onClick={clickHandler}
 							>
-								<i class="fa fa-angle-right control-arrow-icon fa-2x" aria-hidden="true"></i>
+								<i className="fa fa-angle-right control-arrow-icon fa-2x" aria-hidden="true"></i>
 							</button>
 						);
 					}}

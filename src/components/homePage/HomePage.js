@@ -5,6 +5,7 @@ import CarouselCard from "../carousel/CarouselCard";
 import '../carousel/Carousel.css';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import Segment from "../segment/Segment";
+import { ImageTextTitleCard } from "../titleCards/ImageTextTitleCard";
 
 export default class HomePage extends Component {
 	constructor(props) {
@@ -35,9 +36,41 @@ export default class HomePage extends Component {
 				</HomePageCarousel>
 
 				{/* Segment -- Hello there */}
-				<Segment>
-
+				<Segment
+					title={"about"}
+				>
+					<ImageTextTitleCard>
+						Hello
+					</ImageTextTitleCard>
 				</Segment>
+
+				{/* Segment - some fun stuff */}
+				<Segment
+					title={"fun stuff"}
+				>
+					<div>
+						hello
+					</div>
+				</Segment>
+
+				{/* Segment - quizzes */}
+				<Segment
+					title={"quizzes"}
+				>
+					<div>
+						hello
+					</div>
+				</Segment>
+
+				{/* Segment - others */}
+				<Segment
+					title={"others"}
+				>
+					<div>
+						hello
+					</div>
+				</Segment>
+
 
 			</Fragment>
 		);

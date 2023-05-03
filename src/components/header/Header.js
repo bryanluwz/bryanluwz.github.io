@@ -8,9 +8,8 @@ export default class Header extends Component {
 		return (
 			<div className="header-container">
 				<Link className="logo-container" to={"/"}>
-					{/* Containes the logo, and logo title (interim) */}
-					<img className="logo-img" src="images/shuba.png" alt="nil" />
-					<div className="logo-title">bryanluwz :3</div>
+					<img className="logo-img" src="./images/shuba.gif" alt="nil" />
+					<div className="logo-title">bryanluwz</div>
 				</Link>
 			</div>
 		);

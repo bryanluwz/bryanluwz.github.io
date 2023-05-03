@@ -2,6 +2,8 @@
     width: 100%;
     height: 10vh;
 
+    margin-top: 5%;
+
     background-color: var(--lavender-pastel-4);
 
     display: flex;

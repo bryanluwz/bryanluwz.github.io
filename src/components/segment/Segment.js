@@ -7,12 +7,12 @@ export default class Segment extends Component {
 		return (
 			<div className="segment-container">
 				<div className="segment-header">
-					<div className="segment-header-title">about</div>
+					<span className="segment-header-title">
+						{this.props.title}
+					</span>
 				</div>
 				<div className="segment-body">
-					test body content
-					<br />
-					Lorem ipsum dolor sit amet consectetur, adipisicing elit. Suscipit omnis error corrupti consectetur iusto est, doloremque autem assumenda placeat laborum iste accusantium maiores in explicabo veritatis qui adipisci nobis praesentium.
+					{this.props.children}
 				</div>
 			</div>
 		);

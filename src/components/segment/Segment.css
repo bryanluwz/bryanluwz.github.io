@@ -1,7 +1,8 @@
 .segment-container {
     width: 90%;
-    height: 50vh;
+    height: auto;
 
+    margin: 3% 0px;
     padding: 0% 5%;
 
     display: flex;
@@ -20,15 +21,27 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-}
-
-.segment-header-title {
-    width: 100%;
 
     font-size: var(--h1-font-size);
     font-weight: bold;
 
     text-align: center;
+}
+
+.segment-header-circle {
+    margin: 0px 10px;
+
+    color: var(--lavender-pastel-3);
+}
+
+.segment-header-circle-container {
+    white-space: nowrap;
+}
+
+.segment-header-title {
+    white-space: nowrap;
+
+    margin: 0px 20px;
 }
 
 .segment-body {

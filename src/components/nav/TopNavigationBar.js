@@ -25,7 +25,7 @@ export class TopNavigationBar extends Component {
 				</Link>
 				<Link className="nav-button-container" to={"/funStuff"}>
 					<button className="nav-button">
-						lol
+						quizzes
 					</button>
 				</Link>
 			</div>
