@@ -18,6 +18,16 @@ export class TopNavigationBar extends Component {
 						fun
 					</button>
 				</Link>
+				<Link className="nav-button-container" to={"/funStuff"}>
+					<button className="nav-button">
+						others
+					</button>
+				</Link>
+				<Link className="nav-button-container" to={"/funStuff"}>
+					<button className="nav-button">
+						lol
+					</button>
+				</Link>
 			</div>
 		);
 	}

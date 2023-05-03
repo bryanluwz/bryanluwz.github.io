@@ -1,25 +1,40 @@
 import { Component, Fragment } from "react";
-import MainTitleCard from '../titleCard/MainTitleCard';
-import TitleCard from "../titleCard/TitleCard";
-import Carousel from "../carousel/Carousel";
+import HomePageCarousel from "../carousel/HomePageCarousel";
+import CarouselCard from "../carousel/CarouselCard";
+
+import '../carousel/Carousel.css';
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 export default class HomePage extends Component {
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			carouselIndex: 0
+		};
+	}
+
 	render() {
 		return (
 			<Fragment>
-				<Carousel>
+				{/* Carousel */}
+				<HomePageCarousel>
+					<CarouselCard
+						isLink={true}
+						link={"/funStuff"}
+						imgSrc={"./images/testimg1.webp"}
+						imgAlt={"nil"}
+					/>
+					<CarouselCard
+						isLink={false}
+						link={""}
+						imgSrc={"./images/testimg2.webp"}
+						imgAlt={"nil"}
+					/>
+				</HomePageCarousel>
 
-				</Carousel>
+				{/* Segment -- Hello there */}
 
-				<MainTitleCard
-					title={"Hello there"}
-					subtitle={"general kenobi"}>
-
-				</MainTitleCard>
-
-				<TitleCard>
-
-				</TitleCard>
 			</Fragment>
 		);
 	}

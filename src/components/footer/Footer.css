@@ -31,3 +31,16 @@
     align-items: center;
     justify-content: right;
 }
+
+.footer-social-icon {
+    margin: 2%;
+
+    font-size: var(--h2-font-size);
+    color: var(--lavender-pastel-font-grayscale);
+
+    transition: 0.3s ease;
+}
+
+.footer-social-icon:hover {
+    color: var(--lavender-pastel-0);
+}

@@ -11,12 +11,15 @@
     font-family: "Poppins", sans-serif;
 
     /* Colo(u)rs */
+    --lavender-pastel-0: #897197;
     --lavender-pastel-1: #a98bba;
     --lavender-pastel-2: #c5a4d4;
     --lavender-pastel-3: #e1cde4;
     --lavender-pastel-4: #f3e9f7;
     --lavender-pastel-5: #f9f5fc;
+
     --lavender-pastel-font-1: #5d4542;
+    --lavender-pastel-font-grayscale: #b4a3a3;
 
     --soft-pastel-1: #f5d5e5;
     --soft-pastel-2: #f9b5ac;

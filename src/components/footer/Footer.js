@@ -10,8 +10,8 @@ export default class Footer extends Component {
 					&copy; 2023 Bryan Lu
 				</div>
 				<div className="footer-container-right">
-					<Link to={"https://github.com/bryanluwz"}><img src="something.png" alt="github" /></Link>
-					<Link to={"https://www.instagram.com/bryanluwezhern/"}><img src="something.png" alt="instagram" /></Link>
+					<Link className="footer-social-icon" to={"https://github.com/bryanluwz"}><i class="fa fa-github fa-2x" aria-hidden="true"></i></Link>
+					<Link className="footer-social-icon" to={"https://www.instagram.com/bryanluwezhern/"}><i class="fa fa-instagram fa-2x" aria-hidden="true"></i></Link>
 				</div>
 			</div>
 		);
