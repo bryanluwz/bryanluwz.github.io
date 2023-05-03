@@ -14,7 +14,7 @@
 
 /* For logo */
 .logo-container {
-    width: 13em;
+    width: auto;
     height: 70%;
 
     display: flex;
@@ -27,12 +27,14 @@
 }
 
 .logo-img {
-    width: 30%;
-    height: 100%;
+    height: 90%;
+
+    object-fit: fill;
 }
 
 .logo-title {
-    width: 70%;
+    width: auto;
+
     text-align: center;
     font-size: var(--h2-font-size);
 

@@ -9,7 +9,7 @@
 }
 
 .carousel {
-    width: 85% !important;
+    width: max(390px, 85%) !important;
     height: calc(width / 20 * 9) !important;
 
     display: flex;
@@ -52,6 +52,12 @@
     cursor: pointer;
 }
 
+@media screen and (max-width: 800px) {
+    .control-arrow-custom {
+        /* font-size: var(--h3-font-size); */
+        display: none;
+    }
+}
 .control-prev-custom {
     margin-right: 2%;
 }

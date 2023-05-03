@@ -4,6 +4,7 @@ import CarouselCard from "../carousel/CarouselCard";
 
 import '../carousel/Carousel.css';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import Segment from "../segment/Segment";
 
 export default class HomePage extends Component {
 	constructor(props) {
@@ -34,6 +35,9 @@ export default class HomePage extends Component {
 				</HomePageCarousel>
 
 				{/* Segment -- Hello there */}
+				<Segment>
+
+				</Segment>
 
 			</Fragment>
 		);

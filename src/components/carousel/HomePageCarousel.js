@@ -1,6 +1,5 @@
 import { Component } from "react";
 import { Carousel } from "react-responsive-carousel";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default class HomePageCarousel extends Component {
 	render() {
