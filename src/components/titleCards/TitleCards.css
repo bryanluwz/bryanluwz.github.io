@@ -1,0 +1,71 @@
+/* Image Text Title Card */
+.image-text-title-card-container {
+    width: 95%;
+    height: auto;
+
+    padding: 2%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    background-color: var(--lavender-pastel-4);
+    border-radius: 20px;
+}
+
+.image-text-title-card-img {
+    width: 30%;
+    height: auto;
+
+    align-self: center;
+
+    transition: 0.4s ease;
+}
+
+.image-text-title-card-text {
+    width: 67%;
+    height: 100%;
+
+    margin-bottom: 2%;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.image-text-title-card-text-title {
+    width: 100%;
+    height: 20%;
+
+    font-size: var(--h2-font-size);
+    font-weight: bold;
+
+    transition: 0.4s ease;
+}
+
+.image-text-title-card-text-subtitle {
+    width: 100%;
+    height: 80%;
+
+    font-size: var(--h4-font-size);
+
+    transition: 0.4s ease;
+}
+
+@media screen and (max-width: 800px) {
+    .image-text-title-card-img {
+        display: none;
+    }
+
+    .image-text-title-card-text {
+        width: 100%;
+        margin: 2%;
+    }
+
+    .image-text-title-card-text-title {
+        font-size: var(--h2-font-size);
+    }
+
+    .image-text-title-card-container {
+        width: 100%;
+    }
+}

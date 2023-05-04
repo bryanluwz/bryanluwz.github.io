@@ -39,8 +39,17 @@ export default class HomePage extends Component {
 				<Segment
 					title={"about"}
 				>
-					<ImageTextTitleCard>
-						Hello
+					<ImageTextTitleCard
+						imgSrc={"./images/shuba.gif"}
+						title={"hello there"}
+					>
+						Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum nobis veniam recusandae deleniti perferendis, modi voluptatem excepturi porro, aperiam labore, esse deserunt suscipit consequuntur? Excepturi illo quibusdam dignissimos? Unde, laudantium.
+						<br />
+						<br />
+						Lorem ipsum, dolor sit amet consectetur adipisicing elit. Placeat explicabo eligendi asperiores cupiditate atque id voluptatum quasi a reprehenderit modi reiciendis, doloribus, minima porro debitis. Voluptatem similique exercitationem autem quisquam!
+						<br />
+						<br />
+						Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic nisi voluptatem officia expedita fuga, ullam voluptatibus iure eos suscipit dolorum repudiandae perferendis molestias vitae quaerat ipsa distinctio ab vero eius. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Id velit sit illo reiciendis similique voluptatibus aliquid, aperiam ipsa amet ad beatae veritatis? Explicabo ipsam error nulla! Incidunt eaque fugit explicabo.
 					</ImageTextTitleCard>
 				</Segment>
 
@@ -53,9 +62,9 @@ export default class HomePage extends Component {
 					</div>
 				</Segment>
 
-				{/* Segment - quizzes */}
+				{/* Segment - uni */}
 				<Segment
-					title={"quizzes"}
+					title={"uni"}
 				>
 					<div>
 						hello

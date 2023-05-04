@@ -30,6 +30,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
+    transition: 0.4s ease;
 }
 
 .carousel-card {
@@ -56,8 +58,12 @@
 
 @media screen and (max-width: 800px) {
     .control-arrow-custom {
-        /* font-size: var(--h3-font-size); */
         display: none;
+    }
+
+    .carousel-container {
+        max-width: 100%;
+        max-height: 100%;
     }
 }
 .control-prev-custom {

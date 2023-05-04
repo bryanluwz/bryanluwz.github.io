@@ -13,17 +13,17 @@ export class TopNavigationBar extends Component {
 						home
 					</button>
 				</Link>
-				<Link className="nav-button-container" to={"/funStuff"}>
+				<Link className="nav-button-container" to={"/fun-stuff"}>
 					<button className="nav-button">
 						fun
 					</button>
 				</Link>
-				<Link className="nav-button-container" to={"/funStuff"}>
+				<Link className="nav-button-container" to={"/uni-stuff"}>
 					<button className="nav-button">
-						others
+						uni
 					</button>
 				</Link>
-				<Link className="nav-button-container" to={"/funStuff"}>
+				<Link className="nav-button-container" to={"/quizzes-stuff"}>
 					<button className="nav-button">
 						quizzes
 					</button>

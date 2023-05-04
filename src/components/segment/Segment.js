@@ -7,9 +7,11 @@ export default class Segment extends Component {
 		return (
 			<div className="segment-container">
 				<div className="segment-header">
+					<span className="segment-header-title-padding"></span>
 					<span className="segment-header-title">
 						{this.props.title}
 					</span>
+					<span className="segment-header-title-padding"> </span>
 				</div>
 				<div className="segment-body">
 					{this.props.children}

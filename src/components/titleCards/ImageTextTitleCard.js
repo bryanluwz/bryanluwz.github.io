@@ -1,10 +1,20 @@
 import { Component } from "react";
 
+import './TitleCards.css';
+
 export class ImageTextTitleCard extends Component {
 	render() {
 		return (
-			<div>
-				{this.props.children}
+			<div className="image-text-title-card-container">
+				<img className="image-text-title-card-img" src={this.props.imgSrc} alt="idk" />
+				<div className="image-text-title-card-text">
+					<h1 className="image-text-title-card-text-title">
+						{this.props.title}
+					</h1>
+					<div className="image-text-title-card-text-subtitle">
+						{this.props.children}
+					</div>
+				</div>
 			</div>
 		);
 	}
