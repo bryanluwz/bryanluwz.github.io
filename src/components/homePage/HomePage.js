@@ -6,6 +6,7 @@ import '../carousel/Carousel.css';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import Segment from "../segment/Segment";
 import { ImageTextTitleCard } from "../titleCards/ImageTextTitleCard";
+import { GridTitleCard, GridTitleCardWrapper } from "../titleCards/GridTitleCard";
 
 export default class HomePage extends Component {
 	constructor(props) {
@@ -40,16 +41,14 @@ export default class HomePage extends Component {
 					title={"about"}
 				>
 					<ImageTextTitleCard
-						imgSrc={"./images/shuba.gif"}
+						imgSrc={"./images/shuba.png"}
 						title={"hello there"}
 					>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum nobis veniam recusandae deleniti perferendis, modi voluptatem excepturi porro, aperiam labore, esse deserunt suscipit consequuntur? Excepturi illo quibusdam dignissimos? Unde, laudantium.
+						Hello there!
 						<br />
+						Welcome to my website!
 						<br />
-						Lorem ipsum, dolor sit amet consectetur adipisicing elit. Placeat explicabo eligendi asperiores cupiditate atque id voluptatum quasi a reprehenderit modi reiciendis, doloribus, minima porro debitis. Voluptatem similique exercitationem autem quisquam!
-						<br />
-						<br />
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic nisi voluptatem officia expedita fuga, ullam voluptatibus iure eos suscipit dolorum repudiandae perferendis molestias vitae quaerat ipsa distinctio ab vero eius. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Id velit sit illo reiciendis similique voluptatibus aliquid, aperiam ipsa amet ad beatae veritatis? Explicabo ipsam error nulla! Incidunt eaque fugit explicabo.
+						I sure hope you'll find much fun here.
 					</ImageTextTitleCard>
 				</Segment>
 
@@ -57,30 +56,79 @@ export default class HomePage extends Component {
 				<Segment
 					title={"fun stuff"}
 				>
-					<div>
-						hello
-					</div>
+					<GridTitleCardWrapper
+						withViewMore={true}
+						viewMoreLink={"/fun-stuff"}
+					>
+						<GridTitleCard
+							link={"/"}
+							imgSrc={"./images/shuba.png"}
+							title={"CATGPT =^._.^="}
+						/>
+						<GridTitleCard
+							link={"/"}
+							imgSrc={"./images/shuba.png"}
+							title={"scissors paper stone"}
+						/>
+						<GridTitleCard
+							link={"/"}
+							imgSrc={"./images/shuba.png"}
+							title={"untitled duck game"}
+						/>
+					</GridTitleCardWrapper>
 				</Segment>
 
 				{/* Segment - uni */}
 				<Segment
 					title={"uni"}
 				>
-					<div>
-						hello
-					</div>
+					<GridTitleCardWrapper
+						withViewMore={true}
+						viewMoreLink={"/uni-stuff"}
+					>
+						<GridTitleCard
+							link={"/"}
+							imgSrc={"./images/shuba.png"}
+							title={"uni github repo"}
+						/>
+						<GridTitleCard
+							link={"/"}
+							imgSrc={"./images/shuba.png"}
+							title={"sleeping cat for you to chill"}
+						/>
+						<GridTitleCard
+							link={"/"}
+							imgSrc={"./images/shuba.png"}
+							title={"where mrt exit nearest to escalator"}
+						/>
+					</GridTitleCardWrapper>
 				</Segment>
 
 				{/* Segment - others */}
 				<Segment
 					title={"others"}
 				>
-					<div>
-						hello
-					</div>
+					<GridTitleCardWrapper
+						withViewMore={true}
+						viewMoreLink={"/others"}
+					>
+						<GridTitleCard
+							link={"/"}
+							imgSrc={"./images/shuba.png"}
+							title={"flip a coin"}
+						/>
+						<GridTitleCard
+							link={"/"}
+							imgSrc={"./images/shuba.png"}
+							title={"are you fat"}
+						/>
+						<GridTitleCard
+							link={"/"}
+							imgSrc={"./images/shuba.png"}
+							title={"pop cat"}
+						/>
+					</GridTitleCardWrapper>
 				</Segment>
-
-
 			</Fragment>
 		);
 	}

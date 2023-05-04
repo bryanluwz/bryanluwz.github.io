@@ -8,10 +8,16 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
+
+    overflow: scroll;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
 }
 
 .nav-button-container {
-    margin: max(2%, 10px);
+    margin: 2%;
 }
 
 .nav-button {
@@ -24,7 +30,7 @@
 
     font-size: var(--h2-font-size);
     color: var(--lavender-pastel-font-1);
-    font-family: "Poppins", sans-serif;
+    font-family: inherit;
     font-weight: bold;
 
     cursor: pointer;
@@ -34,4 +40,10 @@
 
 .nav-button:hover {
     color: var(--lavender-pastel-1);
+}
+
+@media screen and (max-width: 600px) {
+    .nav-button {
+        font-size: var(--h4-font-size);
+    }
 }

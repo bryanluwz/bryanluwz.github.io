@@ -10,6 +10,8 @@
     justify-content: center;
 
     user-select: none;
+
+    overflow: hidden;
 }
 
 /* For logo */
@@ -24,6 +26,8 @@
 
     font-size: var(--h0-font-size);
     color: var(--lavender-pastel-font-1);
+
+    transition: 0.4s ease;
 }
 
 .logo-img {
@@ -41,5 +45,12 @@
 }
 
 /* Hide logo title if screen too small */
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 500px) {
+    .logo-img {
+        height: 60%;
+    }
+
+    .logo-container {
+        flex-direction: column;
+    }
 }

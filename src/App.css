@@ -1,3 +1,8 @@
+@font-face {
+    font-family: "Lulo";
+    src: url("./lulo-font.ttf");
+}
+
 /* Mostly constants and stuff */
 :root {
     /* Font sizes */
@@ -7,9 +12,12 @@
     --h2-font-size: 1.25rem;
     --h3-font-size: 1.2rem;
     --h4-font-size: 1rem;
+    --h5-font-size: 0.8rem;
 
-    /* Font familt */
-    font-family: "Poppins", sans-serif;
+    /* Font family */
+    font-family: "Lulo", "Poppins", sans-serif;
+    --title-font: "Lulo", "Poppins", sans-serif;
+    --text-font: "Poppins", "sans-serif";
 
     /* Colo(u)rs */
     --lavender-pastel-0: #897197;

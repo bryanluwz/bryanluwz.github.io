@@ -23,9 +23,9 @@ export class TopNavigationBar extends Component {
 						uni
 					</button>
 				</Link>
-				<Link className="nav-button-container" to={"/quizzes-stuff"}>
+				<Link className="nav-button-container" to={"/others"}>
 					<button className="nav-button">
-						quizzes
+						others
 					</button>
 				</Link>
 			</div>

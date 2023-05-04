@@ -24,3 +24,5 @@ yarn-error.log*
 
 # others
 commands.txt
+TODO.txt
+*.zip
