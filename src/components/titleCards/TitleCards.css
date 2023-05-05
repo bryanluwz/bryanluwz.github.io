@@ -111,6 +111,8 @@
     height: auto;
 
     border-radius: 20px;
+
+    user-select: none;
 }
 
 .grid-title-card:nth-child(odd) .grid-title-card-bg-color {

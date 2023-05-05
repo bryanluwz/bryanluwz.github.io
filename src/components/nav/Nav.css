@@ -8,8 +8,6 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-
-    overflow: scroll;
 }
 
 .nav-container::-webkit-scrollbar {
@@ -40,6 +38,15 @@
 
 .nav-button:hover {
     color: var(--lavender-pastel-1);
+}
+
+.nav-button-underline {
+    border-bottom: 1.5px solid var(--lavender-pastel-font-1);
+    transition: 0.2s ease;
+}
+
+.nav-button-underline:hover {
+    border-color: var(--lavender-pastel-1);
 }
 
 @media screen and (max-width: 600px) {

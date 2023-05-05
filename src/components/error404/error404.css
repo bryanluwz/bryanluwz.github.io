@@ -1,0 +1,24 @@
+.error404-container {
+    width: 100%;
+    height: 54.5vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.error404-img {
+    width: auto;
+    height: 10%;
+
+    font-family: var(--text-font);
+}
+
+.error404-text {
+    width: auto;
+    height: auto;
+
+    font-family: var(--text-font);
+    font-size: var(--h3-font-size);
+}
