@@ -12,6 +12,8 @@
     user-select: none;
 
     overflow: hidden;
+
+    transition: 0.2s ease;
 }
 
 /* For logo */
@@ -47,10 +49,18 @@
 /* Hide logo title if screen too small */
 @media screen and (max-width: 500px) {
     .logo-img {
-        height: 60%;
+        height: 80%;
     }
 
-    .logo-container {
-        flex-direction: column;
+    .logo-title {
+        font-size: var(--h2-font-size);
     }
+
+    .header-container {
+        height: 15vh;
+    }
+
+    /* .logo-container {
+        flex-direction: o;
+    } */
 }

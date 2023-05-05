@@ -72,3 +72,13 @@
 .footer-social-icon:hover {
     color: var(--lavender-pastel-0);
 }
+
+@media screen and (max-width: 500px) {
+    .footer-container-left-img {
+        display: none;
+    }
+
+    .footer-container {
+        position: relative;
+    }
+}

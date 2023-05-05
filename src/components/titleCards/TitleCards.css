@@ -9,7 +9,7 @@
     flex-direction: row;
     justify-content: space-between;
 
-    background-color: var(--lavender-pastel-4);
+    background-color: var(--teal-pastel-1);
     border-radius: 20px;
 }
 
@@ -39,6 +39,7 @@
     height: 20%;
 
     font-size: var(--h2-font-size);
+    font-family: var(--text-font);
     font-weight: bold;
 
     transition: 0.4s ease;
@@ -65,7 +66,7 @@
     }
 
     .image-text-title-card-text-title {
-        font-size: var(--h2-font-size);
+        font-size: var(--h4-font-size);
     }
 
     .image-text-title-card-container {
@@ -109,15 +110,20 @@
     width: 100%;
     height: auto;
 
-    background-color: var(--lavender-pastel-4);
     border-radius: 20px;
+}
+
+.grid-title-card:nth-child(odd) .grid-title-card-bg-color {
+    background-color: var(--pink-pastel-1);
+}
+
+.grid-title-card:nth-child(even) .grid-title-card-bg-color {
+    background-color: var(--yellow-pastel-1);
 }
 
 .grid-title-card-title {
     width: 100%;
     height: auto;
-
-    margin-top: 4%;
 
     font-size: var(--h4-font-size);
     color: var(--lavender-pastel-font-1);
@@ -156,4 +162,10 @@
 
 .grid-title-card-view-more-button:hover {
     background-color: var(--lavender-pastel-3);
+}
+
+@media screen and (max-width: 800px) {
+    .grid-title-card-title {
+        font-size: var(--h5-font-size);
+    }
 }

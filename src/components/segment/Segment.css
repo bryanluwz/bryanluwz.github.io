@@ -67,13 +67,13 @@
 @media screen and (max-width: 800px) {
     .segment-container {
         width: 98%;
-        margin: 5% 1%;
+        margin: min(10%, 40px) 1%;
         padding: 0%;
     }
 
     .segment-header {
         width: 90%;
-        font-size: var(--h2-font-size);
+        font-size: var(--h4-font-size);
     }
 
     .segment-body {

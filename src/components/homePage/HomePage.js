@@ -6,7 +6,7 @@ import '../carousel/Carousel.css';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import Segment from "../segment/Segment";
 import { ImageTextTitleCard } from "../titleCards/ImageTextTitleCard";
-import { GridTitleCard, GridTitleCardWrapper } from "../titleCards/GridTitleCard";
+import { GridTitleCard, GridTitleCardWrapper, GridTitleCardTextless } from "../titleCards/GridTitleCard";
 
 export default class HomePage extends Component {
 	constructor(props) {
@@ -42,7 +42,7 @@ export default class HomePage extends Component {
 				>
 					<ImageTextTitleCard
 						imgSrc={"./images/shuba.png"}
-						title={"hello there"}
+						title={"Hello there"}
 					>
 						Hello there!
 						<br />
@@ -108,7 +108,7 @@ export default class HomePage extends Component {
 				<Segment
 					title={"others"}
 				>
-					<GridTitleCardWrapper
+					{/* <GridTitleCardWrapper
 						withViewMore={true}
 						viewMoreLink={"/others"}
 					>
@@ -126,6 +126,25 @@ export default class HomePage extends Component {
 							link={"/"}
 							imgSrc={"./images/shuba.png"}
 							title={"pop cat"}
+						/>
+					</GridTitleCardWrapper> */}
+					<GridTitleCardWrapper
+						withViewMore={true}
+						viewMoreLink={"/others"}
+					><GridTitleCardTextless
+							link={"/"}
+							imgSrc={"./images/shuba.png"}
+							withBackground={false}
+						/>
+						<GridTitleCardTextless
+							link={"/"}
+							imgSrc={"./images/shuba.png"}
+							withBackground={false}
+						/>
+						<GridTitleCardTextless
+							link={"/"}
+							imgSrc={"./images/shuba.png"}
+							withBackground={false}
 						/>
 					</GridTitleCardWrapper>
 				</Segment>
