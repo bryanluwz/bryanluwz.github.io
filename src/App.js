@@ -31,9 +31,7 @@ class App extends Component {
 				{/* Content Pages */}
 				<Routes>
 					<Route path="/" element={
-						<HomePage>
-
-						</HomePage>
+						<HomePage gameComponents={this.gameComponents} gameImages={this.gameImages} />
 					} />
 
 					<Route path='/fun-stuff'>

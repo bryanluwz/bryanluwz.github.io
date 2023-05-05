@@ -60,21 +60,15 @@ export default class HomePage extends Component {
 						withViewMore={true}
 						viewMoreLink={"/fun-stuff"}
 					>
-						<GridTitleCard
-							link={"/"}
-							imgSrc={"./images/shuba.png"}
-							title={"CATGPT =^._.^="}
-						/>
-						<GridTitleCard
-							link={"/"}
-							imgSrc={"./images/shuba.png"}
-							title={"scissors paper stone"}
-						/>
-						<GridTitleCard
-							link={"/"}
-							imgSrc={"./images/shuba.png"}
-							title={"untitled duck game"}
-						/>
+						{this.props.gameComponents.slice(0, Math.min(this.props.gameComponents.length, 3)).map((Game, index) => {
+							return (
+								< GridTitleCard key={index} link={`/fun-stuff/${index}`
+								}
+									imgSrc={this.props.gameImages.find((imagePath) => (imagePath.includes(Game.name))) === undefined ? "./images/shuba.png" : this.props.gameImages.find((imagePath) => (imagePath.includes(Game.name)))}
+									title={Game.name.replace(/([a-z])([A-Z])/g, '$1 $2')}
+								/>
+							);
+						})}
 					</GridTitleCardWrapper>
 				</Segment>
 
