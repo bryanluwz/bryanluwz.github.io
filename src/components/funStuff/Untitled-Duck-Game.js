@@ -10,4 +10,4 @@ export default class UntitledDuckGame extends Component {
 	}
 }
 
-UntitledDuckGame.displayName = "UntitledDuckGame";
+UntitledDuckGame.displayName = "Untitled Duck Game";

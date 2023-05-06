@@ -39,6 +39,12 @@
     --lavender-pastel-font-grayscale: #b4a3a3;
 }
 
+@media screen and (min-width: 2000px) {
+    :root {
+        font-size: 150%;
+    }
+}
+
 body {
     margin: 0;
     z-index: 2;

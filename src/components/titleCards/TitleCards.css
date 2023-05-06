@@ -90,6 +90,7 @@
     margin: 0 auto;
 
     display: grid;
+    grid-template-columns: repeat(3, minmax(160px, 1fr));
 }
 
 .grid-title-card {
@@ -168,5 +169,21 @@
 @media screen and (max-width: 800px) {
     .grid-title-card-title {
         font-size: var(--h5-font-size);
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .grid-title-cards-container {
+        grid-template-columns: repeat(2, minmax(160px, 1fr));
+    }
+
+    .grid-title-card:nth-child(3) {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .grid-title-cards-container {
+        grid-template-columns: repeat(1, minmax(160px, 1fr));
     }
 }

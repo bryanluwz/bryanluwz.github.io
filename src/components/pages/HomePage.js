@@ -3,19 +3,16 @@ import HomePageCarousel from "../carousel/HomePageCarousel";
 import CarouselCard from "../carousel/CarouselCard";
 import Segment from "../segment/Segment";
 import { ImageTextTitleCard } from "../titleCards/ImageTextTitleCard";
-import { GridTitleCard, GridTitleCardWrapper, GridTitleCardTextless } from "../titleCards/GridTitleCard";
-
+import { GridTitleCard, GridTitleCardWrapper } from "../titleCards/GridTitleCard";
+import { extractInfomationFromModule } from "../utils/utils";
 import '../carousel/Carousel.css';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import './HomePage.css';
 
 export default class HomePage extends Component {
 	constructor(props) {
 		super(props);
 
-		this.state = {
-			carouselIndex: 0
-		};
+		console.log(this.props);
 	}
 
 	render() {
@@ -60,15 +57,13 @@ export default class HomePage extends Component {
 					<GridTitleCardWrapper
 						withViewMore={true}
 						viewMoreLink={"/fun-stuff"}
-						minSize={"160px"}
-						maxSize={"1fr"}
 					>
-						{this.props.gameComponents.slice(0, Math.min(this.props.gameComponents.length, 3)).map((Game, index) => {
+						{this.props.gameComponents.slice(0, Math.min(this.props.gameComponents.length, 3)).map((Component, index) => {
+							var info = extractInfomationFromModule(Component);
 							return (
-								< GridTitleCard key={index} link={`/fun-stuff/${Game.displayName.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase()}`
-								}
+								< GridTitleCard key={index} link={info.routeLink}
 									imgSrc={this.props.gameImages[index]}
-									title={Game.displayName.replace(/([a-z])([A-Z])/g, '$1 $2')}
+									title={info.displayName}
 								/>
 							);
 						})}
@@ -82,24 +77,16 @@ export default class HomePage extends Component {
 					<GridTitleCardWrapper
 						withViewMore={true}
 						viewMoreLink={"/uni-stuff"}
-						minSize={"160px"}
-						maxSize={"1fr"}
 					>
-						<GridTitleCard
-							link={"/"}
-							imgSrc={"./images/shuba.png"}
-							title={"uni github repo"}
-						/>
-						<GridTitleCard
-							link={"/"}
-							imgSrc={"./images/shuba.png"}
-							title={"sleeping cat for you to chill"}
-						/>
-						<GridTitleCard
-							link={"/"}
-							imgSrc={"./images/shuba.png"}
-							title={"where mrt exit nearest to escalator"}
-						/>
+						{this.props.uniComponents.slice(0, Math.min(this.props.uniComponents.length, 3)).map((Component, index) => {
+							var info = extractInfomationFromModule(Component);
+							return (
+								< GridTitleCard key={index} link={info.routeLink}
+									imgSrc={this.props.uniImages[index]}
+									title={info.displayName}
+								/>
+							);
+						})}
 					</GridTitleCardWrapper>
 				</Segment>
 
@@ -107,46 +94,19 @@ export default class HomePage extends Component {
 				<Segment
 					title={"others"}
 				>
-					{/* <GridTitleCardWrapper
-						withViewMore={true}
-						viewMoreLink={"/others"}
-					>
-						<GridTitleCard
-							link={"/"}
-							imgSrc={"./images/shuba.png"}
-							title={"flip a coin"}
-						/>
-						<GridTitleCard
-							link={"/"}
-							imgSrc={"./images/shuba.png"}
-							title={"are you fat"}
-						/>
-						<GridTitleCard
-							link={"/"}
-							imgSrc={"./images/shuba.png"}
-							title={"pop cat"}
-						/>
-					</GridTitleCardWrapper> */}
 					<GridTitleCardWrapper
 						withViewMore={true}
 						viewMoreLink={"/others"}
-						minSize={"160px"}
-						maxSize={"1fr"}
-					><GridTitleCardTextless
-							link={"/"}
-							imgSrc={"./images/shuba.png"}
-							withBackground={false}
-						/>
-						<GridTitleCardTextless
-							link={"/"}
-							imgSrc={"./images/shuba.png"}
-							withBackground={false}
-						/>
-						<GridTitleCardTextless
-							link={"/"}
-							imgSrc={"./images/shuba.png"}
-							withBackground={false}
-						/>
+					>
+						{this.props.othersComponents.slice(0, Math.min(this.props.othersComponents.length, 3)).map((Component, index) => {
+							var info = extractInfomationFromModule(Component);
+							return (
+								< GridTitleCard key={index} link={info.routeLink}
+									imgSrc={this.props.othersImages[index]}
+									title={info.displayName}
+								/>
+							);
+						})}
 					</GridTitleCardWrapper>
 				</Segment>
 			</Fragment>

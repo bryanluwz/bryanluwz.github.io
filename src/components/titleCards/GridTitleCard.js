@@ -7,10 +7,7 @@ export class GridTitleCardWrapper extends Component {
 	render() {
 		return (
 			<div className="grid-title-cards-wrapper">
-				<div className="grid-title-cards-container" style={
-					{
-						gridTemplateColumns: `repeat(auto-fit, minmax(${this.props.minSize}, ${this.props.maxSize}))`
-					}}>
+				<div className="grid-title-cards-container">
 					{this.props.children}
 				</div>
 				{

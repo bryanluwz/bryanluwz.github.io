@@ -11,4 +11,4 @@ export default class CatGPT extends Component {
 	}
 }
 
-CatGPT.displayName = "CatGPT";
+CatGPT.displayName = "Cat GPT";

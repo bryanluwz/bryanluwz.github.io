@@ -10,4 +10,4 @@ export default class ScissorsPaperStone extends Component {
 	}
 }
 
-ScissorsPaperStone.displayName = "ScissorsPaperStone";
+ScissorsPaperStone.displayName = "Scissors Paper Stone";
