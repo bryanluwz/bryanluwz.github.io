@@ -90,7 +90,7 @@
     margin: 0 auto;
 
     display: grid;
-    grid-template-columns: repeat(3, minmax(160px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
 }
 
 .grid-title-card {
@@ -152,7 +152,6 @@
     border-radius: 4px;
 
     font-size: var(--h5-font-size);
-    /* color: var(--lavender-pastel-font-1); */
     color: white;
     font-family: inherit;
     font-weight: bold;
@@ -169,21 +168,5 @@
 @media screen and (max-width: 800px) {
     .grid-title-card-title {
         font-size: var(--h5-font-size);
-    }
-}
-
-@media screen and (max-width: 600px) {
-    .grid-title-cards-container {
-        grid-template-columns: repeat(2, minmax(160px, 1fr));
-    }
-
-    .grid-title-card:nth-child(3) {
-        display: none;
-    }
-}
-
-@media screen and (max-width: 400px) {
-    .grid-title-cards-container {
-        grid-template-columns: repeat(1, minmax(160px, 1fr));
     }
 }

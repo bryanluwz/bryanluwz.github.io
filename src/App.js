@@ -57,43 +57,43 @@ class App extends Component {
 					} />
 
 					<Route path='/fun-stuff'>
-						{this.gameComponents.map((Component, index) => {
-							var info = extractInfomationFromModule(Component);
+						{this.gameComponents.map((Comp, index) => {
+							var info = extractInfomationFromModule(Comp, "/fun-stuff");
 							return (
 								<Route key={index} path={info.routeLink} element={
-									<Component />
+									<Comp />
 								} />
 							);
 						})}
-						<Route path="/fun-stuff" element={<DisplayGridPage components={this.gameComponents} images={this.gameImages} />} />
+						<Route path="/fun-stuff" element={<DisplayGridPage path="fun-stuff" components={this.gameComponents} images={this.gameImages} />} />
 					</Route>
 
 					<Route path='/uni-stuff'>
-						{this.uniComponents.map((Component, index) => {
-							var info = extractInfomationFromModule(Component);
+						{this.uniComponents.map((Comp, index) => {
+							var info = extractInfomationFromModule(Comp, "/uni-stuff");
 							return (
 								<Route key={index} path={info.routeLink} element={
-									<Component />
+									<Comp />
 								} />
 							);
 						})}
-						<Route path="/uni-stuff" element={<DisplayGridPage components={this.uniComponents} images={this.uniImages} />} />
+						<Route path="/uni-stuff" element={<DisplayGridPage path="uni-stuff" components={this.uniComponents} images={this.uniImages} />} />
 					</Route>
 
 					<Route path='/others'>
-						{this.othersComponents.map((Component, index) => {
-							var info = extractInfomationFromModule(Component);
+						{this.othersComponents.map((Comp, index) => {
+							var info = extractInfomationFromModule(Comp, "/others");
 							return (
 								<Route key={index} path={info.routeLink} element={
-									<Component />
+									<Comp />
 								} />
 							);
 						})}
-						<Route path="/others" element={<DisplayGridPage components={this.othersComponents} images={this.othersImages} />} />
+						<Route path="/others" element={<DisplayGridPage path="others" components={this.othersComponents} images={this.othersImages} />} />
 					</Route>
 
 					<Route path='*' element={
-						<Error404page />
+						<Error404page customWarning={"Page not found OAO"} />
 					} />
 				</Routes>
 

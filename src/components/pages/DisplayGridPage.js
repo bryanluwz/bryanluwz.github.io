@@ -9,7 +9,7 @@ export default class DisplayGridPage extends Component {
 			<Segment>
 				<GridTitleCardWrapper>
 					{this.props.components.map((components, index) => {
-						var info = extractInfomationFromModule(components);
+						var info = extractInfomationFromModule(components, this.props.path);
 						return (
 							< GridTitleCard key={index} link={info.routeLink}
 								imgSrc={this.props.images[index]}

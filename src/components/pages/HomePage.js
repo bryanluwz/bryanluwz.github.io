@@ -9,12 +9,6 @@ import '../carousel/Carousel.css';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 export default class HomePage extends Component {
-	constructor(props) {
-		super(props);
-
-		console.log(this.props);
-	}
-
 	render() {
 		return (
 			<Fragment>
@@ -58,8 +52,8 @@ export default class HomePage extends Component {
 						withViewMore={true}
 						viewMoreLink={"/fun-stuff"}
 					>
-						{this.props.gameComponents.slice(0, Math.min(this.props.gameComponents.length, 3)).map((Component, index) => {
-							var info = extractInfomationFromModule(Component);
+						{this.props.gameComponents.slice(0, Math.min(this.props.gameComponents.length, 3)).map((Comp, index) => {
+							var info = extractInfomationFromModule(Comp, "fun-stuff");
 							return (
 								< GridTitleCard key={index} link={info.routeLink}
 									imgSrc={this.props.gameImages[index]}
@@ -78,8 +72,8 @@ export default class HomePage extends Component {
 						withViewMore={true}
 						viewMoreLink={"/uni-stuff"}
 					>
-						{this.props.uniComponents.slice(0, Math.min(this.props.uniComponents.length, 3)).map((Component, index) => {
-							var info = extractInfomationFromModule(Component);
+						{this.props.uniComponents.slice(0, Math.min(this.props.uniComponents.length, 3)).map((Comp, index) => {
+							var info = extractInfomationFromModule(Comp, "uni-stuff");
 							return (
 								< GridTitleCard key={index} link={info.routeLink}
 									imgSrc={this.props.uniImages[index]}
@@ -98,8 +92,8 @@ export default class HomePage extends Component {
 						withViewMore={true}
 						viewMoreLink={"/others"}
 					>
-						{this.props.othersComponents.slice(0, Math.min(this.props.othersComponents.length, 3)).map((Component, index) => {
-							var info = extractInfomationFromModule(Component);
+						{this.props.othersComponents.slice(0, Math.min(this.props.othersComponents.length, 3)).map((Comp, index) => {
+							var info = extractInfomationFromModule(Comp, "others");
 							return (
 								< GridTitleCard key={index} link={info.routeLink}
 									imgSrc={this.props.othersImages[index]}
