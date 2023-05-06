@@ -1,17 +1,24 @@
 {
   "files": {
-    "main.css": "/static/css/main.0fce3dcf.css",
-    "main.js": "/static/js/main.71a9020b.js",
-    "static/media/CatGPT.png": "/static/media/CatGPT.f9716e61d3b803d2de2b.png",
-    "static/media/ScissorsPaperStone.png": "/static/media/ScissorsPaperStone.f9716e61d3b803d2de2b.png",
-    "static/media/UntitledDuckGame.png": "/static/media/UntitledDuckGame.5a06c54c104110856ce4.png",
+    "main.css": "/static/css/main.3b248cfd.css",
+    "main.js": "/static/js/main.78644bc6.js",
+    "static/media/Cat-GPT.png": "/static/media/Cat-GPT.f9716e61d3b803d2de2b.png",
+    "static/media/MRT-Exits.png": "/static/media/MRT-Exits.f9716e61d3b803d2de2b.png",
+    "static/media/Pop-Cat.png": "/static/media/Pop-Cat.f9716e61d3b803d2de2b.png",
+    "static/media/Scissors-Paper-Stone.png": "/static/media/Scissors-Paper-Stone.f9716e61d3b803d2de2b.png",
+    "static/media/Flip-A-Coin.png": "/static/media/Flip-A-Coin.5a06c54c104110856ce4.png",
+    "static/media/Random-Uni-Stuff-2.png": "/static/media/Random-Uni-Stuff-2.5a06c54c104110856ce4.png",
+    "static/media/Random-Uni-Stuff.png": "/static/media/Random-Uni-Stuff.5a06c54c104110856ce4.png",
+    "static/media/Sleeping-Cat.png": "/static/media/Sleeping-Cat.5a06c54c104110856ce4.png",
+    "static/media/Uni-Repos.png": "/static/media/Uni-Repos.5a06c54c104110856ce4.png",
+    "static/media/Untitled-Duck-Game.png": "/static/media/Untitled-Duck-Game.5a06c54c104110856ce4.png",
     "static/media/lulo-font.ttf": "/static/media/lulo-font.cf6ce051896b18d3449b.ttf",
     "index.html": "/index.html",
-    "main.0fce3dcf.css.map": "/static/css/main.0fce3dcf.css.map",
-    "main.71a9020b.js.map": "/static/js/main.71a9020b.js.map"
+    "main.3b248cfd.css.map": "/static/css/main.3b248cfd.css.map",
+    "main.78644bc6.js.map": "/static/js/main.78644bc6.js.map"
   },
   "entrypoints": [
-    "static/css/main.0fce3dcf.css",
-    "static/js/main.71a9020b.js"
+    "static/css/main.3b248cfd.css",
+    "static/js/main.78644bc6.js"
   ]
 }
