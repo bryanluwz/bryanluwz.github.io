@@ -24,7 +24,7 @@
     align-items: center;
     justify-content: space-between;
 
-    font-size: var(--h1-font-size);
+    font-size: min(var(--h1-font-size), 2vw);
     font-weight: bold;
 
     text-align: center;

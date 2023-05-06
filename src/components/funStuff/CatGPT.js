@@ -10,3 +10,5 @@ export default class CatGPT extends Component {
 		);
 	}
 }
+
+CatGPT.displayName = "CatGPT";

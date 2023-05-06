@@ -1,12 +1,13 @@
 import { Component, Fragment } from "react";
 import HomePageCarousel from "../carousel/HomePageCarousel";
 import CarouselCard from "../carousel/CarouselCard";
-
-import '../carousel/Carousel.css';
-import "react-responsive-carousel/lib/styles/carousel.min.css";
 import Segment from "../segment/Segment";
 import { ImageTextTitleCard } from "../titleCards/ImageTextTitleCard";
 import { GridTitleCard, GridTitleCardWrapper, GridTitleCardTextless } from "../titleCards/GridTitleCard";
+
+import '../carousel/Carousel.css';
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import './HomePage.css';
 
 export default class HomePage extends Component {
 	constructor(props) {
@@ -59,13 +60,15 @@ export default class HomePage extends Component {
 					<GridTitleCardWrapper
 						withViewMore={true}
 						viewMoreLink={"/fun-stuff"}
+						minSize={"160px"}
+						maxSize={"1fr"}
 					>
 						{this.props.gameComponents.slice(0, Math.min(this.props.gameComponents.length, 3)).map((Game, index) => {
 							return (
-								< GridTitleCard key={index} link={`/fun-stuff/${index}`
+								< GridTitleCard key={index} link={`/fun-stuff/${Game.displayName.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase()}`
 								}
-									imgSrc={this.props.gameImages.find((imagePath) => (imagePath.includes(Game.name))) === undefined ? "./images/shuba.png" : this.props.gameImages.find((imagePath) => (imagePath.includes(Game.name)))}
-									title={Game.name.replace(/([a-z])([A-Z])/g, '$1 $2')}
+									imgSrc={this.props.gameImages[index]}
+									title={Game.displayName.replace(/([a-z])([A-Z])/g, '$1 $2')}
 								/>
 							);
 						})}
@@ -79,6 +82,8 @@ export default class HomePage extends Component {
 					<GridTitleCardWrapper
 						withViewMore={true}
 						viewMoreLink={"/uni-stuff"}
+						minSize={"160px"}
+						maxSize={"1fr"}
 					>
 						<GridTitleCard
 							link={"/"}
@@ -125,6 +130,8 @@ export default class HomePage extends Component {
 					<GridTitleCardWrapper
 						withViewMore={true}
 						viewMoreLink={"/others"}
+						minSize={"160px"}
+						maxSize={"1fr"}
 					><GridTitleCardTextless
 							link={"/"}
 							imgSrc={"./images/shuba.png"}

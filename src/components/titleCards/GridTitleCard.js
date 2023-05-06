@@ -7,7 +7,10 @@ export class GridTitleCardWrapper extends Component {
 	render() {
 		return (
 			<div className="grid-title-cards-wrapper">
-				<div className="grid-title-cards-container">
+				<div className="grid-title-cards-container" style={
+					{
+						gridTemplateColumns: `repeat(auto-fit, minmax(${this.props.minSize}, ${this.props.maxSize}))`
+					}}>
 					{this.props.children}
 				</div>
 				{
@@ -19,7 +22,7 @@ export class GridTitleCardWrapper extends Component {
 						view moar
 					</Link>
 				}
-			</div>
+			</div >
 		);
 	}
 }

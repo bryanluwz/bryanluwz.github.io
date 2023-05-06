@@ -37,7 +37,7 @@ class App extends Component {
 					<Route path='/fun-stuff'>
 						{this.gameComponents.map((Game, index) => {
 							return (
-								<Route key={index} path={`/fun-stuff/${index}`} element={
+								<Route key={index} path={`/fun-stuff/${Game.displayName.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase()}`} element={
 									<Game />
 								} />
 							);
