@@ -1,17 +1,23 @@
-import { Component, createRef } from "react";
+import { Component, Fragment, createRef } from "react";
 import ReactMarkdown from 'react-markdown';
 import './Cat-GPT.css';
 
 export default class CatGPT extends Component {
 	constructor(props) {
 		super(props);
-		this.chatHistory = [
-			<ChatMessageComponent isUser={false} userMsg={"meow meow! meow meow meow? meow meow meow! meow meow meow meow-meow-meow!"} />
-		];  // Contains an array of ChatMessageComponent
+		this.chatHistory = [];  // Contains an array of ChatMessageComponent
 		this.state = {
-			canUserSend: true
+			canUserSend: false
 		};
 		this.textareaRef = createRef();
+		this.msgAreaDummyRef = createRef();
+	}
+
+	componentDidMount() {
+		setTimeout(() => {
+			this.chatHistory.push(<ChatMessageComponent isUser={false} userMsg={"meow meow! meow meow meow? meow meow meow! meow meow meow meow-meow-meow!"} />);
+			this.setState({ canUserSend: true });
+		}, 500);
 	}
 
 	handleTextareaChange = () => {
@@ -21,14 +27,16 @@ export default class CatGPT extends Component {
 	};
 
 	handleMessageSubmission = () => {
-		if (!this.state.canUserSend || this.textareaRef.current.value.trim() === '') return;
+		if (!this.state.canUserSend || this.textareaRef.current.value.trim() === '' || this.chatHistory.at(-1).props.isUser) return;
 		this.setState({ canUserSend: false });
 		const messageContent = this.textareaRef.current.value;
 		this.textareaRef.current.value = "";
 		this.chatHistory.push(<ChatMessageComponent isUser={true} userMsg={messageContent} />);
+		this.msgAreaDummyRef.current?.scrollIntoView({ behavior: 'smooth' });
 		setTimeout(() => {
 			this.handleMessageReply();
 			this.setState({ canUserSend: true });
+			this.msgAreaDummyRef.current?.scrollIntoView({ behavior: 'smooth' });
 		}, Math.floor(Math.random() * 500 + 400));
 	};
 
@@ -48,7 +56,12 @@ export default class CatGPT extends Component {
 		const meows = Array(meowCount).fill('meow').join(', ');
 		const punctuations = ['!', '!!', '?!', '...'][getRandomInt(4)]; // Random punctuation
 
-		return `![Cute Cat](./images/shuba.png)\n\n${meows}${punctuations}`;
+		return (
+			<Fragment>
+				{/* <img src={"./images/shuba.png"} alt="pic" /> */}
+				<div>{`${meows}${punctuations}`}</div>
+			</Fragment>
+		);
 	};
 
 	render() {
@@ -60,7 +73,8 @@ export default class CatGPT extends Component {
 				</div>
 				<div className="content-wrapper cat-gpt-content-wrapper">
 					<div className="cat-gpt-msgs">
-						{this.chatHistory}
+						{this.chatHistory.map((elem) => elem)}
+						<div ref={this.msgAreaDummyRef}></div>
 					</div>
 					<div className="cat-gpt-input-container">
 						<textarea
@@ -96,7 +110,7 @@ class ChatMessageComponent extends Component {
 	render() {
 		return (
 			<div className={`cat-gpt-chat-msg-container ${this.isUser ? "cat-gpt-chat-msg-container-user" : ""}`}>
-				<img className="cat-gpt-chat-msg-img" src={`${this.isUser ? "./images/shuba.png" : "./images/shuba.png"}`} alt="user" />
+				<img className="cat-gpt-chat-msg-img" src={`${this.isUser ? "./images/shuba.png" : "./images/shuba_smol.png"}`} alt="user" />
 				<div className={`cat-gpt-chat-msg-content ${this.isUser ? "cat-gpt-chat-msg-content-user" : ""}`}>
 					{this.userMsg}
 				</div>
