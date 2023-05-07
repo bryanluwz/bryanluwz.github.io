@@ -5,10 +5,10 @@ import { Link } from "react-router-dom";
 export default class Footer extends Component {
 	render() {
 		return (
-			<div className="footer-wrapper">
-				<div className="footer-container">
+			<div className={`footer-wrapper ${this.props.isStickyFooter ? "footer-wrapper-sticky" : ""}`}>
+				<div className={`footer-container ${this.props.isStickyFooter ? "footer-container-sticky" : ""}`}>
 					<div className="footer-container-left">
-						<img className="footer-container-left-img" src="./images/shuba.png" alt="nil" />
+						<img className="footer-container-left-img" src="./images/shuba.png" alt="nil" onClick={this.props.toggleStickyFooter} />
 						<span className="footer-container-left-text">&copy; 2023 Bryan Lu</span>
 					</div>
 					<div className="footer-container-right">

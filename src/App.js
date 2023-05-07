@@ -1,7 +1,10 @@
 import { Component, Fragment } from 'react';
-import { Routes, Route, useLocation, useNavigate, useParams } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 
 import './App.css';
+import './components/pages/ContentDisplay.css';
+
+import withRouter from './components/utils/withRouter';
 import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
 import HomePage from './components/pages/HomePage';
@@ -14,34 +17,49 @@ class App extends Component {
 	constructor(props) {
 		super(props);
 
-		// Import game components
-		const importAllGameComponents = (r) => r.keys().map((key) => r(key).default);
-		this.gameComponents = importAllGameComponents(require.context('./components/funStuff', true, /\.js$/));
+		this.state = {
+			isStickyFooter: true
+		};
 
-		const importAllGameImages = (r) => r.keys().map((key) => r(key));
-		this.gameImages = importAllGameImages(require.context('./components/funStuff/images', true));
+		// Import js, and imgs
+		const importAllComponents = (r) => r.keys().map((key) => r(key).default);
+		const importAllImages = (r) => r.keys().map((key) => r(key));
+
+		// Import game components
+		this.gameComponents = importAllComponents(require.context(`./components/funStuff`, true, /\.js$/));
+		this.gameImages = importAllImages(require.context(`./components/funStuff/images`, true));
 
 		// Import uni components
-		const importAllUniComponents = (r) => r.keys().map((key) => r(key).default);
-		this.uniComponents = importAllUniComponents(require.context('./components/uniStuff', true, /\.js$/));
-
-		const importAllUniImages = (r) => r.keys().map((key) => r(key));
-		this.uniImages = importAllUniImages(require.context('./components/uniStuff/images', true));
+		this.uniComponents = importAllComponents(require.context(`./components/uniStuff`, true, /\.js$/));
+		this.uniImages = importAllImages(require.context(`./components/funStuff/images`, true));
 
 		// Import others components
-		const importAllOthersComponents = (r) => r.keys().map((key) => r(key).default);
-		this.othersComponents = importAllOthersComponents(require.context('./components/others', true, /\.js$/));
-
-		const importAllOthersImages = (r) => r.keys().map((key) => r(key));
-		this.othersImages = importAllOthersImages(require.context('./components/others/images', true));
+		this.othersComponents = importAllComponents(require.context(`./components/others/`, true, /\.js$/));
+		this.othersImages = importAllImages(require.context(`./components/others/images`, true));
 	}
+
+	toggleStickyFooter = () => {
+		this.setState((prevState) => ({
+			isStickyFooter: !prevState.isStickyFooter
+		}));
+	};
 
 	render() {
 		return (
 			<Fragment>
 				{/* Header and top navigation */}
-				<Header />
-				<TopNavigationBar pathname={this.props.router.location.pathname} />
+				<Routes>
+					{['/', '/fun-stuff', 'others', 'uni-stuff'].map((path) => {
+						return (
+							<Route path={path} element={
+								<Fragment>
+									<Header />
+									<TopNavigationBar pathname={this.props.router.location.pathname} />
+								</Fragment>} />
+						);
+					})
+					}
+				</Routes>
 
 				{/* Content Pages */}
 				<Routes>
@@ -61,7 +79,7 @@ class App extends Component {
 							var info = extractInfomationFromModule(Comp, "/fun-stuff");
 							return (
 								<Route key={index} path={info.routeLink} element={
-									<Comp />
+									<Comp router={this.props.router} />
 								} />
 							);
 						})}
@@ -73,7 +91,7 @@ class App extends Component {
 							var info = extractInfomationFromModule(Comp, "/uni-stuff");
 							return (
 								<Route key={index} path={info.routeLink} element={
-									<Comp />
+									<Comp router={this.props.router} />
 								} />
 							);
 						})}
@@ -85,7 +103,7 @@ class App extends Component {
 							var info = extractInfomationFromModule(Comp, "/others");
 							return (
 								<Route key={index} path={info.routeLink} element={
-									<Comp />
+									<Comp router={this.props.router} />
 								} />
 							);
 						})}
@@ -98,26 +116,18 @@ class App extends Component {
 				</Routes>
 
 				{/* Footer */}
-				< Footer />
+				<Routes>
+					{['/', '/fun-stuff', 'others', 'uni-stuff'].map((path) => {
+						return (
+							<Route path={path} element={
+								< Footer isStickyFooter={this.state.isStickyFooter} toggleStickyFooter={this.toggleStickyFooter} />} />
+						);
+					})
+					}
+				</Routes>
 			</Fragment>
 		);
 	}
-}
-
-function withRouter(Component) {
-	function ComponentWithRouterProp(props) {
-		let location = useLocation();
-		let navigate = useNavigate();
-		let params = useParams();
-		return (
-			<Component
-				{...props}
-				router={{ location, navigate, params }}
-			/>
-		);
-	}
-
-	return ComponentWithRouterProp;
 }
 
 export default withRouter(App);

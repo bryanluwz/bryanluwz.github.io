@@ -1,0 +1,106 @@
+.cat-gpt-msgs {
+    width: 100%;
+    height: 79%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: top;
+
+    overflow-y: scroll;
+}
+
+.cat-gpt-msgs::-webkit-scrollbar {
+    display: none;
+}
+
+.cat-gpt-input-container {
+    width: 100%;
+    height: auto;
+
+    padding: 2% 0%;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Messages */
+.cat-gpt-chat-msg-container {
+    width: auto;
+    height: auto;
+
+    margin-bottom: 8px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+}
+
+.cat-gpt-chat-msg-container-user {
+    flex-direction: row-reverse;
+    justify-content: right;
+}
+
+.cat-gpt-chat-msg-img {
+    width: 48px;
+    height: 48px;
+
+    padding: 2px;
+}
+
+.cat-gpt-chat-msg-content {
+    width: auto;
+    max-width: 80%;
+    height: auto;
+
+    padding: 6px 14px;
+
+    font-family: var(--text-font);
+    font-size: var(--h4-font-size);
+
+    border-radius: 12px;
+
+    background-color: var(--pink-pastel-1);
+}
+
+.cat-gpt-chat-msg-content img {
+    width: 20%;
+    height: auto;
+}
+
+.cat-gpt-chat-msg-content-user {
+    background-color: var(--yellow-pastel-1);
+}
+
+/* Input */
+.cat-gpt-input {
+    width: 90%;
+    height: 100px;
+
+    padding: 20px;
+
+    border: none;
+    border-radius: 10px;
+    outline: transparent;
+    background-color: var(--lavender-pastel-4);
+
+    font-family: var(--text-font);
+    font-size: var(--h4-font-size);
+
+    resize: none;
+}
+
+.cat-gpt-input::-webkit-scrollbar {
+    display: none;
+}
+
+.cat-gpt-input-submit {
+    width: 3%;
+    padding: 1.5%;
+    height: auto;
+
+    cursor: pointer;
+}
