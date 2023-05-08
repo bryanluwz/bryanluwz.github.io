@@ -49,9 +49,9 @@ class App extends Component {
 			<Fragment>
 				{/* Header and top navigation */}
 				<Routes>
-					{['/', '/fun-stuff', 'others', 'uni-stuff'].map((path) => {
+					{['/', '/fun-stuff', 'others', 'uni-stuff'].map((path, index) => {
 						return (
-							<Route path={path} element={
+							<Route key={index} path={path} element={
 								<Fragment>
 									<Header />
 									<TopNavigationBar pathname={this.props.router.location.pathname} />
@@ -117,9 +117,9 @@ class App extends Component {
 
 				{/* Footer */}
 				<Routes>
-					{['/', '/fun-stuff', 'others', 'uni-stuff'].map((path) => {
+					{['/', '/fun-stuff', 'others', 'uni-stuff'].map((path, index) => {
 						return (
-							<Route path={path} element={
+							<Route key={index} path={path} element={
 								< Footer isStickyFooter={this.state.isStickyFooter} toggleStickyFooter={this.toggleStickyFooter} />} />
 						);
 					})

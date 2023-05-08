@@ -22,7 +22,7 @@
     color: var(--lavender-pastel-font-1);
 }
 
-.content-header-back {
+.content-header-side-button {
     width: 10%;
 
     font-size: var(--h2-font-size);
@@ -31,12 +31,12 @@
 }
 
 .content-header-title {
-    width: 90%;
-
-    padding-right: 10%;
+    width: 80%;
 
     font-size: var(--h1-font-size);
     text-align: center;
+
+    transition: 0.4s ease;
 }
 
 .content-wrapper {
@@ -44,4 +44,10 @@
     height: 80vh;
 
     margin-top: 10px;
+}
+
+@media screen and (max-width: 800px) {
+    .content-header-title {
+        font-size: var(--h4-font-size);
+    }
 }

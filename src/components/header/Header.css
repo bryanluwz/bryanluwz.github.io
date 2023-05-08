@@ -53,14 +53,16 @@
     }
 
     .logo-title {
-        font-size: var(--h2-font-size);
+        font-size: var(--h2-font-size) !important;
     }
 
     .header-container {
         height: 15vh;
     }
+}
 
-    /* .logo-container {
-        flex-direction: o;
-    } */
+@media screen and (max-width: 800px) {
+    .logo-title {
+        font-size: var(--h1-font-size);
+    }
 }

@@ -18,12 +18,13 @@
     width: 100%;
     height: auto;
 
-    padding: 2% 0%;
-
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+
+    background-color: var(--lavender-pastel-4);
+    border-radius: 10px;
 }
 
 /* Messages */
@@ -40,8 +41,8 @@
 }
 
 .cat-gpt-chat-msg-container-user {
-    flex-direction: row-reverse;
-    justify-content: right;
+    /* flex-direction: row-reverse;
+    justify-content: right; */
 }
 
 .cat-gpt-chat-msg-img {
@@ -49,6 +50,7 @@
     height: 48px;
 
     padding: 2px;
+    user-select: none;
 }
 
 .cat-gpt-chat-msg-content {
@@ -88,14 +90,13 @@
 /* Input */
 .cat-gpt-input {
     width: 90%;
-    height: 60px;
+    height: 80px;
 
     padding: 20px;
 
     border: none;
-    border-radius: 10px;
     outline: transparent;
-    background-color: var(--lavender-pastel-4);
+    background: transparent;
 
     font-family: var(--text-font);
     font-size: var(--h4-font-size);
@@ -108,9 +109,19 @@
 }
 
 .cat-gpt-input-submit {
-    width: 3%;
+    width: 5%;
+
     padding: 1.5%;
-    height: auto;
+    margin-right: 5px;
 
     cursor: pointer;
+    text-align: center;
+    color: var((--lavender-pastel-font-1));
+
+    transition: 0.3s ease;
+}
+
+.cat-gpt-input-submit-blocked {
+    cursor: default;
+    color: var(--lavender-pastel-font-grayscale);
 }
