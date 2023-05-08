@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.3d1d1788.css",
-    "main.js": "/static/js/main.2a3d9c5e.js",
+    "main.css": "/static/css/main.6572f225.css",
+    "main.js": "/static/js/main.65db691e.js",
     "static/media/Cat-GPT.png": "/static/media/Cat-GPT.f9716e61d3b803d2de2b.png",
     "static/media/MRT-Exits.png": "/static/media/MRT-Exits.f9716e61d3b803d2de2b.png",
     "static/media/Pop-Cat.png": "/static/media/Pop-Cat.f9716e61d3b803d2de2b.png",
@@ -11,11 +11,11 @@
     "static/media/Untitled-Duck-Game.png": "/static/media/Untitled-Duck-Game.5a06c54c104110856ce4.png",
     "static/media/lulo-font.ttf": "/static/media/lulo-font.cf6ce051896b18d3449b.ttf",
     "index.html": "/index.html",
-    "main.3d1d1788.css.map": "/static/css/main.3d1d1788.css.map",
-    "main.2a3d9c5e.js.map": "/static/js/main.2a3d9c5e.js.map"
+    "main.6572f225.css.map": "/static/css/main.6572f225.css.map",
+    "main.65db691e.js.map": "/static/js/main.65db691e.js.map"
   },
   "entrypoints": [
-    "static/css/main.3d1d1788.css",
-    "static/js/main.2a3d9c5e.js"
+    "static/css/main.6572f225.css",
+    "static/js/main.65db691e.js"
   ]
 }
