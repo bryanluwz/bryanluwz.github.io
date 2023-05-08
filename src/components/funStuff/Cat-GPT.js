@@ -1,6 +1,7 @@
 import { Component, createRef } from "react";
 import './Cat-GPT.css';
 import { TypeAnimation } from "react-type-animation";
+import axios from "axios";
 
 export default class CatGPT extends Component {
 	constructor(props) {
@@ -9,10 +10,18 @@ export default class CatGPT extends Component {
 			chatHistory: [],  // Contains an array of ChatMessageComponent
 			chatHistoryToSave: [],  // Contains and array of ChatMessageComponent (usrMsg is not animated)
 			canUserSend: false,
-			chatLength: 0
+			chatLength: 0,
+			invertUserSide: false,
+			maxChatHistoryLength: 3 // dont wanna ping cataas so many time
 		};
 		this.textareaRef = createRef();
 		this.msgAreaDummyRef = createRef();
+		this.textArray = [
+			`Meow. Meow meow meow. Meow, meow meow meow meow, meow. Meow meow, meow meow meow. Meow meow. Meow meow, meow. Meow meow, meow meow. Meow meow meow. Meow meow meow meow. Meow.`,
+			`Meow. Meow meow. Meow - meow meow. Meow meow, meow. Meow meow - meow meow meow. Meow meow. Meow meow - meow. Meow meow meow. Meow meow meow meow. Meow.`,
+			`Meow meow meow meow - meow meow! Meow meow - meow meow meow. Meow meow meow meow meow - meow meow? Meow meow meow meow meow meow - meow meow meow meow. Meow meow meow meow meow - meow meow meow meow meow meow.`,
+			`Meow, meow meow meow, meow - meow meow! Meow meow, meow - meow meow meow. Meow meow meow meow, meow meow - meow meow? Meow meow meow meow, meow meow meow - meow meow meow meow. Meow meow meow meow, meow meow - meow meow meow meow, meow meow.`
+		];
 	}
 
 	componentDidMount() {
@@ -26,7 +35,7 @@ export default class CatGPT extends Component {
 			}, () => { ; });
 		} else {
 			const { chatHistory, chatHistoryToSave } = this.state;
-			const message = "meow meow! meow meow meow? meow meow meow! meow meow meow meow-meow-meow!";
+			const message = "Meow meow! meow meow meow? meow meow meow! meow meow meow meow-meow-meow!";
 			chatHistoryToSave.push(<ChatMessageComponent key={this.state.chatLength} isUser={false} userMsg={message} />);
 			chatHistory.push(<ChatMessageComponent key={this.state.chatLength} isUser={false} userMsg={
 				<TypeAnimation
@@ -45,7 +54,8 @@ export default class CatGPT extends Component {
 		}
 	}
 
-	componentDidUpdate() {
+	componentDidUpdate(prevProps, prevState) {
+		if (this.state.invertUserSide !== prevState.invertUserSide) return;
 		this.msgAreaDummyRef.current?.scrollIntoView({ behavior: 'smooth' });
 	}
 
@@ -59,15 +69,19 @@ export default class CatGPT extends Component {
 		chatHistory.push(<ChatMessageComponent key={this.state.chatLength} isUser={true} userMsg={messageContent} />);
 		chatHistoryToSave.push(<ChatMessageComponent key={this.state.chatLength} isUser={true} userMsg={messageContent} />);
 
-		this.setState((prevState) => ({ chatHistory: chatHistory, chatHistoryToSave: chatHistoryToSave, chatLength: prevState.chatLength + 1 }));
+		this.setState((prevState) => ({
+			chatHistory: chatHistory,
+			chatHistoryToSave: chatHistoryToSave,
+			chatLength: prevState.chatLength + 1
+		}));
 
 		setTimeout(() => {
 			this.handleMessageReply();
 		}, Math.floor(Math.random() * 500 + 1000));
 	};
 
-	handleMessageReply = () => {
-		const { image, message } = this.createReply();
+	handleMessageReply = async () => {
+		const { image, message } = await this.createReply();
 
 		const { chatHistory, chatHistoryToSave } = this.state;
 
@@ -85,24 +99,32 @@ export default class CatGPT extends Component {
 
 		chatHistoryToSave.push(<ChatMessageComponent key={this.state.chatLength} isUser={false} userImg={image} userMsg={message} />);
 
-		this.setState((prevState) => ({ chatHistory: chatHistory, chatHistoryToSave: chatHistoryToSave, chatLength: prevState.chatLength + 1 }));
+		this.setState((prevState) => ({
+			chatHistory: chatHistory,
+			chatHistoryToSave: chatHistoryToSave,
+			chatLength: prevState.chatLength + 1
+		}));
 
 		localStorage.setItem("catGPTChatHistory", JSON.stringify(this.state.chatHistoryToSave));
 	};
 
-	createReply = () => {
-		function getRandomInt(max) {
-			return Math.floor(Math.random() * Math.floor(max));
+	createReply = async () => {
+		function getRandomInt(min, max) {
+			return Math.floor(Math.random() * (max - min) + min);
 		}
 
-		const meowCount = getRandomInt(30) + 20;
+		const message = this.textArray[getRandomInt(0, this.textArray.length - 1)];
 
-		const meows = Array(meowCount).fill('meow').join(', ');
-		const punctuations = ['!', '!!', '?!', '...'][getRandomInt(4)]; // Random punctuation
-
-		const image = Math.random() < 0.8 ? "./images/bathing_chomusuke.png" : undefined;
-
-		return { image: image, message: `${meows}${punctuations}` };
+		// Image / gif (i dont care about your internet bandwidth / mobile data)
+		var imageUrl = null;
+		if (Math.random() < 0.8) {
+			await axios.get(`https://cataas.com/cat/${Math.random() < 0.7 ? "cute" : "gif"}?json=true`).then(
+				response => {
+					imageUrl = `https://cataas.com${response.data.url}`;
+				}
+			).catch(e => { console.log(e); });
+		}
+		return { image: imageUrl, message: message };
 	};
 
 	handleDeleteHistoryButton = () => {
@@ -111,7 +133,7 @@ export default class CatGPT extends Component {
 		const chatHistory = [];
 		const chatHistoryToSave = [];
 
-		const message = "meow meow! meow meow meow? meow meow meow! meow meow meow meow-meow-meow!";
+		const message = "meow meow! meow meow meow? meow meow meow! meow meow meow meow - meowmeow!";
 
 		chatHistoryToSave.push(<ChatMessageComponent key={0} isUser={false} userMsg={message} />);
 		chatHistory.push(<ChatMessageComponent key={0} isUser={false} userMsg={
@@ -134,12 +156,12 @@ export default class CatGPT extends Component {
 			<div className="content-segment">
 				<div className="content-header">
 					<i className="content-header-side-button fa fa-angle-left" aria-hidden="true" onClick={() => { this.props.router.navigate(-1); }} />
-					<div className="content-header-title">{CatGPT.displayName}</div>
+					<div className="content-header-title" onClick={() => { this.setState({}); }}>{CatGPT.displayName}</div>
 					<i className="content-header-side-button fa fa-trash" aria-hidden="true" onClick={this.handleDeleteHistoryButton} />
 				</div>
 				<div className="content-wrapper cat-gpt-content-wrapper">
 					<div className="cat-gpt-msgs">
-						{this.state.chatHistory.map((elem, index) => (<ChatMessageComponent key={index} isUser={elem.props.isUser} userImg={elem.props.userImg} userMsg={elem.props.userMsg} />))}
+						{this.state.chatHistory.map((elem, index) => (<ChatMessageComponent key={index} invert={this.state.invertUserSide} isUser={elem.props.isUser} userImg={elem.props.userImg} userMsg={elem.props.userMsg} />))}
 						<div ref={this.msgAreaDummyRef}></div>
 					</div>
 					<div className="cat-gpt-input-container">
@@ -175,7 +197,7 @@ class ChatMessageComponent extends Component {
 
 	render() {
 		return (
-			<div className={`cat-gpt-chat-msg-container ${this.isUser ? "cat-gpt-chat-msg-container-user" : ""}`}>
+			<div className={`cat-gpt-chat-msg-container ${(this.isUser && this.props.invert) ? "cat-gpt-chat-msg-container-user" : ""}`}>
 				<img className="cat-gpt-chat-msg-img" src={`${this.isUser ? "./images/shuba.png" : "./images/bathing_chomusuke.png"}`} alt="user" />
 				<div className={`cat-gpt-chat-msg-content ${this.isUser ? "cat-gpt-chat-msg-content-user" : ""}`}>
 					{this.userImg && <img src={this.userImg} alt="cutesies" />}

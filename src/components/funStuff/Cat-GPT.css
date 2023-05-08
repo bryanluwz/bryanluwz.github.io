@@ -38,11 +38,13 @@
     flex-direction: row;
     align-items: top;
     justify-content: left;
+
+    transition: 0.4s ease;
 }
 
 .cat-gpt-chat-msg-container-user {
-    /* flex-direction: row-reverse;
-    justify-content: right; */
+    flex-direction: row-reverse;
+    justify-content: right;
 }
 
 .cat-gpt-chat-msg-img {
@@ -74,8 +76,13 @@
 }
 
 .cat-gpt-chat-msg-content img {
-    width: min(200px, 80%);
-    height: auto;
+    width: min(400px, 60vw);
+    max-height: 400px;
+
+    margin: 1% 0%;
+    object-fit: cover;
+
+    border-radius: 10px;
 }
 
 .cat-gpt-chat-msg-content div {
