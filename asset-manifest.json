@@ -1,21 +1,24 @@
 {
   "files": {
-    "main.css": "/static/css/main.f358ed3e.css",
-    "main.js": "/static/js/main.ec2bc152.js",
-    "static/media/Cat-GPT.png": "/static/media/Cat-GPT.f9716e61d3b803d2de2b.png",
+    "main.css": "/static/css/main.76b5dee5.css",
+    "main.js": "/static/js/main.38b877bc.js",
+    "static/media/Cat-GPT.png": "/static/media/Cat-GPT.1c6af49d149c84ef0fa7.png",
     "static/media/MRT-Exits.png": "/static/media/MRT-Exits.f9716e61d3b803d2de2b.png",
     "static/media/Pop-Cat.png": "/static/media/Pop-Cat.f9716e61d3b803d2de2b.png",
     "static/media/Scissors-Paper-Stone.png": "/static/media/Scissors-Paper-Stone.f9716e61d3b803d2de2b.png",
     "static/media/Flip-A-Coin.png": "/static/media/Flip-A-Coin.5a06c54c104110856ce4.png",
+    "static/media/Random-Uni-Stuff-2.png": "/static/media/Random-Uni-Stuff-2.5a06c54c104110856ce4.png",
+    "static/media/Random-Uni-Stuff.png": "/static/media/Random-Uni-Stuff.5a06c54c104110856ce4.png",
     "static/media/Sleeping-Cat.png": "/static/media/Sleeping-Cat.5a06c54c104110856ce4.png",
+    "static/media/Uni-Repos.png": "/static/media/Uni-Repos.5a06c54c104110856ce4.png",
     "static/media/Untitled-Duck-Game.png": "/static/media/Untitled-Duck-Game.5a06c54c104110856ce4.png",
     "static/media/lulo-font.ttf": "/static/media/lulo-font.cf6ce051896b18d3449b.ttf",
     "index.html": "/index.html",
-    "main.f358ed3e.css.map": "/static/css/main.f358ed3e.css.map",
-    "main.ec2bc152.js.map": "/static/js/main.ec2bc152.js.map"
+    "main.76b5dee5.css.map": "/static/css/main.76b5dee5.css.map",
+    "main.38b877bc.js.map": "/static/js/main.38b877bc.js.map"
   },
   "entrypoints": [
-    "static/css/main.f358ed3e.css",
-    "static/js/main.ec2bc152.js"
+    "static/css/main.76b5dee5.css",
+    "static/js/main.38b877bc.js"
   ]
 }
