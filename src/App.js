@@ -31,7 +31,7 @@ class App extends Component {
 
 		// Import uni components
 		this.uniComponents = importAllComponents(require.context(`./components/uniStuff`, true, /\.js$/));
-		this.uniImages = importAllImages(require.context(`./components/funStuff/images`, true));
+		this.uniImages = importAllImages(require.context(`./components/uniStuff/images`, true));
 
 		// Import others components
 		this.othersComponents = importAllComponents(require.context(`./components/others/`, true, /\.js$/));
@@ -111,7 +111,12 @@ class App extends Component {
 					</Route>
 
 					<Route path='*' element={
-						<Error404page customWarning={"Page not found OAO"} />
+						<Fragment>
+							<Header />
+							<TopNavigationBar pathname={this.props.router.location.pathname} />
+							<Error404page customWarning={"Page not found OAO"} />
+							< Footer isStickyFooter={this.state.isStickyFooter} toggleStickyFooter={this.toggleStickyFooter} />
+						</Fragment>
 					} />
 				</Routes>
 

@@ -89,6 +89,6 @@
     }
 
     .footer-container-sticky {
-        position: absolute !important;
+        /* position: absolute !important; */
     }
 }

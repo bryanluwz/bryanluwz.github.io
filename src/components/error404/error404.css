@@ -1,6 +1,6 @@
 .error404-container {
     width: 100%;
-    height: 54.5vh;
+    height: auto;
 
     display: flex;
     flex-direction: column;
@@ -9,8 +9,8 @@
 }
 
 .error404-img {
-    width: auto;
-    height: 10%;
+    width: max(300px, 30%);
+    height: auto;
 
     font-family: var(--text-font);
 }
