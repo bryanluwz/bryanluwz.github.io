@@ -2,7 +2,6 @@ import { Component, Fragment } from "react";
 import HomePageCarousel from "../carousel/HomePageCarousel";
 import CarouselCard from "../carousel/CarouselCard";
 import Segment from "../segment/Segment";
-import { ImageTextTitleCard } from "../titleCards/ImageTextTitleCard";
 import { GridTitleCard, GridTitleCardWrapper } from "../titleCards/GridTitleCard";
 import { extractInfomationFromModule } from "../utils/utils";
 import '../carousel/Carousel.css';
@@ -38,7 +37,7 @@ export default class HomePage extends Component {
 						<span>Oh, hey, didn't see you there!</span>
 						<br />
 						<br />
-						<span>Welcome to my website ヾ(•ω•`)o</span>
+						<span>Welcome to my website • ω •</span>
 						<br />
 						<br />
 						<Link to={"/about"}>moar info</Link>

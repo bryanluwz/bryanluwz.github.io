@@ -13,7 +13,7 @@ import { TopNavigationBar } from './components/nav/TopNavigationBar';
 import Error404page from './components/error404/error404';
 import { extractInfomationFromModule } from './components/utils/utils';
 import DisplayGridPage from './components/pages/DisplayGridPage';
-import { isCookie } from './components/utils/localStorageManager';
+import { getCookieValue, isCookie, setCookieValue } from './components/utils/cookieMonster';
 
 class App extends Component {
 	constructor(props) {
@@ -41,10 +41,17 @@ class App extends Component {
 		this.othersImages = importAllImages(require.context(`./components/others/images`, true));
 	}
 
+	componentDidMount() {
+		const isStickyFooter = getCookieValue("isStickyFooter");
+		if (isStickyFooter) {
+			this.setState({ isStickyFooter: JSON.parse(isStickyFooter) });
+		}
+	}
+
 	toggleStickyFooter = () => {
 		this.setState((prevState) => ({
 			isStickyFooter: !prevState.isStickyFooter
-		}));
+		}), () => { setCookieValue("isStickyFooter", this.state.isStickyFooter); });
 	};
 
 	render() {

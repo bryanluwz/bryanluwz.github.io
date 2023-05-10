@@ -2,7 +2,7 @@ import { Component, createRef } from "react";
 import './Cat-GPT.css';
 import { TypeAnimation } from "react-type-animation";
 import axios from "axios";
-import { getLocalStorageItem, setLocalStorageItem } from "../utils/localStorageManager";
+import { getCookieValue, setCookieValue } from "../utils/cookieMonster";
 
 export default class CatGPT extends Component {
 	constructor(props) {
@@ -31,11 +31,11 @@ export default class CatGPT extends Component {
 
 	componentDidMount() {
 		// Get history of chat
-		const savedChatHistory = getLocalStorageItem("catGPTChatHistory");
+		const savedChatHistory = getCookieValue("catGPTChatHistory");
 		if (savedChatHistory) {
 			this.setState({
-				chatHistory: JSON.parse(savedChatHistory),
-				chatHistoryToSave: JSON.parse(savedChatHistory),
+				chatHistory: savedChatHistory,
+				chatHistoryToSave: savedChatHistory,
 				canUserSend: true
 			}, () => { ; });
 		} else {
@@ -47,7 +47,7 @@ export default class CatGPT extends Component {
 					sequence={[message,
 						() => {
 							this.setState({ canUserSend: true });
-							setLocalStorageItem("catGPTChatHistory", JSON.stringify(chatHistoryToSave));
+							setCookieValue("catGPTChatHistory", chatHistoryToSave);
 						}]}
 					wrapper="div"
 					speed={90}
@@ -114,7 +114,7 @@ export default class CatGPT extends Component {
 			isBotReplyLoading: false
 		}));
 
-		setLocalStorageItem("catGPTChatHistory", JSON.stringify(this.state.chatHistoryToSave));
+		setCookieValue("catGPTChatHistory", this.state.chatHistoryToSave);
 	};
 
 	createReply = async () => {
@@ -158,7 +158,7 @@ export default class CatGPT extends Component {
 				sequence={[message,
 					() => {
 						this.setState({ canUserSend: true });
-						setLocalStorageItem("catGPTChatHistory", JSON.stringify(chatHistoryToSave));
+						setCookieValue("catGPTChatHistory", chatHistoryToSave);
 					}]}
 				wrapper="div"
 				speed={90}
