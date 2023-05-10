@@ -14,6 +14,7 @@ import Error404page from './components/error404/error404';
 import { extractInfomationFromModule } from './components/utils/utils';
 import DisplayGridPage from './components/pages/DisplayGridPage';
 import { getCookieValue, isCookie, setCookieValue } from './components/utils/cookieMonster';
+import AboutPage from './components/pages/AboutPage';
 
 class App extends Component {
 	constructor(props) {
@@ -78,7 +79,7 @@ class App extends Component {
 
 				{/* Header and top navigation */}
 				<Routes>
-					{['/', '/fun-stuff', 'others', 'uni-stuff'].map((path, index) => {
+					{['/', 'fun-stuff', 'others', 'uni-stuff', 'about'].map((path, index) => {
 						return (
 							<Route key={index} path={path} element={
 								<Fragment>
@@ -139,6 +140,10 @@ class App extends Component {
 						<Route path="/others" element={<DisplayGridPage path="others" components={this.othersComponents} images={this.othersImages} />} />
 					</Route>
 
+					<Route path='/about' element={
+						<AboutPage />
+					} />
+
 					<Route path='*' element={
 						<Fragment>
 							<Header />
@@ -151,7 +156,7 @@ class App extends Component {
 
 				{/* Footer */}
 				<Routes>
-					{['/', '/fun-stuff', 'others', 'uni-stuff'].map((path, index) => {
+					{['/', '/fun-stuff', 'others', 'uni-stuff', 'about'].map((path, index) => {
 						return (
 							<Route key={index} path={path} element={
 								< Footer isStickyFooter={this.state.isStickyFooter} toggleStickyFooter={this.toggleStickyFooter} />} />

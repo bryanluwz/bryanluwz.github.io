@@ -8,9 +8,9 @@ export class TopNavigationBar extends Component {
 		return (
 			<div className="nav-container">
 				{/* Contains the nav buttons -- About, Other stuff (interim) */}
-				<Link className="nav-button-container" to={"/"}>
+				<Link className="nav-button-container" to={"/about"}>
 					<button className={`nav-button ${this.props.pathname === '/' ? "nav-button-underline" : ""}`}>
-						home
+						about
 					</button>
 				</Link>
 				<Link className="nav-button-container" to={"/fun-stuff"}>
