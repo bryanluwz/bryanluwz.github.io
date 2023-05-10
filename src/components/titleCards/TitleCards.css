@@ -74,6 +74,11 @@
     }
 }
 
+/* Text Title Cards */
+.text-title-card-content {
+    width: 100%;
+}
+
 /* Grid Title Cards */
 .grid-title-cards-wrapper {
     width: 100%;

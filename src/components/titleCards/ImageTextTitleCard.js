@@ -19,3 +19,20 @@ export class ImageTextTitleCard extends Component {
 		);
 	}
 }
+
+export class TextTitleCard extends Component {
+	render() {
+		return (
+			<div className="image-text-title-card-container" style={{ backgroundColor: this.props.backgroundColor }}>
+				<div className="image-text-title-card-text text-title-card-content">
+					<h1 className="image-text-title-card-text-title">
+						{this.props.title}
+					</h1>
+					<div className="image-text-title-card-text-subtitle">
+						{this.props.children}
+					</div>
+				</div>
+			</div>
+		);
+	}
+}

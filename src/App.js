@@ -22,7 +22,9 @@ class App extends Component {
 
 		this.state = {
 			isStickyFooter: false,
-			showCookie: !isCookie()  // to continue show cookie banner or not
+			showCookie: !isCookie(),  // to continue show cookie banner or not
+			contentTransitionStage: "fadeIn",
+			displayLocation: this.props.router.location
 		};
 
 		// Import js, and imgs
@@ -49,6 +51,12 @@ class App extends Component {
 		}
 	}
 
+	componentDidUpdate(prevProps, prevState) {
+		if (this.props.router.location !== prevProps.router.location) {
+			this.setState({ contentTransitionStage: "fadeOut" });
+		}
+	}
+
 	toggleStickyFooter = () => {
 		this.setState((prevState) => ({
 			isStickyFooter: !prevState.isStickyFooter
@@ -63,8 +71,8 @@ class App extends Component {
 					<CookieConsent
 						enableDeclineButton
 						location="bottom"
-						declineButtonText="no cookie"
-						buttonText="yes pwease"
+						declineButtonText="heckin naw"
+						buttonText="yesh gib cookies"
 						visible={this.state.showCookie}
 						onAccept={() => { this.setState({ showCookie: false }); localStorage.setItem("isCookieAccepted", JSON.stringify(true)); }}
 						onDecline={() => { this.setState({ showCookie: false }); }}
@@ -74,7 +82,7 @@ class App extends Component {
 						containerClasses="cookie-container"
 						contentClasses="cookie-content"
 					>
-						you wants cookies to helps improve user experience?
+						{"you wants cookies for improving user experience?"}
 					</CookieConsent>}
 
 				{/* Header and top navigation */}
@@ -92,78 +100,95 @@ class App extends Component {
 				</Routes>
 
 				{/* Content Pages */}
-				<Routes>
-					<Route path="/" element={
-						<HomePage
-							gameComponents={this.gameComponents}
-							gameImages={this.gameImages}
-							uniComponents={this.uniComponents}
-							uniImages={this.uniImages}
-							othersComponents={this.othersComponents}
-							othersImages={this.othersImages}
-						/>
-					} />
+				<div
+					className={`${this.state.contentTransitionStage}`}
+					onAnimationEnd={() => {
+						if (this.state.contentTransitionStage === "fadeOut") {
+							this.setState({ contentTransitionStage: "fadeIn", displayLocation: this.props.router.location });
+						}
+					}}>
 
-					<Route path='/fun-stuff'>
-						{this.gameComponents.map((Comp, index) => {
-							var info = extractInfomationFromModule(Comp, "/fun-stuff");
-							return (
-								<Route key={index} path={info.routeLink} element={
-									<Comp router={this.props.router} />
-								} />
-							);
-						})}
-						<Route path="/fun-stuff" element={<DisplayGridPage path="fun-stuff" components={this.gameComponents} images={this.gameImages} />} />
-					</Route>
+					<Routes location={this.state.displayLocation}>
+						<Route path="/" element={
+							<HomePage
+								gameComponents={this.gameComponents}
+								gameImages={this.gameImages}
+								uniComponents={this.uniComponents}
+								uniImages={this.uniImages}
+								othersComponents={this.othersComponents}
+								othersImages={this.othersImages}
+							/>
+						} />
 
-					<Route path='/uni-stuff'>
-						{this.uniComponents.map((Comp, index) => {
-							var info = extractInfomationFromModule(Comp, "/uni-stuff");
-							return (
-								<Route key={index} path={info.routeLink} element={
-									<Comp router={this.props.router} />
-								} />
-							);
-						})}
-						<Route path="/uni-stuff" element={<DisplayGridPage path="uni-stuff" components={this.uniComponents} images={this.uniImages} />} />
-					</Route>
+						<Route path='/fun-stuff'>
+							{this.gameComponents.map((Comp, index) => {
+								var info = extractInfomationFromModule(Comp, "/fun-stuff");
+								return (
+									<Route key={index} path={info.routeLink} element={
+										<Comp router={this.props.router} />
+									} />
+								);
+							})}
+							<Route path="/fun-stuff" element={<DisplayGridPage path="fun-stuff" components={this.gameComponents} images={this.gameImages} />} />
+						</Route>
 
-					<Route path='/others'>
-						{this.othersComponents.map((Comp, index) => {
-							var info = extractInfomationFromModule(Comp, "/others");
-							return (
-								<Route key={index} path={info.routeLink} element={
-									<Comp router={this.props.router} />
-								} />
-							);
-						})}
-						<Route path="/others" element={<DisplayGridPage path="others" components={this.othersComponents} images={this.othersImages} />} />
-					</Route>
+						<Route path='/uni-stuff'>
+							{this.uniComponents.map((Comp, index) => {
+								var info = extractInfomationFromModule(Comp, "/uni-stuff");
+								return (
+									<Route key={index} path={info.routeLink} element={
+										<Comp router={this.props.router} />
+									} />
+								);
+							})}
+							<Route path="/uni-stuff" element={<DisplayGridPage path="uni-stuff" components={this.uniComponents} images={this.uniImages} />} />
+						</Route>
 
-					<Route path='/about' element={
-						<AboutPage />
-					} />
+						<Route path='/others'>
+							{this.othersComponents.map((Comp, index) => {
+								var info = extractInfomationFromModule(Comp, "/others");
+								return (
+									<Route key={index} path={info.routeLink} element={
+										<Comp router={this.props.router} />
+									} />
+								);
+							})}
+							<Route path="/others" element={<DisplayGridPage path="others" components={this.othersComponents} images={this.othersImages} />} />
+						</Route>
 
-					<Route path='*' element={
-						<Fragment>
-							<Header />
-							<TopNavigationBar pathname={this.props.router.location.pathname} />
-							<Error404page customWarning={"Page not found OAO"} />
-							< Footer isStickyFooter={this.state.isStickyFooter} toggleStickyFooter={this.toggleStickyFooter} />
-						</Fragment>
-					} />
-				</Routes>
+						<Route path='/about' element={
+							<AboutPage />
+						} />
+
+						<Route path='*' element={
+							<Fragment>
+								<Header />
+								<TopNavigationBar pathname={this.props.router.location.pathname} />
+								<Error404page customWarning={"Page not found OAO"} />
+								< Footer isStickyFooter={this.state.isStickyFooter} toggleStickyFooter={this.toggleStickyFooter} />
+							</Fragment>
+						} />
+					</Routes>
+				</div>
 
 				{/* Footer */}
-				<Routes>
-					{['/', '/fun-stuff', 'others', 'uni-stuff', 'about'].map((path, index) => {
-						return (
-							<Route key={index} path={path} element={
-								< Footer isStickyFooter={this.state.isStickyFooter} toggleStickyFooter={this.toggleStickyFooter} />} />
-						);
-					})
-					}
-				</Routes>
+				<div
+					className={`${this.state.contentTransitionStage}`}
+					onAnimationEnd={() => {
+						if (this.state.contentTransitionStage === "fadeOut") {
+							this.setState({ contentTransitionStage: "fadeIn", displayLocation: this.props.router.location });
+						}
+					}}>
+					<Routes>
+						{['/', '/fun-stuff', 'others', 'uni-stuff', 'about'].map((path, index) => {
+							return (
+								<Route key={index} path={path} element={
+									< Footer isStickyFooter={this.state.isStickyFooter} toggleStickyFooter={this.toggleStickyFooter} />} />
+							);
+						})
+						}
+					</Routes>
+				</div>
 			</Fragment>
 		);
 	}
