@@ -35,8 +35,9 @@ export default class CatGPT extends Component {
 		if (savedChatHistory) {
 			this.setState({
 				chatHistory: savedChatHistory,
-				chatHistoryToSave: savedChatHistory,
-				canUserSend: true
+				chatHistoryToSave: [...savedChatHistory],
+				canUserSend: true,
+				chatLength: savedChatHistory.length
 			}, () => { ; });
 		} else {
 			const { chatHistory, chatHistoryToSave } = this.state;
@@ -80,11 +81,11 @@ export default class CatGPT extends Component {
 			chatHistoryToSave: chatHistoryToSave,
 			chatLength: prevState.chatLength + 1,
 			isBotReplyLoading: true
-		}));
-
-		setTimeout(() => {
-			this.handleMessageReply();
-		}, Math.floor(Math.random() * 500 + 1000));
+		}), () => {
+			setTimeout(() => {
+				this.handleMessageReply();
+			}, Math.floor(Math.random() * 500 + 1000));
+		});
 	};
 
 	handleMessageReply = async () => {
@@ -114,7 +115,7 @@ export default class CatGPT extends Component {
 			isBotReplyLoading: false
 		}));
 
-		setCookieValue("catGPTChatHistory", this.state.chatHistoryToSave);
+		setCookieValue("catGPTChatHistory", chatHistoryToSave);
 	};
 
 	createReply = async () => {
@@ -234,14 +235,15 @@ class ChatMessageComponent extends Component {
 				<img className="cat-gpt-chat-msg-img" src={`${this.isUser ? "./images/shuba.png" : "./images/bathing_chomusuke.png"}`} alt="user" />
 				<div className={`cat-gpt-chat-msg-content ${this.isUser ? "cat-gpt-chat-msg-content-user" : ""}`}>
 					{this.userImg && <img src={this.userImg} alt="cutesies" />}
-					{!this.props.ignoreFormat && this.isUser ?
+					{(!this.props.ignoreFormat && this.isUser) ?
 						this.userMsg.split("\n").map((line, index) =>
 						(line === '' ?
-							<div key={index}>&nbsp;</div>
+							<div>&nbsp;</div>
 							:
-							<div key={index}>{line}</div>))
+							<div>{line}</div>))
 						:
-						this.userMsg}
+						this.userMsg
+					}
 				</div>
 			</div>
 		);
