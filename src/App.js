@@ -1,5 +1,6 @@
 import { Component, Fragment } from 'react';
 import { Route, Routes } from 'react-router-dom';
+import CookieConsent from 'react-cookie-consent';
 
 import './App.css';
 import './components/pages/ContentDisplay.css';
@@ -12,13 +13,15 @@ import { TopNavigationBar } from './components/nav/TopNavigationBar';
 import Error404page from './components/error404/error404';
 import { extractInfomationFromModule } from './components/utils/utils';
 import DisplayGridPage from './components/pages/DisplayGridPage';
+import { isCookie } from './components/utils/localStorageManager';
 
 class App extends Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
-			isStickyFooter: true
+			isStickyFooter: false,
+			showCookie: !isCookie()  // to continue show cookie banner or not
 		};
 
 		// Import js, and imgs
@@ -47,6 +50,25 @@ class App extends Component {
 	render() {
 		return (
 			<Fragment>
+				{/* Cookie monster */}
+				{this.state.showCookie &&
+					<CookieConsent
+						enableDeclineButton
+						location="bottom"
+						declineButtonText="no cookie"
+						buttonText="yes pwease"
+						visible={this.state.showCookie}
+						onAccept={() => { this.setState({ showCookie: false }); localStorage.setItem("isCookieAccepted", JSON.stringify(true)); }}
+						onDecline={() => { this.setState({ showCookie: false }); }}
+						buttonWrapperClasses='cookie-button-wrapper'
+						declineButtonClasses='cookie-button cookie-button-decline'
+						buttonClasses="cookie-button"
+						containerClasses="cookie-container"
+						contentClasses="cookie-content"
+					>
+						you wants cookies to helps improve user experience?
+					</CookieConsent>}
+
 				{/* Header and top navigation */}
 				<Routes>
 					{['/', '/fun-stuff', 'others', 'uni-stuff'].map((path, index) => {

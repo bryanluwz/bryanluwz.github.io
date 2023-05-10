@@ -58,3 +58,40 @@ a {
     background-color: var(--lavender-pastel-2);
     color: white;
 }
+
+/* Cookie */
+.cookie-button-wrapper {
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.cookie-button {
+    padding: 10px !important;
+    border-radius: 20px !important;
+    font-size: var(--h4-font-size);
+    font-family: var(--text-font);
+    font-weight: bold;
+    background-color: #72c9bc !important;
+    color: var(--lavender-pastel-font-1) !important;
+}
+
+.cookie-button-decline {
+    background-color: #ffaec0 !important;
+}
+
+.cookie-container {
+    background-color: var(--lavender-pastel-3) !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.cookie-content {
+    font-size: var(--h4-font-size);
+    font-family: var(--text-font);
+    font-weight: bold;
+    color: var(--lavender-pastel-font-1);
+    text-align: center;
+}

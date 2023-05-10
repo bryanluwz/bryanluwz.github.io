@@ -2,6 +2,7 @@ import { Component, createRef } from "react";
 import './Cat-GPT.css';
 import { TypeAnimation } from "react-type-animation";
 import axios from "axios";
+import { getLocalStorageItem, setLocalStorageItem } from "../utils/localStorageManager";
 
 export default class CatGPT extends Component {
 	constructor(props) {
@@ -30,7 +31,7 @@ export default class CatGPT extends Component {
 
 	componentDidMount() {
 		// Get history of chat
-		const savedChatHistory = localStorage.getItem("catGPTChatHistory");
+		const savedChatHistory = getLocalStorageItem("catGPTChatHistory");
 		if (savedChatHistory) {
 			this.setState({
 				chatHistory: JSON.parse(savedChatHistory),
@@ -46,7 +47,7 @@ export default class CatGPT extends Component {
 					sequence={[message,
 						() => {
 							this.setState({ canUserSend: true });
-							localStorage.setItem("catGPTChatHistory", JSON.stringify(chatHistoryToSave));
+							setLocalStorageItem("catGPTChatHistory", JSON.stringify(chatHistoryToSave));
 						}]}
 					wrapper="div"
 					speed={90}
@@ -113,7 +114,7 @@ export default class CatGPT extends Component {
 			isBotReplyLoading: false
 		}));
 
-		localStorage.setItem("catGPTChatHistory", JSON.stringify(this.state.chatHistoryToSave));
+		setLocalStorageItem("catGPTChatHistory", JSON.stringify(this.state.chatHistoryToSave));
 	};
 
 	createReply = async () => {
@@ -157,7 +158,7 @@ export default class CatGPT extends Component {
 				sequence={[message,
 					() => {
 						this.setState({ canUserSend: true });
-						localStorage.setItem("catGPTChatHistory", JSON.stringify(chatHistoryToSave));
+						setLocalStorageItem("catGPTChatHistory", JSON.stringify(chatHistoryToSave));
 					}]}
 				wrapper="div"
 				speed={90}
@@ -177,14 +178,14 @@ export default class CatGPT extends Component {
 				</div>
 				<div className="content-wrapper cat-gpt-content-wrapper">
 					<div className="cat-gpt-msgs" ref={this.msgAreaRef}>
-						{this.state.chatHistoryToSave.map((elem, index) => (
+						{this.state.chatHistory.map((elem, index) => (
 							<ChatMessageComponent
 								key={index}
 								invert={this.state.invertUserSide}
 								isUser={elem.props.isUser}
 								userImg={elem.props.userImg}
 								userMsg={elem.props.userMsg} />))}
-						<div ref={this.msgAreaDummyRef}>
+						<div ref={this.msgAreaDummyRef} className="cat-gpt-msgs-bottom-padding">
 							{this.state.isBotReplyLoading &&
 								<ChatMessageComponent
 									ignoreFormat={true}
@@ -233,7 +234,7 @@ class ChatMessageComponent extends Component {
 				<img className="cat-gpt-chat-msg-img" src={`${this.isUser ? "./images/shuba.png" : "./images/bathing_chomusuke.png"}`} alt="user" />
 				<div className={`cat-gpt-chat-msg-content ${this.isUser ? "cat-gpt-chat-msg-content-user" : ""}`}>
 					{this.userImg && <img src={this.userImg} alt="cutesies" />}
-					{!this.props.ignoreFormat ?
+					{!this.props.ignoreFormat && this.isUser ?
 						this.userMsg.split("\n").map((line, index) =>
 						(line === '' ?
 							<div key={index}>&nbsp;</div>

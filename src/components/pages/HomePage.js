@@ -7,6 +7,8 @@ import { GridTitleCard, GridTitleCardWrapper } from "../titleCards/GridTitleCard
 import { extractInfomationFromModule } from "../utils/utils";
 import '../carousel/Carousel.css';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import AboutComponent from "../about/AboutComponent";
+import { Link } from "react-router-dom";
 
 export default class HomePage extends Component {
 	render() {
@@ -32,16 +34,15 @@ export default class HomePage extends Component {
 				<Segment
 					title={"about"}
 				>
-					<ImageTextTitleCard
-						imgSrc={"./images/shuba.png"}
-						title={"Hello there"}
-					>
-						Hello there!
+					<AboutComponent title={"Hello there"} >
+						<span>Oh, hey, didn't see you there!</span>
 						<br />
-						Welcome to my website!
 						<br />
-						I sure hope you'll find much fun here.
-					</ImageTextTitleCard>
+						<span>Welcome to my website ヾ(•ω•`)o</span>
+						<br />
+						<br />
+						<Link to={"/about"}>moar info</Link>
+					</AboutComponent>
 				</Segment>
 
 				{/* Segment - some fun stuff */}
@@ -52,7 +53,7 @@ export default class HomePage extends Component {
 						withViewMore={true}
 						viewMoreLink={"/fun-stuff"}
 					>
-						{this.props.gameComponents.slice(0, Math.min(this.props.gameComponents.length, 3)).map((Comp, index) => {
+						{this.props.gameComponents.slice(0, Math.min(this.props.gameComponents.length, 4)).map((Comp, index) => {
 							var info = extractInfomationFromModule(Comp, "fun-stuff");
 							return (
 								< GridTitleCard key={index} link={info.routeLink}
@@ -72,7 +73,7 @@ export default class HomePage extends Component {
 						withViewMore={true}
 						viewMoreLink={"/uni-stuff"}
 					>
-						{this.props.uniComponents.slice(0, Math.min(this.props.uniComponents.length, 3)).map((Comp, index) => {
+						{this.props.uniComponents.slice(0, Math.min(this.props.uniComponents.length, 4)).map((Comp, index) => {
 							var info = extractInfomationFromModule(Comp, "uni-stuff");
 							return (
 								< GridTitleCard key={index} link={info.routeLink}
@@ -92,7 +93,7 @@ export default class HomePage extends Component {
 						withViewMore={true}
 						viewMoreLink={"/others"}
 					>
-						{this.props.othersComponents.slice(0, Math.min(this.props.othersComponents.length, 3)).map((Comp, index) => {
+						{this.props.othersComponents.slice(0, Math.min(this.props.othersComponents.length, 4)).map((Comp, index) => {
 							var info = extractInfomationFromModule(Comp, "others");
 							return (
 								< GridTitleCard key={index} link={info.routeLink}

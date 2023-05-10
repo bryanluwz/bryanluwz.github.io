@@ -9,7 +9,7 @@
 }
 
 .error404-img {
-    width: max(300px, 30%);
+    width: max(300px, 20%);
     height: auto;
 
     font-family: var(--text-font);
