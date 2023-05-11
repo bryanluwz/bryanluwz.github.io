@@ -56,6 +56,14 @@ export default class AboutPage extends Component {
 						the only thing i like about NTU are the cats there
 					</TextTitleCard>
 				</Segment>
+
+				<Segment
+					title='thanks'
+				>
+					<TextTitleCard title="reference images used" backgroundColor={this.getNextBackgroundColor()}>
+						idk
+					</TextTitleCard>
+				</Segment>
 			</Fragment>
 		);
 	}

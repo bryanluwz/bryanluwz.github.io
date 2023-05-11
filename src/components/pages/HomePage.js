@@ -51,6 +51,8 @@ export default class HomePage extends Component {
 					<GridTitleCardWrapper
 						withViewMore={true}
 						viewMoreLink={"/fun-stuff"}
+						minElemSize={'140px'}
+						maxElemSize={'1fr'}
 					>
 						{this.props.gameComponents.slice(0, Math.min(this.props.gameComponents.length, 4)).map((Comp, index) => {
 							var info = extractInfomationFromModule(Comp, "fun-stuff");
@@ -71,6 +73,8 @@ export default class HomePage extends Component {
 					<GridTitleCardWrapper
 						withViewMore={true}
 						viewMoreLink={"/uni-stuff"}
+						minElemSize={'140px'}
+						maxElemSize={'1fr'}
 					>
 						{this.props.uniComponents.slice(0, Math.min(this.props.uniComponents.length, 4)).map((Comp, index) => {
 							var info = extractInfomationFromModule(Comp, "uni-stuff");
@@ -91,6 +95,8 @@ export default class HomePage extends Component {
 					<GridTitleCardWrapper
 						withViewMore={true}
 						viewMoreLink={"/others"}
+						minElemSize={'140px'}
+						maxElemSize={'1fr'}
 					>
 						{this.props.othersComponents.slice(0, Math.min(this.props.othersComponents.length, 4)).map((Comp, index) => {
 							var info = extractInfomationFromModule(Comp, "others");

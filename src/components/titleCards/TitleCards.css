@@ -95,7 +95,13 @@
     margin: 0 auto;
 
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+@media screen and (min-width: 500px) {
+    .grid-title-cards-container {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) !important;
+    }
 }
 
 .grid-title-card {
@@ -118,6 +124,7 @@
     border-radius: 20px;
 
     user-select: none;
+    transition: 0.4s ease;
 }
 
 .grid-title-card:nth-child(odd) .grid-title-card-bg-color {
@@ -131,6 +138,8 @@
 .grid-title-card-title {
     width: 100%;
     height: auto;
+
+    margin-bottom: 15px;
 
     font-size: min(var(--h4-font-size), 2vw);
     color: var(--lavender-pastel-font-1);

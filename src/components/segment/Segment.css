@@ -2,7 +2,6 @@
     width: 90%;
     height: auto;
 
-    margin: 3% 0px;
     padding: 0% 5%;
 
     display: flex;
@@ -18,6 +17,8 @@
 .segment-header {
     width: 70%;
     height: 10%;
+
+    margin-top: 3%;
 
     display: flex;
     flex-direction: row;

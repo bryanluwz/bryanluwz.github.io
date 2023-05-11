@@ -50,6 +50,16 @@ body {
     z-index: 2;
 }
 
+#root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex-grow: 1;
+}
+
 a {
     text-decoration: none;
 }

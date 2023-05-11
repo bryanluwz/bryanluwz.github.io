@@ -7,7 +7,12 @@ export class GridTitleCardWrapper extends Component {
 	render() {
 		return (
 			<div className="grid-title-cards-wrapper">
-				<div className="grid-title-cards-container">
+				<div
+					className="grid-title-cards-container"
+					style={{
+						gridTemplateColumns: `repeat(auto-fit, minmax(${this.props.minElemSize}, ${this.props.maxElemSize}))`
+					}}
+				>
 					{this.props.children}
 				</div>
 				{
@@ -32,7 +37,13 @@ export class GridTitleCard extends Component {
 			>
 				<Link
 					to={this.props.link}>
-					<img className="grid-title-card-img grid-title-card-bg-color" src={this.props.imgSrc} alt="idk" />
+					<img
+						className="grid-title-card-img grid-title-card-bg-color"
+						style={{
+							backgroundColor: this.props.backgroundColor
+						}}
+						src={this.props.imgSrc}
+						alt="idk" />
 				</Link>
 				<Link
 					className="grid-title-card-title"
