@@ -87,7 +87,7 @@
     }
 
     .footer-container {
-        position: relative;
+        position: relative !important;
     }
 
     .footer-container-sticky {

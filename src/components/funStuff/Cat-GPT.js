@@ -173,7 +173,7 @@ export default class CatGPT extends Component {
 		return (
 			<div className="content-segment">
 				<div className="content-header">
-					<i className="content-header-side-button fa fa-angle-left" aria-hidden="true" onClick={() => { this.props.router.navigate(-1); }} />
+					<i className="content-header-side-button fa fa-angle-left" aria-hidden="true" onClick={() => { this.props.router.navigate("/fun-stuff"); }} />
 					<div className="content-header-title" onClick={() => { this.setState({}); }}>{CatGPT.displayName}</div>
 					<i className="content-header-side-button fa fa-trash" aria-hidden="true" onClick={this.handleDeleteHistoryButton} />
 				</div>
