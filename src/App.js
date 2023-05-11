@@ -15,6 +15,7 @@ import { extractInfomationFromModule } from './components/utils/utils';
 import DisplayGridPage from './components/pages/DisplayGridPage';
 import { getCookieValue, isCookie, setCookieValue } from './components/utils/cookieMonster';
 import AboutPage from './components/pages/AboutPage';
+import OthersPage from './components/pages/OthersPage';
 
 class App extends Component {
 	constructor(props) {
@@ -38,10 +39,6 @@ class App extends Component {
 		// Import uni components
 		this.uniComponents = importAllComponents(require.context(`./components/uniStuff`, true, /\.js$/));
 		this.uniImages = importAllImages(require.context(`./components/uniStuff/images`, true));
-
-		// Import others components
-		this.othersComponents = importAllComponents(require.context(`./components/others/`, true, /\.js$/));
-		this.othersImages = importAllImages(require.context(`./components/others/images`, true));
 	}
 
 	componentDidMount() {
@@ -145,17 +142,9 @@ class App extends Component {
 								<Route path="/uni-stuff" element={<DisplayGridPage path="uni-stuff" components={this.uniComponents} images={this.uniImages} />} />
 							</Route>
 
-							<Route path='/others'>
-								{this.othersComponents.map((Comp, index) => {
-									var info = extractInfomationFromModule(Comp, "/others");
-									return (
-										<Route key={index} path={info.routeLink} element={
-											<Comp router={this.props.router} />
-										} />
-									);
-								})}
-								<Route path="/others" element={<DisplayGridPage path="others" components={this.othersComponents} images={this.othersImages} />} />
-							</Route>
+							<Route path='/others' element={
+								<OthersPage />
+							} />
 
 							<Route path='/about' element={
 								<AboutPage />

@@ -40,7 +40,7 @@ export default class HomePage extends Component {
 						<span>Welcome to my website • ω •</span>
 						<br />
 						<br />
-						<Link to={"/about"}>moar info</Link>
+						<Link to={"/about"}><u>moar info</u></Link>
 					</AboutComponent>
 				</Segment>
 
@@ -81,28 +81,6 @@ export default class HomePage extends Component {
 							return (
 								< GridTitleCard key={index} link={info.routeLink}
 									imgSrc={this.props.uniImages[index]}
-									title={info.displayName}
-								/>
-							);
-						})}
-					</GridTitleCardWrapper>
-				</Segment>
-
-				{/* Segment - others */}
-				<Segment
-					title={"others"}
-				>
-					<GridTitleCardWrapper
-						withViewMore={true}
-						viewMoreLink={"/others"}
-						minElemSize={'140px'}
-						maxElemSize={'1fr'}
-					>
-						{this.props.othersComponents.slice(0, Math.min(this.props.othersComponents.length, 4)).map((Comp, index) => {
-							var info = extractInfomationFromModule(Comp, "others");
-							return (
-								< GridTitleCard key={index} link={info.routeLink}
-									imgSrc={this.props.othersImages[index]}
 									title={info.displayName}
 								/>
 							);

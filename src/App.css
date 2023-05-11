@@ -62,6 +62,11 @@ main {
 
 a {
     text-decoration: none;
+    color: inherit;
+}
+
+p {
+    margin: 0;
 }
 
 ::selection {

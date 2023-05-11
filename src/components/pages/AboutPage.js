@@ -24,28 +24,20 @@ export default class AboutPage extends Component {
 		return (
 			<Fragment>
 				<Segment
-					title='about'
+					title='me'
 				>
-					<TextTitleCard title={"Hello there"} backgroundColor={this.getNextBackgroundColor()}>
-						annyeong konnichiwa nihao im from malaysia degozaimasuhamida
-					</TextTitleCard>
-				</Segment>
-
-				<Segment
-					title='fun fakts'
-				>
-					<TextTitleCard title="fakten" backgroundColor={this.getNextBackgroundColor()}>
-						catters haz five beans on front scritchers, but four beans on back scritchers
+					<TextTitleCard title={"hello there"} backgroundColor={this.getNextBackgroundColor()}>
+						<span>annyeong konnichiwa nihao im <b>bryan</b> from malaysia degozaimasuhamida</span>
+						<br /><br />
+						<span>im currently studying in singapore ntu komputer enginiring course tho</span>
 					</TextTitleCard>
 				</Segment>
 
 				<Segment
 					title='heckin cats'
 				>
-					<TextTitleCard title="nyein nyein" backgroundColor={this.getNextBackgroundColor()}>
-						neko chan kawaiis
-						<br />
-						猫ちゃんかわいい
+					<TextTitleCard title="did you knows" backgroundColor={this.getNextBackgroundColor()}>
+						catters haz five beans on front scritchers, but only four beans on back scritchers
 					</TextTitleCard>
 				</Segment>
 
@@ -53,15 +45,15 @@ export default class AboutPage extends Component {
 					title='Uni Life'
 				>
 					<TextTitleCard title="NTU is NUTs" backgroundColor={this.getNextBackgroundColor()}>
-						the only thing i like about NTU are the cats there
-					</TextTitleCard>
-				</Segment>
-
-				<Segment
-					title='thanks'
-				>
-					<TextTitleCard title="reference images used" backgroundColor={this.getNextBackgroundColor()}>
-						idk
+						<span>the only thing i like about ntu are the cats there</span>
+						<br />
+						<br />
+						<i>*cocks pistol*</i>
+						<br />
+						<br />
+						<span><b>LOL</b> I'm just kidding hahaha</span>
+						<br /><br />
+						<span>NTU is one of the <b>best universities</b> in the world and you should definitely come and study here for a enjoyable experience, yeah totally</span>
 					</TextTitleCard>
 				</Segment>
 			</Fragment>
