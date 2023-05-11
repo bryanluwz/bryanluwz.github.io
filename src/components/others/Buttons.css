@@ -1,0 +1,48 @@
+.button-wrapper {
+    width: 100%;
+    height: auto;
+
+    margin: 10px 0px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.button-element {
+    width: max(200px, 20%);
+    height: auto;
+
+    padding: 10px 20px;
+
+    background: transparent;
+    background-color: #ffbecc;
+    border: none;
+    border-radius: 20px;
+    outline: none;
+
+    font: inherit;
+    font-family: var(--text-font);
+
+    transition: 0.5s ease;
+
+    cursor: pointer;
+}
+
+.button-element:hover {
+    background-color: #ffaec0;
+}
+
+.amnesia-button-element {
+    /* background-color: ; */
+}
+
+.amnesia-button-confirm {
+    color: white;
+    background-color: #fc5076;
+}
+
+.amnesia-button-confirm:hover {
+    background-color: #fc5076;
+}

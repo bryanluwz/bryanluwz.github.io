@@ -2,6 +2,7 @@ import { Component, Fragment } from "react";
 import Segment from "../segment/Segment";
 import { TextTitleCard } from "../titleCards/ImageTextTitleCard";
 import { Link } from "react-router-dom";
+import { AmnesiaButton } from "../others/Button";
 
 export default class OthersPage extends Component {
 	constructor(props) {
@@ -41,6 +42,10 @@ export default class OthersPage extends Component {
 					<TextTitleCard title="ChatGPT" backgroundColor={this.getNextBackgroundColor()}>
 						<span typeof="decimal">thanks to <u><Link to={"https://chat.openai.com"}>chatgpt</Link></u> for being there <i>(and also not being there)</i> when i needed you the most</span>
 					</TextTitleCard>
+				</Segment>
+
+				<Segment title="buttons!">
+					<AmnesiaButton router={this.props.router} buttonName={"clear histowy"} confirmName={"you sure?"} />
 				</Segment>
 			</Fragment>
 		);

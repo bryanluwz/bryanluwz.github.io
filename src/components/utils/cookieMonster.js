@@ -18,3 +18,10 @@ export function getCookieValue(itemName) {
 		return cookies.get(itemName);
 	return null;
 }
+
+export function removeAllCookies() {
+	if (isCookie())
+		Object.keys(cookies.getAll()).forEach(cookieName => {
+			cookies.remove(cookieName);
+		});
+}

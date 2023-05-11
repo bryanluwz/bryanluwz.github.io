@@ -12,6 +12,8 @@
 
     background-color: var(--teal-pastel-1);
     border-radius: 20px;
+
+    transition: 0.4s ease;
 }
 
 .image-text-title-card-img {

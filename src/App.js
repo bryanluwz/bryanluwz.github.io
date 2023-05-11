@@ -143,7 +143,7 @@ class App extends Component {
 							</Route>
 
 							<Route path='/others' element={
-								<OthersPage />
+								<OthersPage router={this.props.router} />
 							} />
 
 							<Route path='/about' element={
@@ -155,7 +155,7 @@ class App extends Component {
 									<Header />
 									<TopNavigationBar pathname={this.props.router.location.pathname} />
 									<Error404page customWarning={"Page not found OAO"} />
-									< Footer isStickyFooter={this.state.isStickyFooter} toggleStickyFooter={this.toggleStickyFooter} />
+									<Footer isStickyFooter={this.state.isStickyFooter} toggleStickyFooter={this.toggleStickyFooter} />
 								</Fragment>
 							} />
 						</Routes>
