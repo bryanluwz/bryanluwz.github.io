@@ -2,7 +2,7 @@ import { Component } from "react";
 
 import './error404.css';
 
-export default class Error404page extends Component {
+export default class Error404Page extends Component {
 	render() {
 		return (
 			<div className="error404-container">

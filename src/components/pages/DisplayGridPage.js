@@ -1,7 +1,7 @@
 import { Component } from "react";
-import Segment from "../segment/Segment";
-import { GridTitleCard, GridTitleCardWrapper } from "../titleCards/GridTitleCard";
-import { extractInfomationFromModule } from "../utils/utils";
+import { Segment } from "../segment";
+import { GridTitleCard, GridTitleCardWrapper } from "../titleCards";
+import { extractInfomationFromModule } from "../utils/moduleLoadUtils";
 
 export default class DisplayGridPage extends Component {
 	constructor(props) {

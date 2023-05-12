@@ -1,7 +1,7 @@
 import { Component } from "react";
 import { Carousel } from "react-responsive-carousel";
 
-export default class HomePageCarousel extends Component {
+export default class CarouselCardWrapper extends Component {
 	render() {
 		return (
 			<div className="carousel-main-container">

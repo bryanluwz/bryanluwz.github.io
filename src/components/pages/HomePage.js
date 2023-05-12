@@ -1,20 +1,19 @@
 import { Component, Fragment } from "react";
-import HomePageCarousel from "../carousel/HomePageCarousel";
-import CarouselCard from "../carousel/CarouselCard";
-import Segment from "../segment/Segment";
-import { GridTitleCard, GridTitleCardWrapper } from "../titleCards/GridTitleCard";
-import { extractInfomationFromModule } from "../utils/utils";
 import '../carousel/Carousel.css';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import AboutComponent from "../about/AboutComponent";
 import { Link } from "react-router-dom";
+
+import { CarouselCard, CarouselCardWrapper } from "../carousel";
+import { Segment } from "../segment";
+import { GridTitleCard, GridTitleCardWrapper, ImageTextTitleCard } from "../titleCards";
+import { extractInfomationFromModule } from "../utils/moduleLoadUtils";
 
 export default class HomePage extends Component {
 	render() {
 		return (
 			<Fragment>
 				{/* Carousel */}
-				<HomePageCarousel>
+				<CarouselCardWrapper>
 					<CarouselCard
 						isLink={true}
 						link={"/funStuff"}
@@ -27,13 +26,16 @@ export default class HomePage extends Component {
 						imgSrc={"./images/testimg2.webp"}
 						imgAlt={"nil"}
 					/>
-				</HomePageCarousel>
+				</CarouselCardWrapper>
 
 				{/* Segment -- Hello there */}
 				<Segment
 					title={"about"}
 				>
-					<AboutComponent title={"Hello there"} >
+					<ImageTextTitleCard
+						imgSrc={"./images/shuba.png"}
+						title={"Hello there"}
+					>
 						<span>Oh, hey, didn't see you there!</span>
 						<br />
 						<br />
@@ -41,7 +43,7 @@ export default class HomePage extends Component {
 						<br />
 						<br />
 						<Link to={"/about"}><u>moar info</u></Link>
-					</AboutComponent>
+					</ImageTextTitleCard>
 				</Segment>
 
 				{/* Segment - some fun stuff */}

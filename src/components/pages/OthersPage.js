@@ -1,8 +1,8 @@
 import { Component, Fragment } from "react";
-import Segment from "../segment/Segment";
-import { TextTitleCard } from "../titleCards/ImageTextTitleCard";
+import { Segment } from "../segment";
+import { TextTitleCard } from "../titleCards";
 import { Link } from "react-router-dom";
-import { AmnesiaButton } from "../others/Button";
+import { AmnesiaButton } from "../others";
 
 export default class OthersPage extends Component {
 	constructor(props) {

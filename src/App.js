@@ -6,16 +6,13 @@ import './App.css';
 import './components/pages/ContentDisplay.css';
 
 import withRouter from './components/utils/withRouter';
-import Header from './components/header/Header';
-import Footer from './components/footer/Footer';
-import HomePage from './components/pages/HomePage';
-import { TopNavigationBar } from './components/nav/TopNavigationBar';
-import Error404page from './components/error404/error404';
-import { extractInfomationFromModule } from './components/utils/utils';
-import DisplayGridPage from './components/pages/DisplayGridPage';
+import { extractInfomationFromModule } from './components/utils/moduleLoadUtils';
 import { getCookieValue, isCookie, setCookieValue } from './components/utils/cookieMonster';
-import AboutPage from './components/pages/AboutPage';
-import OthersPage from './components/pages/OthersPage';
+
+import { Header } from './components/header';
+import { Footer } from './components/footer';
+import { TopNavigationBar } from './components/nav';
+import { AboutPage, HomePage, Error404Page, DisplayGridPage, OthersPage } from './components/pages';
 
 class App extends Component {
 	constructor(props) {
@@ -154,7 +151,7 @@ class App extends Component {
 								<Fragment>
 									<Header />
 									<TopNavigationBar pathname={this.props.router.location.pathname} />
-									<Error404page customWarning={"Page not found OAO"} />
+									<Error404Page customWarning={"Page not found OAO"} />
 									<Footer isStickyFooter={this.state.isStickyFooter} toggleStickyFooter={this.toggleStickyFooter} />
 								</Fragment>
 							} />

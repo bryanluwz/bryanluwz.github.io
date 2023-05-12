@@ -1,6 +1,6 @@
 import { Component, Fragment } from "react";
-import Segment from "../segment/Segment";
-import { TextTitleCard } from "../titleCards/ImageTextTitleCard";
+import { Segment } from "../segment";
+import { TextTitleCard } from "../titleCards";
 
 export default class AboutPage extends Component {
 	constructor(props) {

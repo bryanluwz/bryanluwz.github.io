@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import './Nav.css';
 
-export class TopNavigationBar extends Component {
+export default class TopNavigationBar extends Component {
 	render() {
 		return (
 			<div className="nav-container">
