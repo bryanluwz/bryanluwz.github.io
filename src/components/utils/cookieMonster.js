@@ -19,6 +19,12 @@ export function getCookieValue(itemName) {
 	return null;
 }
 
+export function removeCookie(itenName) {
+	if (isCookie()) {
+		cookies.remove(itenName);
+	}
+}
+
 export function removeAllCookies() {
 	if (isCookie())
 		Object.keys(cookies.getAll()).forEach(cookieName => {

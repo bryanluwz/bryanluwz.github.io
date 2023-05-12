@@ -2,7 +2,8 @@ import { Component, createRef } from "react";
 import './Cat-GPT.css';
 import { TypeAnimation } from "react-type-animation";
 import axios from "axios";
-import { getCookieValue, setCookieValue } from "../utils/cookieMonster";
+import { getCookieValue, removeCookie, setCookieValue } from "../utils/cookieMonster";
+import { ContentDisplay } from "../others";
 
 export default class CatGPT extends Component {
 	constructor(props) {
@@ -145,8 +146,12 @@ export default class CatGPT extends Component {
 		return { image: imageUrl, message: message };
 	};
 
+	handleHeaderTitleClick = () => {
+		this.msgAreaDummyRef.current?.scrollIntoView({ behavior: 'smooth' });
+	};
+
 	handleDeleteHistoryButton = () => {
-		localStorage.removeItem("catGPTChatHistory");
+		removeCookie("catGPTChatHistory");
 
 		const chatHistory = [];
 		const chatHistoryToSave = [];
@@ -171,50 +176,52 @@ export default class CatGPT extends Component {
 
 	render() {
 		return (
-			<div className="content-segment">
-				<div className="content-header">
-					<i className="content-header-side-button fa fa-angle-left" aria-hidden="true" onClick={() => { this.props.router.navigate("/fun-stuff"); }} />
-					<div className="content-header-title" onClick={() => { this.setState({}); }}>{CatGPT.displayName}</div>
-					<i className="content-header-side-button fa fa-trash" aria-hidden="true" onClick={this.handleDeleteHistoryButton} />
-				</div>
-				<div className="content-wrapper cat-gpt-content-wrapper">
-					<div className="cat-gpt-msgs" ref={this.msgAreaRef}>
-						{this.state.chatHistory.map((elem, index) => (
+			<ContentDisplay
+				backButtonRoute={"/fun-stuff"}
+				displayName={CatGPT.displayName}
+				displayClearHistory={true}
+				faIcon={"fa-trash"}
+				contentBodyAdditionalClasses={["cat-gpt-content-wrapper"]}
+				router={this.props.router}
+				handleHeaderTitleClick={this.handleHeaderTitleClick}
+				handleDeleteHistoryButton={this.handleDeleteHistoryButton}
+			>
+				<div className="cat-gpt-msgs" ref={this.msgAreaRef}>
+					{this.state.chatHistory.map((elem, index) => (
+						<ChatMessageComponent
+							key={index}
+							invert={this.state.invertUserSide}
+							isUser={elem.props.isUser}
+							userImg={elem.props.userImg}
+							userMsg={elem.props.userMsg} />))}
+					<div ref={this.msgAreaDummyRef} className="cat-gpt-msgs-bottom-padding">
+						{this.state.isBotReplyLoading &&
 							<ChatMessageComponent
-								key={index}
+								ignoreFormat={true}
+								key={69696969}
 								invert={this.state.invertUserSide}
-								isUser={elem.props.isUser}
-								userImg={elem.props.userImg}
-								userMsg={elem.props.userMsg} />))}
-						<div ref={this.msgAreaDummyRef} className="cat-gpt-msgs-bottom-padding">
-							{this.state.isBotReplyLoading &&
-								<ChatMessageComponent
-									ignoreFormat={true}
-									key={69696969}
-									invert={this.state.invertUserSide}
-									isUser={false}
-									userMsg={<i className="fa fa-spinner fa-spin fa-fw" />} />}
-						</div>
-					</div>
-					<div className="cat-gpt-input-container">
-						<textarea
-							className="cat-gpt-input"
-							placeholder="Send a message"
-							ref={this.textareaRef}
-							onKeyDown={(evt) => {
-								if (evt.shiftKey && evt.key === 'Enter') {
-									;
-								}
-								else if (evt.key === 'Enter') {
-									evt.preventDefault();
-									this.handleMessageSubmission();
-								}
-							}}
-						/>
-						<i className={`cat-gpt-input-submit fa fa-paper-plane ${(!this.state.canUserSend) ? "cat-gpt-input-submit-blocked" : ""}`} aria-hidden="true" onClick={this.handleMessageSubmission}></i>
+								isUser={false}
+								userMsg={<i className="fa fa-spinner fa-spin fa-fw" />} />}
 					</div>
 				</div>
-			</div>
+				<div className="cat-gpt-input-container">
+					<textarea
+						className="cat-gpt-input"
+						placeholder="Send a message"
+						ref={this.textareaRef}
+						onKeyDown={(evt) => {
+							if (evt.shiftKey && evt.key === 'Enter') {
+								;
+							}
+							else if (evt.key === 'Enter') {
+								evt.preventDefault();
+								this.handleMessageSubmission();
+							}
+						}}
+					/>
+					<i className={`cat-gpt-input-submit fa fa-paper-plane ${(!this.state.canUserSend) ? "cat-gpt-input-submit-blocked" : ""}`} aria-hidden="true" onClick={this.handleMessageSubmission}></i>
+				</div>
+			</ContentDisplay>
 		);
 	}
 }

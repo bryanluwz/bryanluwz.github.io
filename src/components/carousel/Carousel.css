@@ -8,6 +8,8 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
+
+    overflow-y: hidden;
 }
 
 .carousel {
@@ -84,4 +86,13 @@
 .fa-angle-right:hover,
 .fa-angle-left:hover {
     color: var(--lavender-pastel-1);
+}
+
+.slider-wrapper {
+    width: 100% !important;
+    height: min(100%, 300px) !important;
+}
+
+.slider {
+    height: 100% !important;
 }

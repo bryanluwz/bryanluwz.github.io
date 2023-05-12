@@ -48,6 +48,7 @@
 body {
     margin: 0;
     z-index: 2;
+    scroll-behavior: smooth;
 }
 
 #root {

@@ -3,7 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import CookieConsent from 'react-cookie-consent';
 
 import './App.css';
-import './components/pages/ContentDisplay.css';
+import './components/others/ContentDisplay.css';
 
 import withRouter from './components/utils/withRouter';
 import { extractInfomationFromModule } from './components/utils/moduleLoadUtils';
@@ -76,7 +76,7 @@ class App extends Component {
 						containerClasses="cookie-container"
 						contentClasses="cookie-content"
 					>
-						{"you wants cookies for improving user experience?"}
+						{"you wants cookies for beddar user experience?"}
 					</CookieConsent>}
 
 				<main>
