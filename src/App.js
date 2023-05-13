@@ -1,4 +1,4 @@
-import { Component, Fragment } from 'react';
+import { Component, Fragment, createRef } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import CookieConsent from 'react-cookie-consent';
 
@@ -7,7 +7,7 @@ import './components/others/ContentDisplay.css';
 
 import withRouter from './components/utils/withRouter';
 import { extractInfomationFromModule } from './components/utils/moduleLoadUtils';
-import { getCookieValue, isCookie, setCookieValue } from './components/utils/cookieMonster';
+import { refreshAllCookies, getCookieValue, isCookie, setCookieValue } from './components/utils/cookieMonster';
 
 import { Header } from './components/header';
 import { Footer } from './components/footer';
@@ -24,6 +24,8 @@ class App extends Component {
 			contentTransitionStage: "fadeIn",
 			displayLocation: this.props.router.location
 		};
+
+		this.headerRef = createRef();
 
 		// Import js, and imgs
 		const importAllComponents = (r) => r.keys().map((key) => r(key).default);
@@ -43,11 +45,14 @@ class App extends Component {
 		if (isStickyFooter) {
 			this.setState({ isStickyFooter: JSON.parse(isStickyFooter) });
 		}
+
+		refreshAllCookies();
 	}
 
 	componentDidUpdate(prevProps, prevState) {
 		if (this.props.router.location.pathname !== prevProps.router.location.pathname) {
 			this.setState({ contentTransitionStage: "fadeOut" });
+			this.headerRef.current?.scrollIntoView({ behavior: 'smooth' });
 		}
 	}
 
@@ -64,9 +69,11 @@ class App extends Component {
 				{this.state.showCookie &&
 					<CookieConsent
 						enableDeclineButton
+						expires={999}
 						location="bottom"
 						declineButtonText="heckin naw"
 						buttonText="yesh gib cookies"
+						cookieName='wantsCookie'
 						visible={this.state.showCookie}
 						onAccept={() => { this.setState({ showCookie: false }); localStorage.setItem("isCookieAccepted", JSON.stringify(true)); }}
 						onDecline={() => { this.setState({ showCookie: false }); }}
@@ -79,7 +86,7 @@ class App extends Component {
 						{"you wants cookies for beddar user experience?"}
 					</CookieConsent>}
 
-				<main>
+				<main ref={this.headerRef}>
 					{/* Header and top navigation */}
 					<Routes>
 						{['/', 'fun-stuff', 'others', 'uni-stuff', 'about'].map((path, index) => {

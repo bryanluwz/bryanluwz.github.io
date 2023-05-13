@@ -27,9 +27,7 @@ export default class FlipACoin extends Component {
 			>
 				<div className="fac-wrapper">
 					<div className="fac-container">
-						<div className="fac-coin-container">
-							<Coin ref={this.coinRef} />
-						</div>
+						<Coin ref={this.coinRef} />
 						<div className="fac-buttons">
 							<button className="fac-button" onClick={this.handleCoinFlipButton}>
 								Flip
@@ -58,41 +56,27 @@ class Coin extends Component {
 
 		this.setState({ isFlipping: true });
 
-		var prevCoinSide = this.state.coinSide;
-		var coinSide = Math.random() > 0.5 ? "heads" : "tails";
-
-		this.setCoinSide(coinSide);
-
-		console.log(prevCoinSide + " -> " + coinSide);
-
 		setTimeout(() => {
-			this.setState({ isFlipping: false });
-		}, prevCoinSide === coinSide ? 1000 : 1250);
+			const prevCoinSide = this.state.coinSide;
+			const coinSide = Math.random() > 0.5 ? "heads" : "tails";
+			this.setState({ coinSide: coinSide, isFlipping: false });
+		}, 1000);
 	};
 
-	getCoinSide = () => {
+	getCoinSide() {
 		return this.state.coinSide;
-	};
-
-	setCoinSide = (side) => {
-		this.setState({
-			coinSide: side
-		});
-	};
+	}
 
 	render() {
 		return (
-			<div
-				className={`fac-coin fac-coin-flipping ${this.state.isFlipping ? '' : 'paused'} ${!this.state.isFlipping ? (this.state.coinSide === 'heads' ? 'fac-coin-heads' : 'fac-coin-tails') : ''}`}
-				onAnimationEnd={() => {
-					this.setState({
-						isFlipping: false
-					});
-				}}
-				onClick={this.flipCoin}
-			>
-				<div className="fac-coin-heads"></div>
-				<div className="fac-coin-tails"></div>
+			<div className="fac-coin-container">
+				<div className="fac-coin"
+					onClick={this.flipCoin}>
+				</div>
+
+				<div className={`fac-coin-side-indicator ${this.state.isFlipping ? "fadeOut" : "fadeIn"}`}>
+					{this.state.coinSide}
+				</div>
 			</div>
 		);
 	}

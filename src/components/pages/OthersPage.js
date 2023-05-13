@@ -40,14 +40,24 @@ export default class OthersPage extends Component {
 					</TextTitleCard>
 
 					<TextTitleCard title="ChatGPT" backgroundColor={this.getNextBackgroundColor()}>
-						<span typeof="decimal">thanks to <u><Link to={"https://chat.openai.com"}>chatgpt</Link></u> for being there <i>(and also not being there)</i> when i needed you the most</span>
+						<span>thanks to <u><Link to={"https://chat.openai.com"}>chatgpt</Link></u> for being there <i>(and also not being there)</i> when i needed you the most</span>
+					</TextTitleCard>
+				</Segment>
+
+				<Segment title="information">
+					<TextTitleCard title="Cookies" backgroundColor={this.getNextBackgroundColor()}>
+						<span>just like real-life cookies, our cookies does not last forever, expiration also depends on browser's configuration</span>
+						<br /><br />
+						<span>however, the cookies' expiration would be extended every time you come and visit :3</span>
+						<br /><br />
+						<span>if you don't want the cookies anymore, please go on a cookie diet ↓</span>
 					</TextTitleCard>
 				</Segment>
 
 				<Segment title="buttons!">
-					<AmnesiaButton router={this.props.router} buttonName={"clear histowy"} confirmName={"you sure?"} />
+					<AmnesiaButton router={this.props.router} buttonName={"cookie diet"} confirmName={"you sure?"} />
 				</Segment>
-			</Fragment>
+			</Fragment >
 		);
 	}
 }
