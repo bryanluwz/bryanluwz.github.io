@@ -71,4 +71,111 @@
 
 /* Coin flipping */
 .fac-coin {
+    width: 13em;
+    height: 13em;
+
+    margin: 20px 0px;
+
+    border-radius: 50%;
+
+    background-color: var(--yellow-pastel-1);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: 0.4s ease;
+}
+
+.fac-coin img {
+    width: 100%;
+    height: 100%;
+
+    border-radius: 50%;
+}
+
+.facCoinHover {
+    animation: 4s facCoinHover linear infinite;
+}
+
+.facCoinOut {
+    animation: 0.5s facCoinOut linear forwards;
+}
+
+.facCoinIn {
+    animation: 0.5s facCoinIn linear forwards;
+}
+
+@keyframes facCoinHover {
+    0% {
+        transform: translateY(0) scale(1);
+    }
+
+    25% {
+        transform: translateY(10px) scale(1.01);
+    }
+
+    50% {
+        transform: translateY(0px) scale(1);
+    }
+
+    75% {
+        transform: translateY(-10px) scale(0.99);
+    }
+
+    100% {
+        transform: translateY(0px) scale(1);
+    }
+}
+
+@keyframes facCoinOut {
+    0% {
+        transform: scale(1);
+    }
+
+    30% {
+        transform: scale(1.4);
+    }
+
+    50% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(0);
+    }
+}
+
+@keyframes facCoinIn {
+    0% {
+        transform: scale(0);
+    }
+
+    50% {
+        transform: scale(1);
+    }
+
+    75% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.fac-coin-side-indicator {
+    margin-top: 50px;
+    transition: 0.4s ease;
+}
+
+@media screen and (max-width: 400px) {
+    .fac-coin {
+        width: 10em;
+        height: 10em;
+    }
+
+    .fac-coin-side-indicator {
+        font-size: var(--h3-font-size);
+    }
 }

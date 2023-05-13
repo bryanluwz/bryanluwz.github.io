@@ -47,19 +47,20 @@ class Coin extends Component {
 		super(props);
 		this.state = {
 			isFlipping: false,
-			coinSide: Math.random() > 0.5 ? "heads" : "tails"
+			coinSide: Math.random() > 0.5 ? "heads" : "tails",
+			isIdle: true
 		};
 	}
 
 	flipCoin = () => {
 		if (this.state.isFlipping) return;
 
-		this.setState({ isFlipping: true });
+		this.setState({ isFlipping: true, isIdle: false });
 
 		setTimeout(() => {
-			const prevCoinSide = this.state.coinSide;
 			const coinSide = Math.random() > 0.5 ? "heads" : "tails";
 			this.setState({ coinSide: coinSide, isFlipping: false });
+			setTimeout(() => { this.setState({ isIdle: true }); }, 500);
 		}, 1000);
 	};
 
@@ -70,8 +71,12 @@ class Coin extends Component {
 	render() {
 		return (
 			<div className="fac-coin-container">
-				<div className="fac-coin"
+				<div className={`fac-coin ${this.state.isIdle ? "facCoinHover" : this.state.isFlipping ? "facCoinOut" : "facCoinIn"}`}
 					onClick={this.flipCoin}>
+					{this.state.coinSide === 'heads' ?
+						<img src="./images/shuba.gif" alt="heads" /> :
+						<img src="./images/bathing_chomusuke.png" alt="tails" />
+					}
 				</div>
 
 				<div className={`fac-coin-side-indicator ${this.state.isFlipping ? "fadeOut" : "fadeIn"}`}>
