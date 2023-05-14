@@ -28,6 +28,8 @@
     /* to make the coin bigger */
     font-size: var(--h1-font-size);
     color: var(--lavender-pastel-font-1);
+
+    user-select: none;
 }
 
 /* Buttons */
@@ -63,6 +65,12 @@
     cursor: pointer;
 
     transition: 0.4s ease;
+}
+
+.fac-button-flipping {
+    background-color: var(--lavender-pastel-3);
+
+    cursor: default;
 }
 
 .fac-button:hover {

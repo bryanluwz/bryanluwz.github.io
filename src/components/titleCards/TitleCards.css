@@ -31,10 +31,15 @@
     width: 67%;
     height: 100%;
 
+    padding: 0% 2%;
+
     margin-bottom: 2%;
 
     display: flex;
     flex-direction: column;
+
+    text-align: justify;
+    text-justify: inter-word;
 }
 
 .image-text-title-card-text-title {
