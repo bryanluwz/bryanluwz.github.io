@@ -58,7 +58,8 @@ class Coin extends Component {
 		this.state = {
 			isFlipping: false,
 			coinSide: Math.random() > 0.5 ? "heads" : "tails",
-			isIdle: true
+			isIdle: true,
+			consecSameSide: 0
 		};
 	}
 
@@ -68,7 +69,16 @@ class Coin extends Component {
 		this.setState({ isFlipping: true, isIdle: false });
 
 		setTimeout(() => {
+			const prevCoinSide = this.state.coinSide;
 			const coinSide = Math.random() > 0.5 ? "heads" : "tails";
+
+			if (coinSide === prevCoinSide) {
+				this.setState((prevState) => ({ consecSameSide: prevState.consecSameSide + 1 }));
+			}
+			else {
+				this.setState({ consecSameSide: 1 });
+			}
+
 			this.setState({ coinSide: coinSide, isFlipping: false });
 			setTimeout(() => {
 				this.setState({ isIdle: true });
@@ -89,13 +99,15 @@ class Coin extends Component {
 				<div className={`fac-coin ${this.state.isIdle ? "facCoinHover" : this.state.isFlipping ? "facCoinOut" : "facCoinIn"}`}
 					onClick={this.props.handleCoinFlip}>
 					{this.state.coinSide === 'heads' ?
-						<img src="./images/shuba.gif" alt="heads" /> :
-						<img src="./images/bathing_chomusuke.png" alt="tails" />
+						<img src="./images/Flip-A-Coin-assets/FAC-Heads.png" alt="heads" /> :
+						<img src="./images/Flip-A-Coin-assets/FAC-Tails.png" alt="tails" />
 					}
 				</div>
 
 				<div className={`fac-coin-side-indicator ${this.state.isFlipping ? "fadeOut" : "fadeIn"}`}>
-					{this.state.coinSide}
+					{this.state.consecSameSide > 2 ? "🔥".repeat(Math.min(2, this.state.consecSameSide)) + " " : ""}
+					{this.state.coinSide + (this.state.consecSameSide > 1 ? ` x${this.state.consecSameSide}` : "")}
+					{this.state.consecSameSide > 2 ? " " + "🔥".repeat(Math.min(2, this.state.consecSameSide)) : ""}
 				</div>
 			</div>
 		);

@@ -239,7 +239,7 @@ class ChatMessageComponent extends Component {
 	render() {
 		return (
 			<div className={`cat-gpt-chat-msg-container ${(this.isUser && this.props.invert) ? "cat-gpt-chat-msg-container-user" : ""}`}>
-				<img className="cat-gpt-chat-msg-img" src={`${this.isUser ? "./images/shuba.png" : "./images/bathing_chomusuke.png"}`} alt="user" />
+				<img className="cat-gpt-chat-msg-img" src={`${this.isUser ? "./images/shuba.png" : "./images/Cat-GPT-assets/Cat-GPT-logo.png"}`} alt="user" />
 				<div className={`cat-gpt-chat-msg-content ${this.isUser ? "cat-gpt-chat-msg-content-user" : ""}`}>
 					{this.userImg && <img src={this.userImg} alt="cutesies" />}
 					{(!this.props.ignoreFormat && this.isUser) ?
