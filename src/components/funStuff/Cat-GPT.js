@@ -1,5 +1,4 @@
 import { Component, createRef } from "react";
-import './Cat-GPT.css';
 import { TypeAnimation } from "react-type-animation";
 import axios from "axios";
 import { getCookieValue, removeCookie, setCookieValue } from "../utils/cookieMonster";

@@ -1,8 +1,6 @@
 import { Component, createRef } from "react";
 import { ContentDisplay } from "../others";
 
-import './Flip-A-Coin.css';
-
 export default class FlipACoin extends Component {
 	constructor(props) {
 		super(props);
@@ -98,10 +96,8 @@ class Coin extends Component {
 			<div className="fac-coin-container">
 				<div className={`fac-coin ${this.state.isIdle ? "facCoinHover" : this.state.isFlipping ? "facCoinOut" : "facCoinIn"}`}
 					onClick={this.props.handleCoinFlip}>
-					{this.state.coinSide === 'heads' ?
-						<img src="./images/Flip-A-Coin-assets/FAC-Heads.png" alt="heads" /> :
-						<img src="./images/Flip-A-Coin-assets/FAC-Tails.png" alt="tails" />
-					}
+					<img style={{ display: `${this.state.coinSide === 'heads' ? '' : 'none'}` }} className={`${this.state.isFlipping ? "facCoinOut" : "facCoinIn"}`} src="./images/Flip-A-Coin-assets/FAC-Heads.png" alt="heads" />
+					<img style={{ display: `${this.state.coinSide === 'tails' ? '' : 'none'}` }} className={`${this.state.isFlipping ? "facCoinOut" : "facCoinIn"}`} src="./images/Flip-A-Coin-assets/FAC-Tails.png" alt="tails" />
 				</div>
 
 				<div className={`fac-coin-side-indicator ${this.state.isFlipping ? "fadeOut" : "fadeIn"}`}>

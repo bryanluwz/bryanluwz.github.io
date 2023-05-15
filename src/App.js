@@ -30,10 +30,12 @@ class App extends Component {
 		// Import js, and imgs
 		const importAllComponents = (r) => r.keys().map((key) => r(key).default);
 		const importAllImages = (r) => r.keys().map((key) => r(key));
+		const importAllCSS = (r) => r.keys().map((key) => r(key));
 
 		// Import game components
 		this.gameComponents = importAllComponents(require.context(`./components/funStuff`, true, /\.js$/));
 		this.gameImages = importAllImages(require.context(`./components/funStuff/images`, true));
+		this.gameStyles = importAllCSS(require.context(`./components/funStuff/styles`, true));
 
 		// Import uni components
 		this.uniComponents = importAllComponents(require.context(`./components/uniStuff`, true, /\.js$/));
