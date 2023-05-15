@@ -10,4 +10,4 @@ export default class RandomUniStuff extends Component {
 	}
 }
 
-RandomUniStuff.displayName = "Random Uni Stuff";
+RandomUniStuff.displayName = "Random Uni Stuff 2";

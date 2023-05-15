@@ -1,7 +1,7 @@
 import { Component } from "react";
 import { Segment } from "../segment";
 import { GridTitleCard, GridTitleCardWrapper } from "../titleCards";
-import { extractInfomationFromModule } from "../utils/moduleLoadUtils";
+import { extractInfomationFromModule, getRouteLink } from "../utils/moduleLoadUtils";
 
 export default class DisplayGridPage extends Component {
 	constructor(props) {
@@ -31,18 +31,20 @@ export default class DisplayGridPage extends Component {
 					minElemSize={'140px'}
 					maxElemSize={'1fr'}
 				>
-					{this.props.components.map((components, index) => {
-						var info = extractInfomationFromModule(components, this.props.path);
-						return (
-							< GridTitleCard
-								key={index}
-								link={info.routeLink}
-								imgSrc={this.props.images[index]}
-								title={info.displayName}
-								backgroundColor={this.randomBgColor()}
-							/>
-						);
-					})}
+					{Object.keys(this.props.dictionary)
+						.map((ModuleDisplayName, index) => {
+							var moduleInfo = this.props.dictionary[ModuleDisplayName];
+							var routeLink = getRouteLink(moduleInfo.routeLink, this.props.path);
+							return (
+								< GridTitleCard
+									key={index}
+									link={routeLink}
+									imgSrc={moduleInfo.icon}
+									title={moduleInfo.displayName}
+									backgroundColor={this.randomBgColor()}
+								/>
+							);
+						})}
 				</GridTitleCardWrapper>
 			</Segment>
 		);

@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { CarouselCard, CarouselCardWrapper } from "../carousel";
 import { Segment } from "../segment";
 import { GridTitleCard, GridTitleCardWrapper, ImageTextTitleCard } from "../titleCards";
-import { extractInfomationFromModule } from "../utils/moduleLoadUtils";
+import { getRouteLink } from "../utils/moduleLoadUtils";
 
 export default class HomePage extends Component {
 	render() {
@@ -56,15 +56,22 @@ export default class HomePage extends Component {
 						minElemSize={'140px'}
 						maxElemSize={'1fr'}
 					>
-						{this.props.gameComponents.slice(0, Math.min(this.props.gameComponents.length, 4)).map((Comp, index) => {
-							var info = extractInfomationFromModule(Comp, "fun-stuff");
-							return (
-								< GridTitleCard key={index} link={info.routeLink}
-									imgSrc={this.props.gameImages[index]}
-									title={info.displayName}
-								/>
-							);
-						})}
+						{
+							Object.keys(this.props.gameDictionary)
+								.slice(0, Math.min(Object.keys(this.props.gameDictionary).length, 4))
+								.map((ModuleDisplayName, index) => {
+									var moduleInfo = this.props.gameDictionary[ModuleDisplayName];
+									var routeLink = getRouteLink(moduleInfo.routeLink, "/fun-stuff");
+									return (
+										< GridTitleCard
+											key={index}
+											link={routeLink}
+											imgSrc={moduleInfo.icon}
+											title={moduleInfo.displayName}
+										/>
+									);
+								})
+						}
 					</GridTitleCardWrapper>
 				</Segment>
 
@@ -78,15 +85,22 @@ export default class HomePage extends Component {
 						minElemSize={'140px'}
 						maxElemSize={'1fr'}
 					>
-						{this.props.uniComponents.slice(0, Math.min(this.props.uniComponents.length, 4)).map((Comp, index) => {
-							var info = extractInfomationFromModule(Comp, "uni-stuff");
-							return (
-								< GridTitleCard key={index} link={info.routeLink}
-									imgSrc={this.props.uniImages[index]}
-									title={info.displayName}
-								/>
-							);
-						})}
+						{
+							Object.keys(this.props.uniDictionary)
+								.slice(0, Math.min(Object.keys(this.props.uniDictionary).length, 4))
+								.map((ModuleDisplayName, index) => {
+									var moduleInfo = this.props.uniDictionary[ModuleDisplayName];
+									var routeLink = getRouteLink(moduleInfo.routeLink, "/uni-stuff");
+									return (
+										< GridTitleCard
+											key={index}
+											link={routeLink}
+											imgSrc={moduleInfo.icon}
+											title={moduleInfo.displayName}
+										/>
+									);
+								})
+						}
 					</GridTitleCardWrapper>
 				</Segment>
 			</Fragment>

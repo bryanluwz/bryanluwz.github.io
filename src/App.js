@@ -6,7 +6,7 @@ import './App.css';
 import './components/others/ContentDisplay.css';
 
 import withRouter from './components/utils/withRouter';
-import { extractInfomationFromModule } from './components/utils/moduleLoadUtils';
+import { getRouteLink, parseModule } from './components/utils/moduleLoadUtils';
 import { refreshAllCookies, getCookieValue, isCookie, setCookieValue } from './components/utils/cookieMonster';
 
 import { Header } from './components/header';
@@ -35,11 +35,14 @@ class App extends Component {
 		// Import game components
 		this.gameComponents = importAllComponents(require.context(`./components/funStuff`, true, /\.js$/));
 		this.gameImages = importAllImages(require.context(`./components/funStuff/images`, true));
+		this.gameDictionary = parseModule(this.gameComponents, this.gameImages);
 		this.gameStyles = importAllCSS(require.context(`./components/funStuff/styles`, true));
 
 		// Import uni components
 		this.uniComponents = importAllComponents(require.context(`./components/uniStuff`, true, /\.js$/));
 		this.uniImages = importAllImages(require.context(`./components/uniStuff/images`, true));
+		this.uniDictionary = parseModule(this.uniComponents, this.uniImages);
+		this.uniStyles = importAllCSS(require.context(`./components/uniStuff/styles`, true));
 	}
 
 	componentDidMount() {
@@ -111,41 +114,66 @@ class App extends Component {
 								this.setState({ contentTransitionStage: "fadeIn", displayLocation: this.props.router.location });
 							}
 						}}>
-
 						<Routes location={this.state.displayLocation}>
 							<Route path="/" element={
 								<HomePage
-									gameComponents={this.gameComponents}
-									gameImages={this.gameImages}
-									uniComponents={this.uniComponents}
-									uniImages={this.uniImages}
-									othersComponents={this.othersComponents}
-									othersImages={this.othersImages}
+									gameDictionary={this.gameDictionary}
+									uniDictionary={this.uniDictionary}
 								/>
 							} />
 
 							<Route path='/fun-stuff'>
-								{this.gameComponents.map((Comp, index) => {
-									var info = extractInfomationFromModule(Comp, "/fun-stuff");
-									return (
-										<Route key={index} path={info.routeLink} element={
-											<Comp router={this.props.router} />
-										} />
-									);
-								})}
-								<Route path="/fun-stuff" element={<DisplayGridPage path="fun-stuff" components={this.gameComponents} images={this.gameImages} />} />
+								{
+									Object.keys(this.gameDictionary)
+										.map((ModuleDisplayName, index) => {
+											var moduleInfo = this.gameDictionary[ModuleDisplayName];
+											var routeLink = getRouteLink(moduleInfo.routeLink, "/fun-stuff");
+											var Comp = moduleInfo.moduleDefault;
+											return (
+												<Route
+													key={index}
+													path={routeLink}
+													element={
+														<Comp router={this.props.router} />
+													} />
+											);
+										})
+								}
+								<Route
+									path="/fun-stuff"
+									element={
+										<DisplayGridPage
+											path="fun-stuff"
+											dictionary={this.gameDictionary} />
+									}
+								/>
 							</Route>
 
 							<Route path='/uni-stuff'>
-								{this.uniComponents.map((Comp, index) => {
-									var info = extractInfomationFromModule(Comp, "/uni-stuff");
-									return (
-										<Route key={index} path={info.routeLink} element={
-											<Comp router={this.props.router} />
-										} />
-									);
-								})}
-								<Route path="/uni-stuff" element={<DisplayGridPage path="uni-stuff" components={this.uniComponents} images={this.uniImages} />} />
+								{
+									Object.keys(this.uniDictionary)
+										.map((ModuleDisplayName, index) => {
+											var moduleInfo = this.uniDictionary[ModuleDisplayName];
+											var routeLink = getRouteLink(moduleInfo.routeLink, "/uni-stuff");
+											var Comp = moduleInfo.moduleDefault;
+											return (
+												<Route
+													key={index}
+													path={routeLink}
+													element={
+														<Comp router={this.props.router} />
+													} />
+											);
+										})
+								}
+								<Route
+									path="/uni-stuff"
+									element={
+										<DisplayGridPage
+											path="uni-stuff"
+											dictionary={this.uniDictionary} />
+									}
+								/>
 							</Route>
 
 							<Route path='/others' element={
