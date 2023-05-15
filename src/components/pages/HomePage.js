@@ -16,7 +16,7 @@ export default class HomePage extends Component {
 				<CarouselCardWrapper>
 					<CarouselCard
 						isLink={true}
-						link={"/funStuff"}
+						link={"/fun-stuff"}
 						imgSrc={"./images/testimg1.webp"}
 						imgAlt={"nil"}
 					/>

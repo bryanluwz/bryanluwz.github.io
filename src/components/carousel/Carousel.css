@@ -39,9 +39,15 @@
 .carousel-card {
     width: 100%;
     height: 100%;
+
+    display: flex;
 }
 
-.carousel-card-image {
+.carousel-card a {
+    height: 100%;
+}
+
+.carousel-card img {
     object-fit: contain;
     user-select: none;
 }
