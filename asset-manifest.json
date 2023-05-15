@@ -1,24 +1,25 @@
 {
   "files": {
-    "main.css": "/static/css/main.f74b8554.css",
-    "main.js": "/static/js/main.a830938a.js",
-    "static/media/Cat-GPT-logo.png": "/static/media/Cat-GPT-logo.1c6af49d149c84ef0fa7.png",
-    "static/media/Flip-A-Coin-logo.png": "/static/media/Flip-A-Coin-logo.0b61b3a18182eac6bca9.png",
-    "static/media/MRT-Exits.png": "/static/media/MRT-Exits.f9716e61d3b803d2de2b.png",
-    "static/media/Pop-Cat.png": "/static/media/Pop-Cat.f9716e61d3b803d2de2b.png",
-    "static/media/Scissors-Paper-Stone.png": "/static/media/Scissors-Paper-Stone.f9716e61d3b803d2de2b.png",
-    "static/media/Random-Uni-Stuff-2.png": "/static/media/Random-Uni-Stuff-2.5a06c54c104110856ce4.png",
-    "static/media/Random-Uni-Stuff.png": "/static/media/Random-Uni-Stuff.5a06c54c104110856ce4.png",
-    "static/media/Sleeping-Cat.png": "/static/media/Sleeping-Cat.5a06c54c104110856ce4.png",
-    "static/media/Uni-Repos.png": "/static/media/Uni-Repos.5a06c54c104110856ce4.png",
-    "static/media/Untitled-Duck-Game.png": "/static/media/Untitled-Duck-Game.5a06c54c104110856ce4.png",
+    "main.css": "/static/css/main.b1d8d2fc.css",
+    "main.js": "/static/js/main.26f6eda8.js",
+    "static/media/Cat-GPT-icon.png": "/static/media/Cat-GPT-icon.1c6af49d149c84ef0fa7.png",
+    "static/media/Flip-A-Coin-icon.png": "/static/media/Flip-A-Coin-icon.0b61b3a18182eac6bca9.png",
+    "static/media/MRT-Exits-icon.png": "/static/media/MRT-Exits-icon.f9716e61d3b803d2de2b.png",
+    "static/media/Pop-Cat-icon.png": "/static/media/Pop-Cat-icon.f9716e61d3b803d2de2b.png",
+    "static/media/Scissors-Paper-Stone-icon.png": "/static/media/Scissors-Paper-Stone-icon.f9716e61d3b803d2de2b.png",
+    "static/media/Wheel-Of-Names-icon.png": "/static/media/Wheel-Of-Names-icon.f9716e61d3b803d2de2b.png",
+    "static/media/Random-Uni-Stuff-2-icon.png": "/static/media/Random-Uni-Stuff-2-icon.5a06c54c104110856ce4.png",
+    "static/media/Random-Uni-Stuff-icon.png": "/static/media/Random-Uni-Stuff-icon.5a06c54c104110856ce4.png",
+    "static/media/Sleeping-Cat-icon.png": "/static/media/Sleeping-Cat-icon.5a06c54c104110856ce4.png",
+    "static/media/Uni-Repos-icon.png": "/static/media/Uni-Repos-icon.5a06c54c104110856ce4.png",
+    "static/media/Untitled-Duck-Game-icon.png": "/static/media/Untitled-Duck-Game-icon.5a06c54c104110856ce4.png",
     "static/media/lulo-font.ttf": "/static/media/lulo-font.cf6ce051896b18d3449b.ttf",
     "index.html": "/index.html",
-    "main.f74b8554.css.map": "/static/css/main.f74b8554.css.map",
-    "main.a830938a.js.map": "/static/js/main.a830938a.js.map"
+    "main.b1d8d2fc.css.map": "/static/css/main.b1d8d2fc.css.map",
+    "main.26f6eda8.js.map": "/static/js/main.26f6eda8.js.map"
   },
   "entrypoints": [
-    "static/css/main.f74b8554.css",
-    "static/js/main.a830938a.js"
+    "static/css/main.b1d8d2fc.css",
+    "static/js/main.26f6eda8.js"
   ]
 }
