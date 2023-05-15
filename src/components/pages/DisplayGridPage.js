@@ -1,7 +1,7 @@
 import { Component } from "react";
 import { Segment } from "../segment";
 import { GridTitleCard, GridTitleCardWrapper } from "../titleCards";
-import { extractInfomationFromModule, getRouteLink } from "../utils/moduleLoadUtils";
+import { getRouteLink } from "../utils/moduleLoadUtils";
 
 export default class DisplayGridPage extends Component {
 	constructor(props) {

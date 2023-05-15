@@ -1,14 +1,3 @@
-export function extractInfomationFromModule(moduleDefault, pathname) {
-	var name = moduleDefault.name;
-	var displayName = moduleDefault.displayName;
-	var routeLink = moduleDefault.displayName.toLowerCase().replace(/\s+/g, '-');
-	return {
-		name: name,
-		displayName: displayName,
-		routeLink: pathname + "/" + routeLink
-	};
-}
-
 // Returns index of image in images array which matches the module name + '-logo'
 export function findIconForModule(moduleName, imagesArray) {
 	var regex = new RegExp(`${moduleName}-icon`, "i");
