@@ -1,4 +1,4 @@
-import { Component, createRef } from "react";
+import { Component, Fragment, createRef } from "react";
 import { ContentDisplay } from "../others";
 import { Wheel } from "react-custom-roulette";
 import { getCookieValue, setCookieValue } from "../utils/cookieMonster";
@@ -36,6 +36,9 @@ export default class WheelOfNames extends Component {
 				this.setState({ data: wheelOfNamesData.data });
 				this.optionsInputTextareaRef.current.value = wheelOfNamesData.data.join("\n");
 			}
+			if (wheelOfNamesData.history) {
+				this.setState({ history: wheelOfNamesData.history });
+			}
 		}
 	}
 
@@ -43,6 +46,10 @@ export default class WheelOfNames extends Component {
 		if (prevState.data !== this.state.data) {
 			this.handleOptionsUpdate();
 			this.setStoredOptions(this.state.data);
+		}
+
+		if (prevState.history !== this.state.history) {
+			this.setStoredHistory(this.state.history);
 		}
 	}
 
@@ -63,8 +70,29 @@ export default class WheelOfNames extends Component {
 	};
 
 	// History
-	updateHistory = () => {
+	getStoredHistory = () => {
+		const data = getCookieValue(this.cookieName);
+		if (data) {
+			if (data.history)
+				return data.history;
+		}
+	};
 
+	setStoredHistory = (nextHistory) => {
+		const data = getCookieValue(this.cookieName);
+		if (data) {
+			data.history = nextHistory;
+			setCookieValue(this.cookieName, data);
+		}
+		else {
+			setCookieValue(this.cookieName, { history: nextHistory });
+		}
+	};
+
+	updateHistorySection = (nextHistoryEntry) => {
+		const history = this.state.history;
+		history.push(nextHistoryEntry);
+		this.setState({ history: [...history] });
 	};
 
 	handleDeleteHistoryButton = () => {
@@ -74,18 +102,32 @@ export default class WheelOfNames extends Component {
 	// Handle wheel customisation / update
 	handleOptionsUpdate = () => {
 		const wheelData = [];
-		this.state.data.forEach(option => {
+		const data = this.state.data.map(option => option.length > 10 ? option.substring(0, 10) + '...' : option);
+
+		var bgIndex = 0;
+
+		for (var i = 0; i < data.length; i++) {
+			const option = data[i];
 			var existIndex = wheelData.findIndex(obj => obj.option === option);
 			if (existIndex !== -1) {
 				wheelData[existIndex].optionSize++;
 			}
 			else {
-				wheelData.push({ option: option, image: "", style: {}, optionSize: 1 });
+				wheelData.push(
+					{
+						option: option,
+						image: "",
+						style: {
+							backgroundColor: this.backgroundColors[Object.keys(this.backgroundColors)[(bgIndex + ((i === data.length - 1 && bgIndex % Object.keys(this.backgroundColors).length === 0) ? 1 : 0)) % Object.keys(this.backgroundColors).length]]
+						},
+						optionSize: 1
+					});
+				bgIndex++;
 			}
-		});
+		}
 
 		if (wheelData.length === 0) {
-			wheelData.push({ option: "", image: "", style: {}, optionSize: 1 });
+			wheelData.push({ option: "", image: "", style: { backgroundColor: "#f3e9f7" }, optionSize: 1 });
 		}
 
 		this.setState({ wheelData: wheelData });
@@ -95,8 +137,7 @@ export default class WheelOfNames extends Component {
 	handleOptionsInputTextareaChange = () => {
 		const nextData = this.optionsInputTextareaRef.current.value.split("\n")
 			.map(option => option.trim())
-			.filter(option => option !== '')
-			.map(option => option.length > 10 ? option.substring(0, 10) + '...' : option);
+			.filter(option => option !== '');
 
 		this.setState({ data: nextData });
 	};
@@ -104,6 +145,22 @@ export default class WheelOfNames extends Component {
 	// Handle other buttons
 	handleClearTextareaButton = () => {
 		this.optionsInputTextareaRef.current.value = "";
+		this.handleOptionsInputTextareaChange();
+	};
+
+	handleClearLastWinButton = () => {
+		const history = this.state.history;
+		const lastWin = history.pop();
+
+		if (this.state.data.indexOf(lastWin) === -1) return;
+
+		const newTextareaValue = this.optionsInputTextareaRef.current.value.split("\n")
+			.map(option => option.trim())
+			.filter(option => (option !== '' && option !== lastWin))
+			.join("\n");
+		this.optionsInputTextareaRef.current.value = newTextareaValue;
+		this.setState({ history: [...history] });
+		console.log(history);
 		this.handleOptionsInputTextareaChange();
 	};
 
@@ -123,7 +180,7 @@ export default class WheelOfNames extends Component {
 			setCookieValue(this.cookieName, data);
 		}
 		else {
-			setCookieValue(this.cookieName, { data: data });
+			setCookieValue(this.cookieName, { data: nextData });
 		}
 	};
 
@@ -142,15 +199,19 @@ export default class WheelOfNames extends Component {
 				<div className="won-wrapper">
 					{/* These containers will appear side by side, unless second container hidden, then main will be middle*/}
 					<div className="won-main-container">
-						<div className="won-wheel-container">
+						<div className="won-wheel-container"
+						>
 							{/* This is where the wheel will be in */}
 							<Wheel
 								mustStartSpinning={this.state.isSpinning}
 								prizeNumber={this.state.selectedIndex}
 								data={this.state.wheelData}
-								onStopSpinning={this.resetSpinButton}
+								onStopSpinning={() => {
+									this.resetSpinButton();
+									this.updateHistorySection(this.state.data[this.state.selectedIndex]);
+								}}
 								disableInitialAnimation
-								spinDuration={0.69}
+								spinDuration={0.420}
 
 								pointerProps={{ src: "./images/shuba.png", style: { userSelect: "none" } }}
 
@@ -158,6 +219,9 @@ export default class WheelOfNames extends Component {
 								outerBorderColor="none"
 
 								fontFamily="Poppins"
+								fontSize={20 + 0 / this.state.data.length}
+								textDistance={50}
+								perpendicularText={this.state.data.length < 4}
 
 								backgroundColors={Object.values(this.backgroundColors)}
 								textColors={Object.values(this.textColors)}
@@ -173,12 +237,23 @@ export default class WheelOfNames extends Component {
 					{/* In mobile no hiding just scrolling */}
 					<div className="won-info-container" >
 						<div className="won-info-header">
-							<button className="won-function-button">Hide</button>
+							<button
+								className="won-function-button"
+								onClick={() => { }}
+							>
+								Hide
+							</button>
+							<button
+								className="won-function-button"
+								onClick={this.handleClearLastWinButton}
+							>
+								Clear last
+							</button>
 							<button
 								className="won-function-button"
 								onClick={this.handleClearTextareaButton}
 							>
-								clear
+								Clear
 							</button>
 						</div>
 						{/* only body hidable */}
@@ -195,17 +270,22 @@ export default class WheelOfNames extends Component {
 							<div className="won-history">
 								<div className="won-history-header">
 									<div className="won-history-title">
-										wheel history
+										Wheel history
 									</div>
 									<button
 										className="won-function-button"
 										onClick={this.handleDeleteHistoryButton}
 									>
-										clear history
+										Clear history
 									</button>
 								</div>
 								<div className="won-history-record">
-									record here
+									{this.state.history.map((record, index) => (
+										<Fragment key={index}>
+											<span>{record}</span>
+											<br />
+										</Fragment>
+									))}
 								</div>
 							</div>
 						</div>
