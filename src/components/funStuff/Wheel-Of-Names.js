@@ -12,7 +12,9 @@ export default class WheelOfNames extends Component {
 			data: [], // this is an array of the options
 			selectedIndex: -1,
 			history: [],
-			isSpinning: false
+			isSpinning: false,
+			isSidebarHidden: false,
+			canClearLast: false
 		};
 
 		this.backgroundColors = {
@@ -39,6 +41,9 @@ export default class WheelOfNames extends Component {
 			if (wheelOfNamesData.history) {
 				this.setState({ history: wheelOfNamesData.history });
 			}
+			if (wheelOfNamesData.isSidebarHidden) {
+				this.setState({ isSidebarHidden: wheelOfNamesData.isSidebarHidden });
+			}
 		}
 	}
 
@@ -50,6 +55,10 @@ export default class WheelOfNames extends Component {
 
 		if (prevState.history !== this.state.history) {
 			this.setStoredHistory(this.state.history);
+		}
+
+		if (prevState.isSidebarHidden !== this.state.isSidebarHidden) {
+			this.setStoredIsSidebarHidden(this.state.isSidebarHidden);
 		}
 	}
 
@@ -65,7 +74,7 @@ export default class WheelOfNames extends Component {
 
 	resetSpinButton = () => {
 		if (this.state.isSpinning) {
-			this.setState({ isSpinning: false });
+			this.setState({ isSpinning: false, canClearLast: true });
 		}
 	};
 
@@ -86,6 +95,26 @@ export default class WheelOfNames extends Component {
 		}
 		else {
 			setCookieValue(this.cookieName, { history: nextHistory });
+		}
+	};
+
+	// Hidden sidebar
+	getStoredIsSidebarHidden = () => {
+		const data = getCookieValue(this.cookieName);
+		if (data) {
+			if (data.history)
+				return data.history;
+		}
+	};
+
+	setStoredIsSidebarHidden = (nextValue) => {
+		const data = getCookieValue(this.cookieName);
+		if (data) {
+			data.isSidebarHidden = nextValue;
+			setCookieValue(this.cookieName, data);
+		}
+		else {
+			setCookieValue(this.cookieName, { isSidebarHidden: nextValue });
 		}
 	};
 
@@ -149,8 +178,10 @@ export default class WheelOfNames extends Component {
 	};
 
 	handleClearLastWinButton = () => {
+		if (!this.state.canClearLast) return;
+
 		const history = this.state.history;
-		const lastWin = history.pop();
+		const lastWin = history.at(-1);
 
 		if (this.state.data.indexOf(lastWin) === -1) return;
 
@@ -159,9 +190,12 @@ export default class WheelOfNames extends Component {
 			.filter(option => (option !== '' && option !== lastWin))
 			.join("\n");
 		this.optionsInputTextareaRef.current.value = newTextareaValue;
-		this.setState({ history: [...history] });
-		console.log(history);
+		this.setState({ canClearLast: false });
 		this.handleOptionsInputTextareaChange();
+	};
+
+	handleHideButton = () => {
+		this.setState((prevState) => ({ isSidebarHidden: !prevState.isSidebarHidden }));
 	};
 
 	// Handle stored data
@@ -235,25 +269,28 @@ export default class WheelOfNames extends Component {
 					</div>
 
 					{/* In mobile no hiding just scrolling */}
-					<div className="won-info-container" >
+					<div className={`won-info-container ${this.state.isSidebarHidden ? "won-info-container-hidden" : ""}`}>
 						<div className="won-info-header">
 							<button
-								className="won-function-button"
-								onClick={() => { }}
-							>
-								Hide
-							</button>
-							<button
-								className="won-function-button"
+								className={`won-function-button ${!this.state.canClearLast ? "won-spin-button-spinning" : ""}`}
+								style={{ display: `${this.state.isSidebarHidden ? "none" : "block"}` }}
 								onClick={this.handleClearLastWinButton}
 							>
 								Clear last
 							</button>
 							<button
 								className="won-function-button"
+								style={{ display: `${this.state.isSidebarHidden ? "none" : "block"}` }}
 								onClick={this.handleClearTextareaButton}
 							>
 								Clear
+							</button>
+							<button
+								className="won-function-button"
+								onClick={this.handleHideButton}
+								style={{ display: "block" }}
+							>
+								{this.state.isSidebarHidden ? "Unhide" : "Hide"}
 							</button>
 						</div>
 						{/* only body hidable */}
@@ -280,12 +317,16 @@ export default class WheelOfNames extends Component {
 									</button>
 								</div>
 								<div className="won-history-record">
-									{this.state.history.map((record, index) => (
-										<Fragment key={index}>
-											<span>{record}</span>
-											<br />
-										</Fragment>
-									))}
+									{this.state.history.length > 0 ?
+										this.state.history.map((record, index) => (
+											<Fragment key={index}>
+												<span>{record}</span>
+												<br />
+											</Fragment>
+										))
+										:
+										<span>no records D:</span>
+									}
 								</div>
 							</div>
 						</div>
