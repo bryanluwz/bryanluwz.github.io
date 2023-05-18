@@ -29,7 +29,7 @@ export default class WheelOfNames extends Component {
 
 		this.cookieName = "wheelOfNames";
 
-		this.maxOptionLength = 15;
+		this.maxOptionLength = 13;
 	}
 
 	componentDidMount() {
@@ -67,6 +67,10 @@ export default class WheelOfNames extends Component {
 	// Spin button / functionality handler functions
 	handleSpinButton = () => {
 		if (!this.state.isSpinning && this.state.data.length !== 0) {
+			const { wheelData } = this.state;
+			wheelData.forEach(obj => {
+				obj.style = {};
+			});
 			this.setState({
 				selectedIndex: Math.floor((Math.random() * this.state.wheelData.length * 69420) % this.state.wheelData.length),
 				isSpinning: true
@@ -74,9 +78,14 @@ export default class WheelOfNames extends Component {
 		}
 	};
 
-	resetSpinButton = () => {
+	handleFinishSpin = () => {
 		if (this.state.isSpinning) {
 			this.setState({ isSpinning: false, canClearLast: true });
+
+			const { wheelData } = this.state;
+			var winningOption = wheelData[this.state.selectedIndex];
+			winningOption.style.textColor = "#FF00FF";
+			this.setState({ wheelData: wheelData });
 		}
 	};
 
@@ -250,6 +259,7 @@ export default class WheelOfNames extends Component {
 				router={this.props.router}
 				handleHeaderTitleClick={() => { ; }}
 				handleDeleteHistoryButton={this.handleDeleteHistoryButton}
+				style={{ overflowX: "visible" }}
 			>
 				<div className="won-wrapper">
 					{/* These containers will appear side by side, unless second container hidden, then main will be middle*/}
@@ -262,7 +272,7 @@ export default class WheelOfNames extends Component {
 								prizeNumber={this.state.selectedIndex}
 								data={this.state.wheelData}
 								onStopSpinning={() => {
-									this.resetSpinButton();
+									this.handleFinishSpin();
 									this.updateHistorySection(this.state.data[this.state.selectedIndex]);
 								}}
 								disableInitialAnimation
@@ -275,7 +285,7 @@ export default class WheelOfNames extends Component {
 
 								fontFamily="Poppins"
 								fontSize={20 - 0.2 * this.state.data.length}
-								textDistance={Math.max(50 + 0.2 * this.state.data.length, 68)}
+								textDistance={Math.max(45 + 0.2 * this.state.data.length, 68)}
 								perpendicularText={this.state.data.length < 6}
 
 								backgroundColors={Object.values(this.backgroundColors)}

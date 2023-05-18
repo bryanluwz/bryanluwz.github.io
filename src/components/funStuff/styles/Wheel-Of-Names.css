@@ -13,17 +13,6 @@
     position: relative;
 }
 
-@media screen and (max-width: 1000px) {
-    .won-wrapper {
-        flex-direction: column;
-    }
-
-    .won-info-container {
-        width: 100% !important;
-        max-width: unset !important;
-    }
-}
-
 .won-main-container {
     width: auto;
     height: 90%;
@@ -105,11 +94,12 @@
     margin: auto;
     z-index: 99;
 
-    width: 100px;
-    height: 100px;
+    width: 15%;
+    max-width: 100px;
+    height: auto;
 
     margin: 20px;
-    padding: 10px;
+    padding: 10px 0px;
 
     border: none;
     border-radius: 69420px;
@@ -118,9 +108,10 @@
 
     font: inherit;
     font-weight: bold;
-    font-size: var(--h1-font-size);
+    font-size: min(var(--h2-font-size), 3.5vw);
     color: white;
     font-family: var(--text-font);
+    text-align: center;
 
     cursor: pointer;
 
