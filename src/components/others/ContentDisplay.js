@@ -3,7 +3,7 @@ import { Component } from "react";
 export default class ContentDisplay extends Component {
 	render() {
 		return (
-			<div className="content-segment">
+			<div className="content-segment" style={this.props.style}>
 				<div className="content-header">
 					<i
 						className="content-header-side-button fa fa-angle-left"

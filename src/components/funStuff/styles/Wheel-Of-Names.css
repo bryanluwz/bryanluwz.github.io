@@ -1,19 +1,34 @@
 /* Outer */
 .won-wrapper {
     width: 100%;
-    height: 100%;
+    height: auto;
+
+    margin-top: 5vh;
 
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: top;
     justify-content: center;
 
     position: relative;
 }
 
+@media screen and (max-width: 1000px) {
+    .won-wrapper {
+        flex-direction: column;
+    }
+
+    .won-info-container {
+        width: 100% !important;
+        max-width: unset !important;
+    }
+}
+
 .won-main-container {
-    width: 65%;
+    width: auto;
     height: 90%;
+
+    position: relative;
 
     flex-grow: 1;
 
@@ -21,12 +36,11 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
-    position: relative;
 }
 
 .won-info-container {
-    width: 32%;
+    width: 40%;
+    max-width: 20em;
     height: 90%;
 
     padding: 2%;
@@ -34,7 +48,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: top;
+    justify-content: center;
 }
 
 .won-info-container-hidden div:not(:first-child) {
@@ -79,8 +93,8 @@
     justify-items: center;
 
     > div {
-        max-height: 32em;
-        max-width: 32em;
+        max-height: 35em;
+        max-width: 35em;
 
         transition: 0.4s ease;
     }
@@ -131,7 +145,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    justify-content: right;
 }
 
 .won-info-body {
@@ -142,10 +156,15 @@
 .won-info {
     width: 100%;
     height: auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .won-info textarea {
-    width: 93%;
+    width: 94%;
     height: 240px;
 
     padding: max(10px, 1.3%) max(16px, 1.3%);
@@ -222,4 +241,26 @@
 
 .won-history-record::-webkit-scrollbar {
     display: none;
+}
+
+@media screen and (max-width: 1000px) {
+    .won-wrapper {
+        flex-direction: column;
+    }
+
+    .won-info-container {
+        width: 100% !important;
+        max-width: unset !important;
+    }
+}
+
+@media screen and (max-width: 1300px) {
+    .won-wheel-container {
+        > div {
+            max-height: 29em;
+            max-width: 29em;
+
+            transition: 0.4s ease;
+        }
+    }
 }

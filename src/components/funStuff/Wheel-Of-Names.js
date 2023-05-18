@@ -28,6 +28,8 @@ export default class WheelOfNames extends Component {
 		this.optionsInputTextareaRef = createRef();
 
 		this.cookieName = "wheelOfNames";
+
+		this.maxOptionLength = 15;
 	}
 
 	componentDidMount() {
@@ -124,14 +126,15 @@ export default class WheelOfNames extends Component {
 		this.setState({ history: [...history] });
 	};
 
-	handleDeleteHistoryButton = () => {
+	handleClearHistoryButton = () => {
+		if (this.state.isSpinning) return;
 		this.setState({ history: [] });
 	};
 
 	// Handle wheel customisation / update
 	handleOptionsUpdate = () => {
 		const wheelData = [];
-		const data = this.state.data.map(option => option.length > 10 ? option.substring(0, 10) + '...' : option);
+		const data = this.state.data.map(option => option.length > this.maxOptionLength ? option.substring(0, this.maxOptionLength) + '...' : option);
 
 		var bgIndex = 0;
 
@@ -156,29 +159,34 @@ export default class WheelOfNames extends Component {
 		}
 
 		if (wheelData.length === 0) {
-			wheelData.push({ option: "", image: "", style: { backgroundColor: "#f3e9f7" }, optionSize: 1 });
+			wheelData.push({ option: "", image: "", style: {}, optionSize: 1 });
 		}
 
 		this.setState({ wheelData: wheelData });
 	};
 
 	// Handle textarea display & functionality
-	handleOptionsInputTextareaChange = () => {
-		const nextData = this.optionsInputTextareaRef.current.value.split("\n")
+	handleOptionsInputTextareaChange = (event) => {
+		if (this.state.isSpinning) return;
+		const nextData = event?.target.value.split("\n")
 			.map(option => option.trim())
 			.filter(option => option !== '');
 
-		this.setState({ data: nextData });
+		if (nextData !== undefined)
+			this.setState({ data: nextData });
+		else
+			this.setState({ data: [] });
 	};
 
 	// Handle other buttons
 	handleClearTextareaButton = () => {
+		if (this.state.isSpinning) return;
 		this.optionsInputTextareaRef.current.value = "";
 		this.handleOptionsInputTextareaChange();
 	};
 
 	handleClearLastWinButton = () => {
-		if (!this.state.canClearLast) return;
+		if (!this.state.canClearLast || this.state.isSpinning) return;
 
 		const history = this.state.history;
 		const lastWin = history.at(-1);
@@ -195,6 +203,7 @@ export default class WheelOfNames extends Component {
 	};
 
 	handleHideButton = () => {
+		if (this.state.isSpinning) return;
 		this.setState((prevState) => ({ isSidebarHidden: !prevState.isSidebarHidden }));
 	};
 
@@ -205,6 +214,18 @@ export default class WheelOfNames extends Component {
 			if (data.data)
 				return data.data;
 		}
+	};
+
+	// The trash icon
+	handleDeleteHistoryButton = () => {
+		this.setState({
+			wheelData: [], // this is the formated array of options that is goin got be passed into the wheel
+			data: [], // this is an array of the options
+			history: [],
+			isSpinning: false,
+			isSidebarHidden: false,
+			canClearLast: false
+		});
 	};
 
 	setStoredOptions = (nextData) => {
@@ -253,9 +274,9 @@ export default class WheelOfNames extends Component {
 								outerBorderColor="none"
 
 								fontFamily="Poppins"
-								fontSize={20 + 0 / this.state.data.length}
-								textDistance={50}
-								perpendicularText={this.state.data.length < 4}
+								fontSize={20 - 0.2 * this.state.data.length}
+								textDistance={Math.max(50 + 0.2 * this.state.data.length, 68)}
+								perpendicularText={this.state.data.length < 6}
 
 								backgroundColors={Object.values(this.backgroundColors)}
 								textColors={Object.values(this.textColors)}
@@ -272,21 +293,21 @@ export default class WheelOfNames extends Component {
 					<div className={`won-info-container ${this.state.isSidebarHidden ? "won-info-container-hidden" : ""}`}>
 						<div className="won-info-header">
 							<button
-								className={`won-function-button ${!this.state.canClearLast ? "won-spin-button-spinning" : ""}`}
+								className={`won-function-button ${!this.state.canClearLast || this.state.isSpinning ? "won-spin-button-spinning" : ""}`}
 								style={{ display: `${this.state.isSidebarHidden ? "none" : "block"}` }}
 								onClick={this.handleClearLastWinButton}
 							>
 								Clear last
 							</button>
 							<button
-								className="won-function-button"
+								className={`won-function-button ${this.state.isSpinning ? "won-spin-button-spinning" : ""}`}
 								style={{ display: `${this.state.isSidebarHidden ? "none" : "block"}` }}
 								onClick={this.handleClearTextareaButton}
 							>
 								Clear
 							</button>
 							<button
-								className="won-function-button"
+								className={`won-function-button ${this.state.isSpinning ? "won-spin-button-spinning" : ""}`}
 								onClick={this.handleHideButton}
 								style={{ display: "block" }}
 							>
@@ -301,7 +322,7 @@ export default class WheelOfNames extends Component {
 									ref={this.optionsInputTextareaRef}
 									className="won-options-container"
 									placeholder="Enter your options here"
-									onKeyDown={(evt) => { if (evt.key === 'Enter') this.handleOptionsInputTextareaChange(); }}
+									onChange={this.handleOptionsInputTextareaChange}
 								/>
 							</div>
 							<div className="won-history">
@@ -310,8 +331,8 @@ export default class WheelOfNames extends Component {
 										Wheel history
 									</div>
 									<button
-										className="won-function-button"
-										onClick={this.handleDeleteHistoryButton}
+										className={`won-function-button ${this.state.isSpinning ? "won-spin-button-spinning" : ""}`}
+										onClick={this.handleClearHistoryButton}
 									>
 										Clear history
 									</button>
