@@ -1,0 +1,6 @@
+[submodule "public"]
+	path = public
+	url = https://github.com/bryanluwz/gh-pages-common-public.git
+[submodule "src"]
+	path = src/components
+	url = https://github.com/bryanluwz/gh-pages-common-src
