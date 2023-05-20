@@ -14,8 +14,8 @@
         },
         "Wheel of Names": {
             "name": "WheelOfNames",
-            "displayName": "wheel of Names",
-            "icon": "/images/Cat-GPT-assets/Cat-GPT-logo.png",
+            "displayName": "Wheel of Names",
+            "icon": "/images/Wheel-Of-Names-assets/Wheel-Of-Names-logo.png",
             "routeLink": "https://bryanluwz.github.io/wheel-of-names"
         }
     },
