@@ -33,5 +33,76 @@
             "lastUpdatedDate": "23 May 2023"
         }
     },
-    "uni-stuff": {}
+    "uni-stuff": {
+        "NTU SC1015 Mini Project": {
+            "name": "nil",
+            "displayName": "NTU SC1015 Mini Project",
+            "routeLink": "https://github.com/bryanluwz/SC1015-Mini-Project-SC17-Group-7",
+            "subtitle": "Check out our SC1015 Introduction to Data Science and Artificial Intelligence Mini Project -- Movie Review Sentiment Analysis!",
+            "lastUpdatedDate": "21 Apr 2022"
+        },
+        "NTU SC2001 Algorithm Design and Analysis": {
+            "name": "nil",
+            "displayName": "NTU SC2001 Algorithm Design and Analysis",
+            "routeLink": "https://github.com/bryanluwz/NTU-SC2001-Algorithm-Design-and-Analysis",
+            "subtitle": "Code Dump for SC2001 Algorithm Design and Analysis",
+            "lastUpdatedDate": "8 Nov 2022"
+        },
+        "NTU SC2002 Object Oriented Programming": {
+            "name": "nil",
+            "displayName": "NTU SC2002 Object Oriented Programming",
+            "routeLink": "https://github.com/bryanluwz/NTU-SC2002-Object-Oriented-Programming",
+            "subtitle": "Code Dump for SC2002 Object Oriented Programming",
+            "lastUpdatedDate": "1 Nov 2022"
+        },
+        "NTU SC2002 Group Project": {
+            "name": "nil",
+            "displayName": "NTU SC2002 Group Project",
+            "routeLink": "https://github.com/r3ny0u/SC2002",
+            "subtitle": "Code Dump for SC2002 Object Oriented Programming Group Project -- MOBLIMA",
+            "lastUpdatedDate": "13 Nov 2022"
+        },
+        "NTU SC2005 Operating Systems": {
+            "name": "nil",
+            "displayName": "NTU SC2005 Operating Systems",
+            "routeLink": "https://github.com/bryanluwz/NTU-SC2005-Operating-Systems",
+            "subtitle": "Code Dump for SC2005 Operating Systems",
+            "lastUpdatedDate": "23 Apr 2023"
+        },
+        "NTU SC2006 Group Project": {
+            "name": "nil",
+            "displayName": "NTU SC2006 Group Project",
+            "routeLink": "https://github.com/dhruv-gambhir/SC2006-Project",
+            "subtitle": "SC2006 Software Engineering Group Project - extraVEGANza",
+            "lastUpdatedDate": "10 Apr 2023"
+        },
+        "NTU SC2008 Computer Network": {
+            "name": "nil",
+            "displayName": "NTU SC2008 Computer Network",
+            "routeLink": "https://github.com/bryanluwz/NTU-SC2008-Computer-Network",
+            "subtitle": "Code Dump for SC2008 Computer Network",
+            "lastUpdatedDate": "23 Apr 2023"
+        },
+        "NTU SC2104 Sensor Interfacing and Digital Controller": {
+            "name": "nil",
+            "displayName": "NTU SC2104 Sensor Interfacing and Digital Controller",
+            "routeLink": "https://github.com/bryanluwz/NTU-SC2104-Sensor-Interfacing-and-Digital-Controller",
+            "subtitle": "Code Dump for SC2104 Sensor Interfacing and Digital Controller",
+            "lastUpdatedDate": "4 Nov 2022"
+        },
+        "NTU SC2107 Microprocessor Design and Development": {
+            "name": "nil",
+            "displayName": "NTU SC2107 Microprocessor Design and Development",
+            "routeLink": "https://github.com/bryanluwz/NTU-SC2107-Microprocessor-Design-and-Development",
+            "subtitle": "Code Dump for SC2107 Microprocessor Design and Development",
+            "lastUpdatedDate": "4 Nov 2022"
+        },
+        "Elevator Optimisation Using Machine Learning": {
+            "name": "nil",
+            "displayName": "Elevator Optimisation Using Machine Learning",
+            "routeLink": "https://github.com/Ry3nG/Elevator-Optimising-Using-Machine-Learning",
+            "subtitle": "Check out how we attempt to use machine learning (not that much really) to optimise elevator operation procedure for a hackathon!!",
+            "lastUpdatedDate": "3 Oct 2022"
+        }
+    }
 }
