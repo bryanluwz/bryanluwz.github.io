@@ -12,7 +12,8 @@ import { refreshAllCookies, getCookieValue, isCookie, setCookieValue } from '../
 import { Header } from '../components/header';
 import { Footer } from '../components/footer';
 import { TopNavigationBar } from '../components/nav';
-import { AboutPage, HomePage, Error404Page, DisplayGridPage, OthersPage } from '../components/pages';
+import { AboutPage, HomePage, Error404Page, OthersPage } from '../components/pages';
+import DisplayRowPage from '../components/pages/DisplayRowPage';
 
 const linkInfo = require("./linkInfo.json");
 
@@ -109,11 +110,11 @@ class Main extends Component {
 							} />
 
 							<Route path='/uni-stuff' element={
-								<DisplayGridPage dictionary={this.uniDictionary} />
+								<DisplayRowPage dictionary={this.uniDictionary} />
 							} />
 
 							<Route path='/fun-stuff' element={
-								<DisplayGridPage dictionary={this.gameDictionary} />
+								<DisplayRowPage dictionary={this.gameDictionary} />
 							} />
 
 							<Route path='*' element={

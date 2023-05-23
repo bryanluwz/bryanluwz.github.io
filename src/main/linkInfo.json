@@ -4,19 +4,33 @@
             "name": "FlipACoin",
             "displayName": "Flip A Coin",
             "icon": "/images/Flip-A-Coin-assets/FAC-Tails.png",
-            "routeLink": "https://bryanluwz.github.io/flip-a-coin"
+            "routeLink": "https://bryanluwz.github.io/flip-a-coin",
+            "subtitle": "What would you get? Shiba-chan's floofy head, or butthole?",
+            "lastUpdatedDate": "19 May 2023"
         },
         "Cat GPT": {
             "name": "CatGPT",
             "displayName": "Cat GPT",
             "icon": "/images/Cat-GPT-assets/Cat-GPT-logo.png",
-            "routeLink": "https://bryanluwz.github.io/cat-gpt"
+            "routeLink": "https://bryanluwz.github.io/cat-gpt",
+            "subtitle": "ChatGPT isn't answering your questions well? Well, try CatGPT instead! =^._.^=",
+            "lastUpdatedDate": "19 May 2023"
         },
         "Wheel of Names": {
             "name": "WheelOfNames",
             "displayName": "Wheel of Names",
             "icon": "/images/Wheel-Of-Names-assets/Wheel-Of-Names-logo.png",
-            "routeLink": "https://bryanluwz.github.io/wheel-of-names"
+            "routeLink": "https://bryanluwz.github.io/wheel-of-names",
+            "subtitle": "The Wheel spinneth and the Wheel decideth",
+            "lastUpdatedDate": "20 May 2023"
+        },
+        "Guess the RGB": {
+            "name": "GuessTheRGB",
+            "displayName": "Guess the RGB",
+            "icon": "/images/Wheel-Of-Names-assets/Wheel-Of-Names-logo.png",
+            "routeLink": "https://bryanluwz.github.io/guess-the-rgb",
+            "subtitle": "Guess the RGB value of the colour!",
+            "lastUpdatedDate": "23 May 2023"
         }
     },
     "uni-stuff": {}
