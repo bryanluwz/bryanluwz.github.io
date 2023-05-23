@@ -27,7 +27,7 @@
         "Guess the RGB": {
             "name": "GuessTheRGB",
             "displayName": "Guess the RGB",
-            "icon": "/images/Wheel-Of-Names-assets/Wheel-Of-Names-logo.png",
+            "icon": "/images/Guess-The-RGB-assets/Guess-The-RGB-logo.png",
             "routeLink": "https://bryanluwz.github.io/guess-the-rgb",
             "subtitle": "Guess the RGB value of the colour!",
             "lastUpdatedDate": "23 May 2023"
