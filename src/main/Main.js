@@ -15,7 +15,7 @@ import { TopNavigationBar } from '../components/nav';
 import { AboutPage, HomePage, Error404Page, OthersPage } from '../components/pages';
 import DisplayRowPage from '../components/pages/DisplayRowPage';
 
-const linkInfo = require("./linkInfo.json");
+const loadInfo = require("./loadInfo.json");
 
 class Main extends Component {
 	constructor(props) {
@@ -28,8 +28,9 @@ class Main extends Component {
 			displayLocation: this.props.router.location
 		};
 
-		this.gameDictionary = linkInfo['fun-stuff'];
-		this.uniDictionary = linkInfo['uni-stuff'];
+		this.gameDictionary = loadInfo['fun-stuff'];
+		this.uniDictionary = loadInfo['uni-stuff'];
+		this.miscDictionary = loadInfo['misc'];
 
 		this.headerRef = createRef();
 	}
@@ -82,7 +83,7 @@ class Main extends Component {
 
 				<main ref={this.headerRef}>
 					{/* Header and top navigation */}
-					<Header />
+					<Header imgSrc={this.miscDictionary?.header.imgSrc} />
 					<TopNavigationBar pathname={this.props.router.location.pathname} />
 
 					{/* Content Pages */}
@@ -98,6 +99,7 @@ class Main extends Component {
 								<HomePage
 									gameDictionary={this.gameDictionary}
 									uniDictionary={this.uniDictionary}
+									miscDictionary={this.miscDictionary}
 								/>
 							} />
 
@@ -118,7 +120,9 @@ class Main extends Component {
 							} />
 
 							<Route path='*' element={
-								<Error404Page customWarning={"Page not found OAO"} />
+								<Error404Page
+									customWarning={"Page not found OAO"}
+									imgSrc={this.miscDictionary?.error404.imgSrc} />
 							} />
 						</Routes>
 					</div>
