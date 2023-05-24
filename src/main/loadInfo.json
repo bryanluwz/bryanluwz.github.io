@@ -104,28 +104,5 @@
             "subtitle": "Check out how we attempt to use machine learning (not that much really) to optimise elevator operation procedure for a hackathon!!",
             "lastUpdatedDate": "3 Oct 2022"
         }
-    },
-    "misc": {
-        "carousel": {
-            "img1": {
-                "imgSrc": "/images/carousel/testimg1.webp",
-                "link": "https://bryanluwz.github.io/#/fun-stuff"
-            },
-            "img2": {
-                "imgSrc": "/images/carousel/testimg2.webp"
-            }
-        },
-        "aboutSection": {
-            "imgSrc": "/images/misc/aboutSection.png"
-        },
-        "error404": {
-            "imgSrc": "/images/misc/error404.png"
-        },
-        "header": {
-            "imgSrc": "/images/misc/shuba.gif"
-        },
-        "default": {
-            "imgSrc": "/images/shuba.png"
-        }
     }
 }

@@ -16,6 +16,7 @@ import { AboutPage, HomePage, Error404Page, OthersPage } from '../components/pag
 import DisplayRowPage from '../components/pages/DisplayRowPage';
 
 const loadInfo = require("./loadInfo.json");
+const loadInfoComp = require("../components/loadInfo.json");
 
 class Main extends Component {
 	constructor(props) {
@@ -30,7 +31,7 @@ class Main extends Component {
 
 		this.gameDictionary = loadInfo['fun-stuff'];
 		this.uniDictionary = loadInfo['uni-stuff'];
-		this.miscDictionary = loadInfo['misc'];
+		this.miscDictionary = loadInfoComp['misc'];
 
 		this.headerRef = createRef();
 	}
