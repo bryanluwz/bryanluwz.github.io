@@ -113,5 +113,50 @@
         "img2": {
             "imgSrc": "/images/carousel/testimg2.webp"
         }
+    },
+    "news": {
+        "This is the title of the news": {
+            "contentSubtitle": "This should appear at the bottom of the title",
+            "imgSrc": "/images/carousel/testimg1.webp",
+            "contentBody": "this should be the content body",
+            "lastUpdatedDate": "25 May 2023"
+        },
+        "Oh my god what is happening": {
+            "contentSubtitle": "This should appear at the bottom of the title",
+            "imgSrc": "/images/carousel/testimg1.webp",
+            "contentBody": "this should be the content body",
+            "lastUpdatedDate": "25 May 2023"
+        },
+        "Baby dont stop me now": {
+            "contentSubtitle": "This should appear at the bottom of the title",
+            "imgSrc": "/images/carousel/testimg1.webp",
+            "contentBody": "this should be the content body",
+            "lastUpdatedDate": "25 May 2023"
+        },
+        "Never gonna let you down": {
+            "contentSubtitle": "This should appear at the bottom of the title",
+            "imgSrc": "/images/carousel/testimg1.webp",
+            "contentBody": "this should be the content body",
+            "lastUpdatedDate": "25 May 2023"
+        },
+        "Never gonna run around": {
+            "contentSubtitle": "This should appear at the bottom of the title",
+            "imgSrc": "/images/carousel/testimg1.webp",
+            "contentBody": "this should be the content body",
+            "lastUpdatedDate": "25 May 2023"
+        },
+        "and desert you": {
+            "contentSubtitle": "This should appear at the bottom of the title",
+            "imgSrc": "/images/carousel/testimg1.webp",
+            "contentBody": "this should be the content body",
+            "lastUpdatedDate": "25 May 2023"
+        },
+        "Never gonna say goodbye": {
+            "contentTitle": "get rick rolled lol",
+            "contentSubtitle": "This should appear at the bottom of the title",
+            "imgSrc": "/images/carousel/testimg2.webp",
+            "contentBody": "this should be the content body",
+            "lastUpdatedDate": "25 May 2023"
+        }
     }
 }

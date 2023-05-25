@@ -12,7 +12,7 @@ import { refreshAllCookies, getCookieValue, isCookie, setCookieValue } from '../
 import { Header } from '../components/header';
 import { Footer } from '../components/footer';
 import { TopNavigationBar } from '../components/nav';
-import { AboutPage, HomePage, Error404Page, OthersPage } from '../components/pages';
+import { AboutPage, HomePage, Error404Page, OthersPage, NewsPage } from '../components/pages';
 import DisplayRowPage from '../components/pages/DisplayRowPage';
 
 const loadInfo = require("./loadInfo.json");
@@ -32,6 +32,7 @@ class Main extends Component {
 		this.gameDictionary = loadInfo['fun-stuff'];
 		this.uniDictionary = loadInfo['uni-stuff'];
 		this.carouselDictionary = loadInfo['carousel'];
+		this.newsDictionary = loadInfo['news'];
 		this.miscDictionary = loadInfoComp['misc'];
 
 		this.headerRef = createRef();
@@ -122,6 +123,11 @@ class Main extends Component {
 								<DisplayRowPage dictionary={this.gameDictionary} />
 							} />
 
+							<Route path='/news' element={
+								<NewsPage footerRef={this.footerRef} dictionary={this.newsDictionary} />
+							}
+							/>
+
 							<Route path='*' element={
 								<Error404Page
 									customWarning={"Page not found OAO"}
@@ -133,7 +139,7 @@ class Main extends Component {
 
 				{/* Footer */}
 				{this.state.isStickyFooter ?
-					< Footer isStickyFooter={this.state.isStickyFooter} toggleStickyFooter={this.toggleStickyFooter} />
+					< Footer ref={this.footerRef} isStickyFooter={this.state.isStickyFooter} toggleStickyFooter={this.toggleStickyFooter} />
 					:
 					<div
 						className={`${this.state.contentTransitionStage}`}
