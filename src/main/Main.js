@@ -31,6 +31,7 @@ class Main extends Component {
 
 		this.gameDictionary = loadInfo['fun-stuff'];
 		this.uniDictionary = loadInfo['uni-stuff'];
+		this.carouselDictionary = loadInfo['carousel'];
 		this.miscDictionary = loadInfoComp['misc'];
 
 		this.headerRef = createRef();
@@ -100,6 +101,7 @@ class Main extends Component {
 								<HomePage
 									gameDictionary={this.gameDictionary}
 									uniDictionary={this.uniDictionary}
+									carouselDictionary={this.carouselDictionary}
 									miscDictionary={this.miscDictionary}
 								/>
 							} />
