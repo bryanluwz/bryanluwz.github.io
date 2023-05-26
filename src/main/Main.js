@@ -16,6 +16,7 @@ import { AboutPage, HomePage, Error404Page, OthersPage, NewsPage } from '../comp
 import DisplayRowPage from '../components/pages/DisplayRowPage';
 
 const loadInfo = require("./loadInfo.json");
+const newsInfo = require("./news.json");
 const loadInfoComp = require("../components/loadInfo.json");
 
 class Main extends Component {
@@ -32,7 +33,7 @@ class Main extends Component {
 		this.gameDictionary = loadInfo['fun-stuff'];
 		this.uniDictionary = loadInfo['uni-stuff'];
 		this.carouselDictionary = loadInfo['carousel'];
-		this.newsDictionary = loadInfo['news'];
+		this.newsDictionary = newsInfo['news'];
 		this.miscDictionary = loadInfoComp['misc'];
 
 		this.headerRef = createRef();
