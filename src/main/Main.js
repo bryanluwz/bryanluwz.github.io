@@ -33,7 +33,14 @@ class Main extends Component {
 		this.gameDictionary = loadInfo['fun-stuff'];
 		this.uniDictionary = loadInfo['uni-stuff'];
 		this.carouselDictionary = loadInfo['carousel'];
-		this.newsDictionary = newsInfo['news'];
+		this.newsDictionary =
+			Object.fromEntries(
+				Object.entries(newsInfo['news']).sort(([, newsA], [, newsB]) => {
+					const newsDateA = new Date(newsA.lastUpdatedDate);
+					const newsDateB = new Date(newsB.lastUpdatedDate);
+					return newsDateB - newsDateA;
+				})
+			);
 		this.miscDictionary = loadInfoComp['misc'];
 
 		this.headerRef = createRef();
@@ -49,7 +56,9 @@ class Main extends Component {
 	}
 
 	componentDidUpdate(prevProps, prevState) {
-		if (this.props.router.location.pathname !== prevProps.router.location.pathname) {
+		// If pathname is different, and don't care about id (pathname/:id) change
+		if (this.props.router.location.pathname !== prevProps.router.location.pathname &&
+			!this.props.router.location.pathname.includes(':')) {
 			this.setState({ contentTransitionStage: "fadeOut" });
 			this.headerRef.current?.scrollIntoView({ behavior: 'smooth' });
 		}
@@ -104,6 +113,7 @@ class Main extends Component {
 									gameDictionary={this.gameDictionary}
 									uniDictionary={this.uniDictionary}
 									carouselDictionary={this.carouselDictionary}
+									newsDictionary={this.newsDictionary}
 									miscDictionary={this.miscDictionary}
 								/>
 							} />
@@ -124,10 +134,23 @@ class Main extends Component {
 								<DisplayRowPage dictionary={this.gameDictionary} />
 							} />
 
-							<Route path='/news' element={
-								<NewsPage footerRef={this.footerRef} dictionary={this.newsDictionary} />
-							}
+							<Route path='/news?/:newsKey'
+								element={
+									<NewsPage
+										footerRef={this.footerRef}
+										dictionary={this.newsDictionary}
+									/>
+								}
 							/>
+
+							{/* <Route path='/news'
+								element={
+									<NewsPage
+										footerRef={this.footerRef}
+										dictionary={this.newsDictionary}
+									/>
+								}
+							/> */}
 
 							<Route path='*' element={
 								<Error404Page
