@@ -10,37 +10,6 @@
             "contentSubtitle": "Stay Informed with Our Latest News Section!",
             "contentBody": "Exciting news awaits you in our brand new News Section! Discover the latest progress, features, and exciting updates happening right here on our website.",
             "lastUpdatedDate": "26 May 2023"
-        },
-        "Baby dont stop me now": {
-            "contentSubtitle": "This should appear at the bottom of the title",
-            "imgSrc": "/images/carousel/testimg1.webp",
-            "contentBody": "this should be the content body",
-            "lastUpdatedDate": "25 May 2023"
-        },
-        "Never gonna let you down": {
-            "contentSubtitle": "This should appear at the bottom of the title",
-            "imgSrc": "/images/carousel/testimg1.webp",
-            "contentBody": "this should be the content body",
-            "lastUpdatedDate": "25 May 2023"
-        },
-        "Never gonna run around": {
-            "contentSubtitle": "This should appear at the bottom of the title",
-            "imgSrc": "/images/carousel/testimg1.webp",
-            "contentBody": "this should be the content body",
-            "lastUpdatedDate": "25 May 2023"
-        },
-        "and desert you": {
-            "contentSubtitle": "This should appear at the bottom of the title",
-            "imgSrc": "/images/carousel/testimg1.webp",
-            "contentBody": "this should be the content body",
-            "lastUpdatedDate": "25 May 2023"
-        },
-        "Never gonna say goodbye": {
-            "contentTitle": "get rick rolled lol",
-            "contentSubtitle": "This should appear at the bottom of the title",
-            "imgSrc": "/images/carousel/testimg2.webp",
-            "contentBody": "this should be the content body",
-            "lastUpdatedDate": "19 May 2023"
         }
     }
 }

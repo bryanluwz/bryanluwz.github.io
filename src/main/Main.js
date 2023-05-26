@@ -143,15 +143,6 @@ class Main extends Component {
 								}
 							/>
 
-							{/* <Route path='/news'
-								element={
-									<NewsPage
-										footerRef={this.footerRef}
-										dictionary={this.newsDictionary}
-									/>
-								}
-							/> */}
-
 							<Route path='*' element={
 								<Error404Page
 									customWarning={"Page not found OAO"}
