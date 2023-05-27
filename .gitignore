@@ -28,3 +28,4 @@ TODO.txt
 *.zip
 help.js
 .vscode
+__pycache__
