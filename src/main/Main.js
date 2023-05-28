@@ -56,9 +56,12 @@ class Main extends Component {
 	}
 
 	componentDidUpdate(prevProps, prevState) {
-		// If pathname is different, and don't care about id (pathname/:id) change
+		// Change only if the pathname changes, given that (colon is for news id)
+		// The previous pathname and the new one both does not have a colon, OR
+		// The previous pathname does not contain a colon, and the new one does have a colon
+		// Basically only ignore when both pathname has a colon after '/news/
 		if (this.props.router.location.pathname !== prevProps.router.location.pathname &&
-			!this.props.router.location.pathname.includes(':')) {
+			!(this.props.router.location.pathname.includes('/news/:') && prevProps.router.location.pathname.includes('/news/:'))) {
 			this.setState({ contentTransitionStage: "fadeOut" });
 			this.headerRef.current?.scrollIntoView({ behavior: 'smooth' });
 		}
