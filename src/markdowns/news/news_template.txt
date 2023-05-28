@@ -1,0 +1,23 @@
+# <Title>
+
+<Subtitle>
+
+## Image (optional)
+
+/images/<image file path>
+
+## Link Image (optional)
+
+<link for image>
+
+## Title (optinal)
+
+<Title for news view, if nth, then use header>
+
+## Body
+
+<text body>
+
+## Date
+
+1 June 1969

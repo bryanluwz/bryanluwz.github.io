@@ -15,7 +15,9 @@ import { TopNavigationBar } from '../components/nav';
 import { AboutPage, HomePage, Error404Page, OthersPage, NewsPage } from '../components/pages';
 import DisplayRowPage from '../components/pages/DisplayRowPage';
 
-const loadInfo = require("./loadInfo.json");
+const carouselInfo = require("./carousel.json");
+const funStuffInfo = require("./funStuff.json");
+const uniStuffInfo = require("./uniStuff.json");
 const newsInfo = require("./news.json");
 const loadInfoComp = require("../components/loadInfo.json");
 
@@ -30,9 +32,9 @@ class Main extends Component {
 			displayLocation: this.props.router.location
 		};
 
-		this.gameDictionary = loadInfo['fun-stuff'];
-		this.uniDictionary = loadInfo['uni-stuff'];
-		this.carouselDictionary = loadInfo['carousel'];
+		this.gameDictionary = funStuffInfo['fun-stuff'];
+		this.uniDictionary = uniStuffInfo['uni-stuff'];
+		this.carouselDictionary = carouselInfo['carousel'];
 		this.newsDictionary =
 			Object.fromEntries(
 				Object.entries(newsInfo['news']).sort(([, newsA], [, newsB]) => {
@@ -137,7 +139,7 @@ class Main extends Component {
 								<DisplayRowPage dictionary={this.gameDictionary} />
 							} />
 
-							<Route path='/news?/:newsKey'
+							<Route path='/news/:newsKey?'
 								element={
 									<NewsPage
 										footerRef={this.footerRef}

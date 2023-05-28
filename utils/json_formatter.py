@@ -56,12 +56,15 @@ class JSONFormatter:
         return (None, None)
 
     # This function will read the contents of the json file as a variable, and update the json with the new json
-    def update_json(self):
+    def update_json(self, mainKey: str):
         if self.json_file_path is None:
             raise Exception("[-] Json file path is not provided")
 
         with open(self.json_file_path, 'r', encoding='utf-8') as f:
-            old_json = json.load(f)['news']
+            try:
+                old_json = json.load(f)[mainKey]
+            except:
+                old_json = {}
 
         new_json = self.parse_inputs()
 
@@ -71,4 +74,4 @@ class JSONFormatter:
 
         # Write the new json to the json file
         with open(self.json_file_path, 'w', encoding='utf-8') as f:
-            json.dump({'news': old_json}, f, indent=4, ensure_ascii=False)
+            json.dump({mainKey: old_json}, f, indent=4, ensure_ascii=False)

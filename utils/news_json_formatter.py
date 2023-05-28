@@ -26,7 +26,6 @@ class NewsJSONFormatter (json_formatter.JSONFormatter):
     def input_markdown_to_json(self, markdownFile):
         with open(markdownFile, 'r', encoding='utf-8') as f:
             lines = f.readlines()
-            # lines = [line.strip() for line in lines if line.strip() != '']
 
         json = {}
 
@@ -138,5 +137,5 @@ if __name__ == "__main__":
     news_json_formatter.set_json_file_path(
         r'C:\Users\bryan\Documents\GitHub\bryanluwz.github.io\src\main\news.json')
     news_json_formatter.set_input_folder_path(
-        r'C:\Users\bryan\Documents\GitHub\bryanluwz.github.io\src\news')
-    news_json_formatter.update_json()
+        r'C:\Users\bryan\Documents\GitHub\bryanluwz.github.io\src\markdowns\news')
+    news_json_formatter.update_json(mainKey='news')

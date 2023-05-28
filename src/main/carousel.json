@@ -1,0 +1,11 @@
+{
+    "carousel": {
+        "cat-gpt": {
+            "imgSrc": "/images/carousel/Cat-GPT-carousel-banner.png",
+            "link": "https://bryanluwz.github.io/cat-gpt"
+        },
+        "img2": {
+            "imgSrc": "/images/carousel/testimg2.webp"
+        }
+    }
+}

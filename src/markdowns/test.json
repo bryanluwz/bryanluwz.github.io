@@ -1,0 +1,32 @@
+{
+    "fun-stuff": {
+        "CatGPT": {
+            "displayName": "CatGPT",
+            "subtitle": "ChatGPT isn't answering your questions well? Well, try CatGPT instead!",
+            "icon": "/images/carousel/Cat-GPT-logo.png",
+            "routeLink": "https://bryanluwz.github.io/cat-gpt",
+            "lastUpdatedDate": "19s May 2023"
+        },
+        "Flip A Coin": {
+            "displayName": "Flip A Coin",
+            "subtitle": "What would you get? Shiba-chan's floofy head, or butthole?",
+            "icon": "/images/Flip-A-Coin-assets/FAC-Tails.png",
+            "routeLink": "https://bryanluwz.github.io/flip-a-coin",
+            "lastUpdatedDate": "19 May 2023"
+        },
+        "Guess the RGB": {
+            "displayName": "Guess the RGB",
+            "subtitle": "Guess the RGB value of the colour!",
+            "icon": "/images/Guess-The-RGB-assets/Guess-The-RGB-logo.png",
+            "routeLink": "https://bryanluwz.github.io/guess-the-rgb",
+            "lastUpdatedDate": "23 May 2023"
+        },
+        "Wheel of Names": {
+            "displayName": "Wheel of Names",
+            "subtitle": "The Wheel spinneth and the Wheel decideth",
+            "icon": "/images/Wheel-Of-Names-assets/Wheel-Of-Names-logo.png",
+            "routeLink": "https://bryanluwz.github.io/wheel-of-names",
+            "lastUpdatedDate": "20 May 2023"
+        }
+    }
+}
