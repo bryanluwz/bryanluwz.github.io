@@ -15,10 +15,6 @@ import { TopNavigationBar } from '../components/nav';
 import { AboutPage, HomePage, Error404Page, OthersPage, NewsPage } from '../components/pages';
 import DisplayRowPage from '../components/pages/DisplayRowPage';
 
-const carouselInfo = require("./carousel.json");
-const funStuffInfo = require("./funStuff.json");
-const uniStuffInfo = require("./uniStuff.json");
-const newsInfo = require("./news.json");
 const loadInfoComp = require("../components/loadInfo.json");
 
 class Main extends Component {
@@ -29,33 +25,12 @@ class Main extends Component {
 			isStickyFooter: false,
 			showCookie: !isCookie(),  // to continue show cookie banner or not
 			contentTransitionStage: "fadeIn",
-			displayLocation: this.props.router.location
+			displayLocation: this.props.router.location,
+			gameDictionary: {},
+			uniDictionary: {},
+			carouselDictionary: {},
+			newsDictionary: {},
 		};
-
-		this.gameDictionary =
-			Object.fromEntries(
-				Object.entries(funStuffInfo['fun-stuff']).sort(([, itemA], [, itemB]) => {
-					return itemA.displayName > itemB.displayName ? 1 : -1;
-				})
-			);
-
-		this.uniDictionary =
-			Object.fromEntries(
-				Object.entries(uniStuffInfo['uni-stuff']).sort(([, itemA], [, itemB]) => {
-					return itemA.displayName > itemB.displayName ? 1 : -1;
-				})
-			);
-
-		this.carouselDictionary = carouselInfo['carousel'];
-
-		this.newsDictionary =
-			Object.fromEntries(
-				Object.entries(newsInfo['news']).sort(([, newsA], [, newsB]) => {
-					const newsDateA = new Date(newsA.lastUpdatedDate);
-					const newsDateB = new Date(newsB.lastUpdatedDate);
-					return newsDateB - newsDateA;
-				})
-			);
 
 		this.miscDictionary = loadInfoComp['misc'];
 
@@ -63,10 +38,79 @@ class Main extends Component {
 	}
 
 	componentDidMount() {
+		// Init sticky footer
 		const isStickyFooter = getCookieValue("isStickyFooter");
 		if (isStickyFooter) {
 			this.setState({ isStickyFooter: JSON.parse(isStickyFooter) });
 		}
+
+		// Init dictionaries that are fetched online then
+		// Create and sort the dictionaries
+		var carouselInfo = null;
+		var funStuffInfo = null;
+		var uniStuffInfo = null;
+		var newsInfo = null;
+
+		fetch("https://raw.githubusercontent.com/bryanluwz/bryanluwz.github.io/main/src/main/funStuff.json")
+			.then(response => response.json())
+			.then(data => {
+				funStuffInfo = data;
+
+				const gameDictionary =
+					Object.fromEntries(
+						Object.entries(funStuffInfo['fun-stuff']).sort(([, itemA], [, itemB]) => {
+							return itemA.displayName > itemB.displayName ? 1 : -1;
+						})
+					);
+
+				this.setState({ gameDictionary: gameDictionary });
+			})
+			.catch(error => console.log(error));
+
+		fetch("https://raw.githubusercontent.com/bryanluwz/bryanluwz.github.io/main/src/main/uniStuff.json")
+			.then(response => response.json())
+			.then(data => {
+				uniStuffInfo = data;
+
+				const uniDictionary =
+					Object.fromEntries(
+						Object.entries(uniStuffInfo['uni-stuff']).sort(([, itemA], [, itemB]) => {
+							return itemA.displayName > itemB.displayName ? 1 : -1;
+						})
+					);
+
+				this.setState({ uniDictionary: uniDictionary });
+			})
+			.catch(error => console.log(error));
+
+		fetch("https://raw.githubusercontent.com/bryanluwz/bryanluwz.github.io/main/src/main/carousel.json")
+			.then(response => response.json())
+			.then(data => {
+				carouselInfo = data;
+
+				const carouselDictionary = carouselInfo['carousel'];
+
+				this.setState({ carouselDictionary: carouselDictionary });
+			})
+			.catch(error => console.log(error));
+
+		fetch("https://raw.githubusercontent.com/bryanluwz/bryanluwz.github.io/main/src/main/news.json")
+			.then(response => response.json())
+			.then(data => {
+				newsInfo = data;
+
+				const newsDictionary =
+					Object.fromEntries(
+						Object.entries(newsInfo['news']).sort(([, newsA], [, newsB]) => {
+							const newsDateA = new Date(newsA.lastUpdatedDate);
+							const newsDateB = new Date(newsB.lastUpdatedDate);
+							return newsDateB - newsDateA;
+						})
+					);
+
+				this.setState({ newsDictionary: newsDictionary });
+			})
+			.catch(error => console.log(error));
 
 		refreshAllCookies();
 	}
@@ -129,10 +173,10 @@ class Main extends Component {
 						<Routes location={this.state.displayLocation}>
 							<Route path="/" element={
 								<HomePage
-									gameDictionary={this.gameDictionary}
-									uniDictionary={this.uniDictionary}
-									carouselDictionary={this.carouselDictionary}
-									newsDictionary={this.newsDictionary}
+									gameDictionary={this.state.gameDictionary}
+									uniDictionary={this.state.uniDictionary}
+									carouselDictionary={this.state.carouselDictionary}
+									newsDictionary={this.state.newsDictionary}
 									miscDictionary={this.miscDictionary}
 								/>
 							} />
@@ -146,18 +190,18 @@ class Main extends Component {
 							} />
 
 							<Route path='/uni-stuff' element={
-								<DisplayRowPage dictionary={this.uniDictionary} />
+								<DisplayRowPage dictionary={this.state.uniDictionary} />
 							} />
 
 							<Route path='/fun-stuff' element={
-								<DisplayRowPage dictionary={this.gameDictionary} />
+								<DisplayRowPage dictionary={this.state.gameDictionary} />
 							} />
 
 							<Route path='/news/:newsKey?'
 								element={
 									<NewsPage
 										footerRef={this.footerRef}
-										dictionary={this.newsDictionary}
+										dictionary={this.state.newsDictionary}
 									/>
 								}
 							/>
