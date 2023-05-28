@@ -32,9 +32,22 @@ class Main extends Component {
 			displayLocation: this.props.router.location
 		};
 
-		this.gameDictionary = funStuffInfo['fun-stuff'];
-		this.uniDictionary = uniStuffInfo['uni-stuff'];
+		this.gameDictionary =
+			Object.fromEntries(
+				Object.entries(funStuffInfo['fun-stuff']).sort(([, itemA], [, itemB]) => {
+					return itemA.displayName > itemB.displayName ? 1 : -1;
+				})
+			);
+
+		this.uniDictionary =
+			Object.fromEntries(
+				Object.entries(uniStuffInfo['uni-stuff']).sort(([, itemA], [, itemB]) => {
+					return itemA.displayName > itemB.displayName ? 1 : -1;
+				})
+			);
+
 		this.carouselDictionary = carouselInfo['carousel'];
+
 		this.newsDictionary =
 			Object.fromEntries(
 				Object.entries(newsInfo['news']).sort(([, newsA], [, newsB]) => {
@@ -43,6 +56,7 @@ class Main extends Component {
 					return newsDateB - newsDateA;
 				})
 			);
+
 		this.miscDictionary = loadInfoComp['misc'];
 
 		this.headerRef = createRef();
