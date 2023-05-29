@@ -14,6 +14,7 @@ import { Footer } from '../components/footer';
 import { TopNavigationBar } from '../components/nav';
 import { AboutPage, HomePage, Error404Page, OthersPage, NewsPage } from '../components/pages';
 import DisplayRowPage from '../components/pages/DisplayRowPage';
+import { CAROUSEL_JSON_URL, FUN_STUFF_JSON_URL, NEWS_JSON_URL, UNI_STUFF_JSON_URL } from './constants';
 
 const loadInfoComp = require("../components/loadInfo.json");
 
@@ -51,7 +52,7 @@ class Main extends Component {
 		var uniStuffInfo = null;
 		var newsInfo = null;
 
-		fetch("https://raw.githubusercontent.com/bryanluwz/bryanluwz.github.io/main/src/main/funStuff.json")
+		fetch(FUN_STUFF_JSON_URL)
 			.then(response => response.json())
 			.then(data => {
 				funStuffInfo = data;
@@ -67,7 +68,7 @@ class Main extends Component {
 			})
 			.catch(error => console.log(error));
 
-		fetch("https://raw.githubusercontent.com/bryanluwz/bryanluwz.github.io/main/src/main/uniStuff.json")
+		fetch(UNI_STUFF_JSON_URL)
 			.then(response => response.json())
 			.then(data => {
 				uniStuffInfo = data;
@@ -83,7 +84,7 @@ class Main extends Component {
 			})
 			.catch(error => console.log(error));
 
-		fetch("https://raw.githubusercontent.com/bryanluwz/bryanluwz.github.io/main/src/main/carousel.json")
+		fetch(CAROUSEL_JSON_URL)
 			.then(response => response.json())
 			.then(data => {
 				carouselInfo = data;
@@ -94,7 +95,7 @@ class Main extends Component {
 			})
 			.catch(error => console.log(error));
 
-		fetch("https://raw.githubusercontent.com/bryanluwz/bryanluwz.github.io/main/src/main/news.json")
+		fetch(NEWS_JSON_URL)
 			.then(response => response.json())
 			.then(data => {
 				newsInfo = data;
@@ -116,12 +117,9 @@ class Main extends Component {
 	}
 
 	componentDidUpdate(prevProps, prevState) {
-		// Change only if the pathname changes, given that (colon is for news id)
-		// The previous pathname and the new one both does not have a colon, OR
-		// The previous pathname does not contain a colon, and the new one does have a colon
-		// Basically only ignore when both pathname has a colon after '/news/
-		if (this.props.router.location.pathname !== prevProps.router.location.pathname &&
-			!(this.props.router.location.pathname.includes('/news/:') && prevProps.router.location.pathname.includes('/news/:'))) {
+		// Set transition stage only if the pathname changes, in the following conditions
+		// 1. Pathnames before '/:' (if it exists) are different
+		if (this.props.router.location.pathname.split('/:')[0] !== prevProps.router.location.pathname.split('/:')[0]) {
 			this.setState({ contentTransitionStage: "fadeOut" });
 			this.headerRef.current?.scrollIntoView({ behavior: 'smooth' });
 		}
