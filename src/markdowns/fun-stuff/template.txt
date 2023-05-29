@@ -4,7 +4,7 @@
 
 ## Icon
 
-/images/<icon file path>
+https://raw.githubusercontent.com/bryanluwz/gh-pages-common-public/main/images/<icon file path>
 
 ## Route Link
 

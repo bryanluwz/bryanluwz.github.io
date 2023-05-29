@@ -4,7 +4,7 @@ ChatGPT isn't answering your questions well? Well, try CatGPT instead!
 
 ## Icon
 
-/images/Cat-GPT-assets/Cat-GPT-logo.png
+https://raw.githubusercontent.com/bryanluwz/gh-pages-common-public/main/images/Cat-GPT-assets/Cat-GPT-logo.png
 
 ## Route Link
 

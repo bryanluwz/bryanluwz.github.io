@@ -4,7 +4,7 @@
 
 ## Image (optional)
 
-/images/<image file path>
+https://raw.githubusercontent.com/bryanluwz/gh-pages-common-public/main/images/<image file path>
 
 ## Link Image (optional)
 

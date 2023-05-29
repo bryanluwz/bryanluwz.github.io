@@ -4,7 +4,7 @@ Unleash Creativity with Feline AI! 🐾
 
 ## Image
 
-/images/carousel/Cat-GPT-carousel-banner.png
+https://raw.githubusercontent.com/bryanluwz/gh-pages-common-public/main/images/carousel/Cat-GPT-carousel-banner.png
 
 ## Link Image
 

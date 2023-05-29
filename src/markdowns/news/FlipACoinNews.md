@@ -4,7 +4,7 @@ Let Fate Decide!
 
 ## Image
 
-/images/carousel/Flip-A-Coin-carousel-banner.png
+https://raw.githubusercontent.com/bryanluwz/gh-pages-common-public/main/images/carousel/Flip-A-Coin-carousel-banner.png
 
 ## Link Image
 

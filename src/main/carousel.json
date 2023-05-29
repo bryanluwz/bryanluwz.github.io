@@ -1,11 +1,11 @@
 {
     "carousel": {
         "cat-gpt": {
-            "imgSrc": "/images/carousel/Cat-GPT-carousel-banner.png",
+            "imgSrc": "https://raw.githubusercontent.com/bryanluwz/gh-pages-common-public/main/images/carousel/Cat-GPT-carousel-banner.png",
             "link": "https://bryanluwz.github.io/cat-gpt"
         },
         "img2": {
-            "imgSrc": "/images/carousel/Flip-A-Coin-carousel-banner.png",
+            "imgSrc": "https://raw.githubusercontent.com/bryanluwz/gh-pages-common-public/main/images/carousel/Flip-A-Coin-carousel-banner.png",
             "link": "https://bryanluwz.github.io/flip-a-coin"
         }
     }

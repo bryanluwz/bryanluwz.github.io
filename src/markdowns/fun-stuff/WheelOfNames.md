@@ -4,7 +4,7 @@ The Wheel spinneth and the Wheel decideth
 
 ## Icon
 
-/images/Wheel-Of-Names-assets/Wheel-Of-Names-logo.png
+https://raw.githubusercontent.com/bryanluwz/gh-pages-common-public/main/images/Wheel-Of-Names-assets/Wheel-Of-Names-logo.png
 
 ## Route Link
 
