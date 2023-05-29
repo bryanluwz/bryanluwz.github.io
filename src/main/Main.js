@@ -12,8 +12,7 @@ import { refreshAllCookies, getCookieValue, isCookie, setCookieValue } from '../
 import { Header } from '../components/header';
 import { Footer } from '../components/footer';
 import { TopNavigationBar } from '../components/nav';
-import { AboutPage, HomePage, Error404Page, OthersPage, NewsPage } from '../components/pages';
-import DisplayRowPage from '../components/pages/DisplayRowPage';
+import { AboutPage, HomePage, Error404Page, OthersPage, NewsPage, DisplayRowPage } from '../components/pages';
 import { CAROUSEL_JSON_URL, FUN_STUFF_JSON_URL, NEWS_JSON_URL, UNI_STUFF_JSON_URL } from './constants';
 
 const loadInfoComp = require("../components/loadInfo.json");
