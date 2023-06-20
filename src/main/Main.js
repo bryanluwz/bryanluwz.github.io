@@ -12,7 +12,9 @@ import { refreshAllCookies, getCookieValue, isCookie, setCookieValue } from '../
 import { Header } from '../components/header';
 import { Footer } from '../components/footer';
 import { TopNavigationBar } from '../components/nav';
-import { AboutPage, HomePage, Error404Page, OthersPage, NewsPage, DisplayRowPage } from '../components/pages';
+import { Segment } from '../components/segment';
+import { AmnesiaButton } from '../components/others';
+import { HomePage, Error404Page, NewsPage, DisplayRowPage, DisplayTextTitleCardPage } from '../components/pages';
 import { CAROUSEL_JSON_URL, FUN_STUFF_JSON_URL, NEWS_JSON_URL, UNI_STUFF_JSON_URL } from './constants';
 
 const loadInfoComp = require("../components/loadInfo.json");
@@ -33,6 +35,8 @@ class Main extends Component {
 		};
 
 		this.miscDictionary = loadInfoComp['misc'];
+		this.aboutPageDictionary = loadInfoComp['about-page'];
+		this.othersPageDictionary = loadInfoComp['others-page'];
 
 		this.headerRef = createRef();
 	}
@@ -179,11 +183,15 @@ class Main extends Component {
 							} />
 
 							<Route path='/others' element={
-								<OthersPage router={this.props.router} />
+								<DisplayTextTitleCardPage pageDictionary={this.othersPageDictionary} router={this.props.router} >
+									<Segment title="buttons!">
+										<AmnesiaButton router={this.props.router} buttonName={"cookie diet"} confirmName={"you sure?"} />
+									</Segment>
+								</DisplayTextTitleCardPage>
 							} />
 
 							<Route path='/about' element={
-								<AboutPage />
+								<DisplayTextTitleCardPage pageDictionary={this.aboutPageDictionary} />
 							} />
 
 							<Route path='/uni-stuff' element={
