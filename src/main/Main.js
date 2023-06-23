@@ -156,7 +156,8 @@ class Main extends Component {
 						contentClasses="cookie-content"
 					>
 						{"you wants cookies for beddar user experience?"}
-					</CookieConsent>}
+					</CookieConsent>
+				}
 
 				<main ref={this.headerRef}>
 					{/* Header and top navigation */}
