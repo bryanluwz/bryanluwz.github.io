@@ -15,9 +15,7 @@ import { TopNavigationBar } from '../components/nav';
 import { Segment } from '../components/segment';
 import { AmnesiaButton } from '../components/others';
 import { HomePage, Error404Page, NewsPage, DisplayRowPage, DisplayTextTitleCardPage } from '../components/pages';
-import { CAROUSEL_JSON_URL, FUN_STUFF_JSON_URL, NEWS_JSON_URL, UNI_STUFF_JSON_URL } from './constants';
-
-const loadInfoComp = require("https://raw.githubusercontent.com/bryanluwz/gh-pages-common-component/95ee6ab69337a8a6cf9d85be8cdf8379939c52a8/loadInfo.json");
+import { CAROUSEL_JSON_URL, FUN_STUFF_JSON_URL, LOAD_INFO_JSON_URL, NEWS_JSON_URL, UNI_STUFF_JSON_URL } from './constants';
 
 class Main extends Component {
 	constructor(props) {
@@ -32,11 +30,12 @@ class Main extends Component {
 			uniDictionary: {},
 			carouselDictionary: {},
 			newsDictionary: {},
+			loadInfoComp: {}
 		};
 
-		this.miscDictionary = loadInfoComp['misc'];
-		this.aboutPageDictionary = loadInfoComp['about-page'];
-		this.othersPageDictionary = loadInfoComp['others-page'];
+		this.miscDictionary = null;
+		this.aboutPageDictionary = null;
+		this.othersPageDictionary = null;
 
 		this.headerRef = createRef();
 	}
@@ -54,6 +53,7 @@ class Main extends Component {
 		var funStuffInfo = null;
 		var uniStuffInfo = null;
 		var newsInfo = null;
+		var loadInfoComp = null;
 
 		fetch(FUN_STUFF_JSON_URL)
 			.then(response => response.json())
@@ -113,6 +113,16 @@ class Main extends Component {
 					);
 
 				this.setState({ newsDictionary: newsDictionary });
+			})
+			.catch(error => console.log(error));
+
+		fetch(LOAD_INFO_JSON_URL)
+			.then(response => response.json())
+			.then(data => {
+				loadInfoComp = data;
+				this.miscDictionary = loadInfoComp['misc'];
+				this.aboutPageDictionary = loadInfoComp['about-page'];
+				this.othersPageDictionary = loadInfoComp['others-page'];
 			})
 			.catch(error => console.log(error));
 
