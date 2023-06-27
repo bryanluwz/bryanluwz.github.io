@@ -12,4 +12,4 @@ https://bryanluwz.github.io/cat-gpt
 
 ## Date
 
-19s May 2023
+19 May 2023
