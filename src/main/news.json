@@ -18,6 +18,20 @@
             "imgLink": "https://bryanluwz.github.io/flip-a-coin",
             "contentBody": "\nIntroducing Shiba Inu Chan's Flip a Coin webpage, where you can leave decisions up to chance with an adorable twist! Experience the joy of flipping a coin alongside everyone's favorite Shiba Inu. Whether it's settling a friendly debate or making a spontaneous choice, Shiba Inu Chan is here to add a touch of whimsy to your decision-making process. Embrace the excitement and flip away!\n\n",
             "lastUpdatedDate": "28 May 2023"
+        },
+        "Colour Quest": {
+            "contentSubtitle": "Join Our Cute Gnome in Guessing the Mysterious RGB!",
+            "imgSrc": "https://raw.githubusercontent.com/bryanluwz/gh-pages-common-public/main/images/carousel/Flip-A-Coin-carousel-banner.png",
+            "imgLink": "https://bryanluwz.github.io/guess-the-rgb",
+            "contentBody": "\nEmbark on an exhilarating adventure of color exploration! Our adorable gnome companion needs your help to decipher the RGB code of various hues. Unlock your inner artist as you unravel the mysteries of vibrant shades. Prepare for a whimsical journey filled with surprises and the joy of mastering colors!\n\n",
+            "lastUpdatedDate": "27 June 2023"
+        },
+        "Whirlwind of Wonder": {
+            "contentSubtitle": "Enter the Enchanting Realm of the Wheel of Names!",
+            "imgSrc": "https://raw.githubusercontent.com/bryanluwz/gh-pages-common-public/main/images/carousel/Flip-A-Coin-carousel-banner.png",
+            "imgLink": "https://bryanluwz.github.io/wheel-of-names",
+            "contentBody": "\nStep into a realm where magic and anticipation intertwine! The enchanting Wheel of Names awaits, adorned with its charming carousel of possibilities. Let its whimsical spin guide your fate, as giggles fill the air. Discover the joy of surprises, where every name becomes a delightful adventure. Embrace the cuteness and let the magic begin!\n\n",
+            "lastUpdatedDate": "27 June 2023"
         }
     }
 }
