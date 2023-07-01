@@ -27,6 +27,12 @@
             "icon": "https://raw.githubusercontent.com/bryanluwz/gh-pages-common-public/main/images/Wheel-Of-Names-assets/Wheel-Of-Names-logo.png",
             "routeLink": "https://bryanluwz.github.io/wheel-of-names",
             "lastUpdatedDate": "20 May 2023"
+        },
+        "Living RPS": {
+            "displayName": "Living RPS",
+            "subtitle": "Survival Showdown: Rock, Paper, Scissors Battle for Life!",
+            "routeLink": "https://bryanluwz.github.io/living-rps",
+            "lastUpdatedDate": "1 July 2023"
         }
     }
 }
