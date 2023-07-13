@@ -15,7 +15,7 @@ import { TopNavigationBar } from '../components/nav';
 import { Segment } from '../components/segment';
 import { AmnesiaButton } from '../components/others';
 import { HomePage, Error404Page, NewsPage, DisplayRowPage, DisplayTextTitleCardPage } from '../components/pages';
-import { CAROUSEL_JSON_URL, FUN_STUFF_JSON_URL, LOAD_INFO_JSON_URL, NEWS_JSON_URL, UNI_STUFF_JSON_URL } from './constants';
+import { CAROUSEL_JSON_URL, FUN_STUFF_JSON_URL, LOAD_INFO_JSON_URL, NEWS_JSON_URL, CODING_STUFF_JSON_URL } from './constants';
 
 class Main extends Component {
 	constructor(props) {
@@ -27,7 +27,7 @@ class Main extends Component {
 			contentTransitionStage: "fadeIn",
 			displayLocation: this.props.router.location,
 			gameDictionary: {},
-			uniDictionary: {},
+			codingDictionary: {},
 			carouselDictionary: {},
 			newsDictionary: {},
 			loadInfoComp: {}
@@ -51,7 +51,7 @@ class Main extends Component {
 		// Create and sort the dictionaries
 		var carouselInfo = null;
 		var funStuffInfo = null;
-		var uniStuffInfo = null;
+		var codingStuffInfo = null;
 		var newsInfo = null;
 		var loadInfoComp = null;
 
@@ -71,19 +71,19 @@ class Main extends Component {
 			})
 			.catch(error => console.log(error));
 
-		fetch(UNI_STUFF_JSON_URL)
+		fetch(CODING_STUFF_JSON_URL)
 			.then(response => response.json())
 			.then(data => {
-				uniStuffInfo = data;
+				codingStuffInfo = data;
 
-				const uniDictionary =
+				const codingDictionary =
 					Object.fromEntries(
-						Object.entries(uniStuffInfo['uni-stuff']).sort(([, itemA], [, itemB]) => {
+						Object.entries(codingStuffInfo['uni-stuff']).sort(([, itemA], [, itemB]) => {
 							return itemA.displayName > itemB.displayName ? 1 : -1;
 						})
 					);
 
-				this.setState({ uniDictionary: uniDictionary });
+				this.setState({ codingDictionary: codingDictionary });
 			})
 			.catch(error => console.log(error));
 
@@ -186,7 +186,7 @@ class Main extends Component {
 							<Route path="/" element={
 								<HomePage
 									gameDictionary={this.state.gameDictionary}
-									uniDictionary={this.state.uniDictionary}
+									codingDictionary={this.state.codingDictionary}
 									carouselDictionary={this.state.carouselDictionary}
 									newsDictionary={this.state.newsDictionary}
 									miscDictionary={this.miscDictionary}
@@ -205,12 +205,12 @@ class Main extends Component {
 								<DisplayTextTitleCardPage pageDictionary={this.aboutPageDictionary} />
 							} />
 
-							<Route path='/uni-stuff' element={
-								<DisplayRowPage dictionary={this.state.uniDictionary} />
+							<Route path='/coding-stuff' element={
+								<DisplayRowPage dictionary={this.state.codingDictionary} error404ImgSrc={this.miscDictionary?.error404.imgSrc} />
 							} />
 
 							<Route path='/fun-stuff' element={
-								<DisplayRowPage dictionary={this.state.gameDictionary} />
+								<DisplayRowPage dictionary={this.state.gameDictionary} error404ImgSrc={this.miscDictionary?.error404.imgSrc} />
 							} />
 
 							<Route path='/news/:newsKey?'

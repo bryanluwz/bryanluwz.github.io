@@ -1,5 +1,5 @@
 {
-    "uni-stuff": {
+    "coding-stuff": {
         "Elevator Optimisation Using Machine Learning": {
             "displayName": "Elevator Optimisation Using Machine Learning",
             "subtitle": "Check out how we attempt to use machine learning (not that much really) to optimise elevator operation procedure for a hackathon!!",
@@ -17,6 +17,12 @@
             "subtitle": "Code Dump for SC2001 Algorithm Design and Analysis",
             "routeLink": "https://github.com/bryanluwz/NTU-SC2001-Algorithm-Design-and-Analysis",
             "lastUpdatedDate": "8 Nov 2022"
+        },
+        "NTU SC2002 Group Project": {
+            "displayName": "NTU SC2002 Group Project",
+            "subtitle": "Code Dump for SC2002 Object Oriented Programming Group Project -- MOBLIMA",
+            "routeLink": "https://github.com/r3ny0u/SC2002",
+            "lastUpdatedDate": "13 Nov 2022"
         },
         "NTU SC2002 Object Oriented Programming": {
             "displayName": "NTU SC2002 Object Oriented Programming",
@@ -53,12 +59,6 @@
             "subtitle": "Code Dump for SC2107 Microprocessor Design and Development",
             "routeLink": "https://github.com/bryanluwz/NTU-SC2107-Microprocessor-Design-and-Development",
             "lastUpdatedDate": "4 Nov 2022"
-        },
-        "NTU SC2002 Group Project": {
-            "displayName": "NTU SC2002 Group Project",
-            "subtitle": "Code Dump for SC2002 Object Oriented Programming Group Project -- MOBLIMA",
-            "routeLink": "https://github.com/r3ny0u/SC2002",
-            "lastUpdatedDate": "13 Nov 2022"
         }
     }
 }

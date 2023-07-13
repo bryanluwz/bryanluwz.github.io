@@ -109,7 +109,7 @@ if __name__ == "__main__":
 
     uni_stuff_json_formatter = GenericJSONFormatter()
     uni_stuff_json_formatter.set_json_file_path(
-        r'C:\Users\bryan\Documents\GitHub\bryanluwz.github.io\src\main\uniStuff.json')
+        r'C:\Users\bryan\Documents\GitHub\bryanluwz.github.io\src\main\codingStuff.json')
     uni_stuff_json_formatter.set_input_folder_path(
-        r'C:\Users\bryan\Documents\GitHub\bryanluwz.github.io\src\markdowns\uni')
-    uni_stuff_json_formatter.update_json(mainKey='uni-stuff')
+        r'C:\Users\bryan\Documents\GitHub\bryanluwz.github.io\src\markdowns\coding')
+    uni_stuff_json_formatter.update_json(mainKey='coding-stuff')
