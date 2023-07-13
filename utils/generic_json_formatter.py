@@ -107,9 +107,9 @@ if __name__ == "__main__":
         r'C:\Users\bryan\Documents\GitHub\bryanluwz.github.io\src\markdowns\fun-stuff')
     fun_stuff_json_formatter.update_json(mainKey='fun-stuff')
 
-    uni_stuff_json_formatter = GenericJSONFormatter()
-    uni_stuff_json_formatter.set_json_file_path(
-        r'C:\Users\bryan\Documents\GitHub\bryanluwz.github.io\src\main\codingStuff.json')
-    uni_stuff_json_formatter.set_input_folder_path(
-        r'C:\Users\bryan\Documents\GitHub\bryanluwz.github.io\src\markdowns\coding')
-    uni_stuff_json_formatter.update_json(mainKey='coding-stuff')
+    # uni_stuff_json_formatter = GenericJSONFormatter()
+    # uni_stuff_json_formatter.set_json_file_path(
+    #     r'C:\Users\bryan\Documents\GitHub\bryanluwz.github.io\src\main\codingStuff.json')
+    # uni_stuff_json_formatter.set_input_folder_path(
+    #     r'C:\Users\bryan\Documents\GitHub\bryanluwz.github.io\src\markdowns\coding')
+    # uni_stuff_json_formatter.update_json(mainKey='coding-stuff')
