@@ -78,7 +78,7 @@ class Main extends Component {
 
 				const codingDictionary =
 					Object.fromEntries(
-						Object.entries(codingStuffInfo['uni-stuff']).sort(([, itemA], [, itemB]) => {
+						Object.entries(codingStuffInfo['coding-stuff']).sort(([, itemA], [, itemB]) => {
 							return itemA.displayName > itemB.displayName ? 1 : -1;
 						})
 					);
