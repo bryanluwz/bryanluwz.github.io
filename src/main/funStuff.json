@@ -4,34 +4,34 @@
             "displayName": "CatGPT",
             "subtitle": "ChatGPT isn't answering your questions well? Well, try CatGPT instead!",
             "icon": "https://raw.githubusercontent.com/bryanluwz/gh-pages-common-public/main/images/Cat-GPT-assets/Cat-GPT-logo.png",
-            "routeLink": "https://bryanluwz.github.io/Cat-GPT",
+            "routeLink": "https://bryanluwz.github.io/cat-gpt",
             "lastUpdatedDate": "19 May 2023"
         },
         "Flip A Coin": {
             "displayName": "Flip A Coin",
             "subtitle": "What would you get? Shiba-chan's floofy head, or butthole?",
             "icon": "https://raw.githubusercontent.com/bryanluwz/gh-pages-common-public/main/images/Flip-A-Coin-assets/FAC-Tails.png",
-            "routeLink": "https://bryanluwz.github.io/Flip-A-Coin",
+            "routeLink": "https://bryanluwz.github.io/flip-A-coin",
             "lastUpdatedDate": "19 May 2023"
         },
         "Guess the RGB": {
             "displayName": "Guess the RGB",
             "subtitle": "Guess the RGB value of the colour!",
             "icon": "https://raw.githubusercontent.com/bryanluwz/gh-pages-common-public/main/images/Guess-The-RGB-assets/Guess-The-RGB-logo.png",
-            "routeLink": "https://bryanluwz.github.io/Guess-the-RGB",
+            "routeLink": "https://bryanluwz.github.io/guess-the-rgb",
             "lastUpdatedDate": "23 May 2023"
         },
         "Wheel of Names": {
             "displayName": "Wheel of Names",
             "subtitle": "The Wheel spinneth and the Wheel decideth",
             "icon": "https://raw.githubusercontent.com/bryanluwz/gh-pages-common-public/main/images/Wheel-Of-Names-assets/Wheel-Of-Names-logo.png",
-            "routeLink": "https://bryanluwz.github.io/Wheel-of-Names",
+            "routeLink": "https://bryanluwz.github.io/wheel-of-names",
             "lastUpdatedDate": "20 May 2023"
         },
         "Living RPS": {
             "displayName": "Living RPS",
             "subtitle": "Survival Showdown: Rock, Paper, Scissors Battle for Life!",
-            "routeLink": "https://bryanluwz.github.io/Living-RPS",
+            "routeLink": "https://bryanluwz.github.io/living-rps",
             "lastUpdatedDate": "1 July 2023"
         }
     }

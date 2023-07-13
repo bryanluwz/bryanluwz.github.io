@@ -8,7 +8,7 @@ https://raw.githubusercontent.com/bryanluwz/gh-pages-common-public/main/images/W
 
 ## Route Link
 
-https://bryanluwz.github.io/Wheel-of-Names
+https://bryanluwz.github.io/wheel-of-names
 
 ## Date
 

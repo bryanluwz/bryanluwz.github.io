@@ -8,7 +8,7 @@ https://raw.githubusercontent.com/bryanluwz/gh-pages-common-public/main/images/C
 
 ## Route Link
 
-https://bryanluwz.github.io/Cat-GPT
+https://bryanluwz.github.io/cat-gpt
 
 ## Date
 

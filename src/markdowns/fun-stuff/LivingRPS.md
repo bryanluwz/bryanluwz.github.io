@@ -4,7 +4,7 @@ Survival Showdown: Rock, Paper, Scissors Battle for Life!
 
 ## Route Link
 
-https://bryanluwz.github.io/Living-RPS
+https://bryanluwz.github.io/living-rps
 
 ## Date
 

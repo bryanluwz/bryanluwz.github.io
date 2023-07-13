@@ -8,7 +8,7 @@ https://raw.githubusercontent.com/bryanluwz/gh-pages-common-public/main/images/G
 
 ## Route Link
 
-https://bryanluwz.github.io/Guess-the-RGB
+https://bryanluwz.github.io/guess-the-rgb
 
 ## Date
 
