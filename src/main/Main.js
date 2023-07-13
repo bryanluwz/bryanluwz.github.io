@@ -16,6 +16,7 @@ import { Segment } from '../components/segment';
 import { AmnesiaButton } from '../components/others';
 import { HomePage, Error404Page, NewsPage, DisplayRowPage, DisplayTextTitleCardPage } from '../components/pages';
 import { CAROUSEL_JSON_URL, FUN_STUFF_JSON_URL, LOAD_INFO_JSON_URL, NEWS_JSON_URL, GITHUB_USERNAME } from './constants';
+import { formatRepoName } from './utils';
 
 class Main extends Component {
 	constructor(props) {
@@ -77,7 +78,7 @@ class Main extends Component {
 				data.forEach(repo => {
 					const { name, description, updated_at, html_url } = repo;
 
-					const formattedName = name.replace(/-/g, ' ');
+					const formattedName = formatRepoName(name);
 
 					// Format the last updated date
 					const formattedDate = new Date(updated_at).toLocaleDateString('en-UK', {
