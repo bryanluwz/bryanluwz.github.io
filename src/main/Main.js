@@ -15,7 +15,7 @@ import { TopNavigationBar } from '../components/nav';
 import { Segment } from '../components/segment';
 import { AmnesiaButton } from '../components/others';
 import { HomePage, Error404Page, NewsPage, DisplayRowPage, DisplayTextTitleCardPage } from '../components/pages';
-import { CAROUSEL_JSON_URL, FUN_STUFF_JSON_URL, LOAD_INFO_JSON_URL, NEWS_JSON_URL, CODING_STUFF_JSON_URL } from './constants';
+import { CAROUSEL_JSON_URL, FUN_STUFF_JSON_URL, LOAD_INFO_JSON_URL, NEWS_JSON_URL, GITHUB_USERNAME } from './constants';
 
 class Main extends Component {
 	constructor(props) {
@@ -51,7 +51,6 @@ class Main extends Component {
 		// Create and sort the dictionaries
 		var carouselInfo = null;
 		var funStuffInfo = null;
-		var codingStuffInfo = null;
 		var newsInfo = null;
 		var loadInfoComp = null;
 
@@ -71,21 +70,34 @@ class Main extends Component {
 			})
 			.catch(error => console.log(error));
 
-		fetch(CODING_STUFF_JSON_URL)
+		fetch(`https://api.github.com/users/${GITHUB_USERNAME}/repos`)
 			.then(response => response.json())
 			.then(data => {
-				codingStuffInfo = data;
+				const codingDictionary = {};
+				data.forEach(repo => {
+					const { name, description, updated_at, html_url } = repo;
 
-				const codingDictionary =
-					Object.fromEntries(
-						Object.entries(codingStuffInfo['coding-stuff']).sort(([, itemA], [, itemB]) => {
-							return itemA.displayName > itemB.displayName ? 1 : -1;
-						})
-					);
+					const formattedName = name.replace(/-/g, ' ');
 
+					// Format the last updated date
+					const formattedDate = new Date(updated_at).toLocaleDateString('en-UK', {
+						day: 'numeric',
+						month: 'long',
+						year: 'numeric'
+					});
+
+					codingDictionary[name] = {
+						displayName: formattedName,
+						subtitle: description,
+						lastUpdatedDate: formattedDate,
+						routeLink: html_url
+					};
+				});
 				this.setState({ codingDictionary: codingDictionary });
 			})
-			.catch(error => console.log(error));
+			.catch(error => {
+				console.error('Error:', error);
+			});
 
 		fetch(CAROUSEL_JSON_URL)
 			.then(response => response.json())
