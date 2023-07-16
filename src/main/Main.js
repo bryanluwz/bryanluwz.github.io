@@ -76,12 +76,12 @@ class Main extends Component {
 			.then(data => {
 				const codingDictionary = {};
 				data.forEach(repo => {
-					const { name, description, updated_at, html_url } = repo;
+					const { name, description, pushed_at, html_url } = repo;
 
 					const formattedName = formatRepoName(name);
 
 					// Format the last updated date
-					const formattedDate = new Date(updated_at).toLocaleDateString('en-UK', {
+					const formattedDate = new Date(pushed_at).toLocaleDateString('en-UK', {
 						day: 'numeric',
 						month: 'long',
 						year: 'numeric'
