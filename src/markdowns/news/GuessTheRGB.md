@@ -4,7 +4,7 @@ Join Our Cute Gnome in Guessing the Mysterious RGB!
 
 ## Image
 
-https://raw.githubusercontent.com/bryanluwz/gh-pages-common-public/main/images/carousel/Flip-A-Coin-carousel-banner.png
+https://raw.githubusercontent.com/bryanluwz/gh-pages-common-public/main/images/carousel/Guess-The-RGB-carousel-banner.png
 
 ## Link Image
 

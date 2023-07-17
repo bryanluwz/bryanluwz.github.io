@@ -21,17 +21,20 @@
         },
         "Colour Quest": {
             "contentSubtitle": "Join Our Cute Gnome in Guessing the Mysterious RGB!",
-            "imgSrc": "https://raw.githubusercontent.com/bryanluwz/gh-pages-common-public/main/images/carousel/Flip-A-Coin-carousel-banner.png",
+            "imgSrc": "https://raw.githubusercontent.com/bryanluwz/gh-pages-common-public/main/images/carousel/Guess-The-RGB-carousel-banner.png",
             "imgLink": "https://bryanluwz.github.io/guess-the-rgb",
             "contentBody": "\nEmbark on an exhilarating adventure of color exploration! Our adorable gnome companion needs your help to decipher the RGB code of various hues. Unlock your inner artist as you unravel the mysteries of vibrant shades. Prepare for a whimsical journey filled with surprises and the joy of mastering colors!\n\n",
             "lastUpdatedDate": "27 June 2023"
         },
         "Whirlwind of Wonder": {
             "contentSubtitle": "Enter the Enchanting Realm of the Wheel of Names!",
-            "imgSrc": "https://raw.githubusercontent.com/bryanluwz/gh-pages-common-public/main/images/carousel/Flip-A-Coin-carousel-banner.png",
-            "imgLink": "https://bryanluwz.github.io/wheel-of-names",
             "contentBody": "\nStep into a realm where magic and anticipation intertwine! The enchanting Wheel of Names awaits, adorned with its charming carousel of possibilities. Let its whimsical spin guide your fate, as giggles fill the air. Discover the joy of surprises, where every name becomes a delightful adventure. Embrace the cuteness and let the magic begin!\n\n",
             "lastUpdatedDate": "27 June 2023"
+        },
+        "Introducing Living RPS": {
+            "contentSubtitle": "Survival Showdown: Rock, Paper, Scissors Battle for Life!",
+            "contentBody": "\nWitness an epic clash between scissors ✂️, paper 📃, and rock 🪨! Experience the intense pursuit, cunning strategies, and unexpected twists as they battle for dominance. Prepare for a truly unique and captivating scene where the archaic game of chance becomes an exhilarating spectacle of animated drama.\n\n",
+            "lastUpdatedDate": "17 July 2023"
         }
     }
 }

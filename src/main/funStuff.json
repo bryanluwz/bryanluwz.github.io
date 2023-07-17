@@ -31,6 +31,7 @@
         "Living RPS": {
             "displayName": "Living RPS",
             "subtitle": "Survival Showdown: Rock, Paper, Scissors Battle for Life!",
+            "icon": "https://raw.githubusercontent.com/bryanluwz/gh-pages-common-public/main/images/Living-RPS-assets/Living-RPS-logo.png",
             "routeLink": "https://bryanluwz.github.io/living-rps",
             "lastUpdatedDate": "1 July 2023"
         }

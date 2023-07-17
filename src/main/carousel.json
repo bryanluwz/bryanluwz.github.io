@@ -7,6 +7,10 @@
         "img2": {
             "imgSrc": "https://raw.githubusercontent.com/bryanluwz/gh-pages-common-public/main/images/carousel/Flip-A-Coin-carousel-banner.png",
             "link": "https://bryanluwz.github.io/flip-a-coin"
+        },
+        "img3": {
+            "imgSrc": "https://raw.githubusercontent.com/bryanluwz/gh-pages-common-public/main/images/carousel/Guess-The-RGB-carousel-banner.png",
+            "link": "https://bryanluwz.github.io/guess-the-rgb"
         }
     }
 }
