@@ -112,8 +112,6 @@ class Main extends Component {
 				);
 
 				this.setState({ carouselDictionary: shuffledCarouselDictionary });
-				console.log(shuffledCarouselDictionary);
-				console.log(carouselDictionary);
 			})
 			.catch(error => console.log(error));
 
