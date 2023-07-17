@@ -107,7 +107,13 @@ class Main extends Component {
 
 				const carouselDictionary = carouselInfo['carousel'];
 
-				this.setState({ carouselDictionary: carouselDictionary });
+				const shuffledCarouselDictionary = Object.fromEntries(
+					Object.entries(carouselDictionary).sort(() => Math.random() - 0.5)
+				);
+
+				this.setState({ carouselDictionary: shuffledCarouselDictionary });
+				console.log(shuffledCarouselDictionary);
+				console.log(carouselDictionary);
 			})
 			.catch(error => console.log(error));
 
