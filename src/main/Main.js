@@ -250,6 +250,10 @@ class Main extends Component {
 								<DisplayRowPage dictionary={this.state.gameDictionary} error404ImgSrc={this.miscDictionary?.error404.imgSrc} />
 							} />
 
+							<Route path='/extras-stuff' element={
+								<DisplayRowPage dictionary={this.state.extrasDictionary} error404ImgSrc={this.miscDictionary?.error404.imgSrc} />
+							} />
+
 							<Route path='/news/:newsKey?'
 								element={
 									<NewsPage
