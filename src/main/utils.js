@@ -24,7 +24,8 @@ const excludedWords = [
 
 const uppercaseWords = [
 	"GPT",
-	"RPS"
+	"RPS",
+	"GH"
 ];
 
 export function formatRepoName(repoName) {

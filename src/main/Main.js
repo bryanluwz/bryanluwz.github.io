@@ -108,7 +108,7 @@ class Main extends Component {
 				extrasStuffInfo = data;
 
 				const extrasDictionary = Object.fromEntries(
-					Object.entries(extrasStuffInfo['extras']).sort(([, itemA], [, itemB]) => {
+					Object.entries(extrasStuffInfo['extras-stuff']).sort(([, itemA], [, itemB]) => {
 						return itemA.displayName > itemB.displayName ? 1 : -1;
 					})
 				);
