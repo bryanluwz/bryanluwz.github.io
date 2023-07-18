@@ -15,7 +15,7 @@ import { TopNavigationBar } from '../components/nav';
 import { Segment } from '../components/segment';
 import { AmnesiaButton } from '../components/others';
 import { HomePage, Error404Page, NewsPage, DisplayRowPage, DisplayTextTitleCardPage } from '../components/pages';
-import { CAROUSEL_JSON_URL, FUN_STUFF_JSON_URL, LOAD_INFO_JSON_URL, NEWS_JSON_URL, GITHUB_USERNAME } from './constants';
+import { CAROUSEL_JSON_URL, FUN_STUFF_JSON_URL, LOAD_INFO_JSON_URL, NEWS_JSON_URL, GITHUB_USERNAME, EXTRAS_JSON_URL } from './constants';
 import { formatRepoName } from './utils';
 
 class Main extends Component {
@@ -31,6 +31,7 @@ class Main extends Component {
 			codingDictionary: {},
 			carouselDictionary: {},
 			newsDictionary: {},
+			extrasDictionary: {},
 			loadInfoComp: {}
 		};
 
@@ -53,6 +54,7 @@ class Main extends Component {
 		var carouselInfo = null;
 		var funStuffInfo = null;
 		var newsInfo = null;
+		var extrasStuffInfo = null;
 		var loadInfoComp = null;
 
 		fetch(FUN_STUFF_JSON_URL)
@@ -98,6 +100,23 @@ class Main extends Component {
 			})
 			.catch(error => {
 				console.error('Error:', error);
+			});
+
+		fetch(EXTRAS_JSON_URL)
+			.then(response => response.json())
+			.then(data => {
+				extrasStuffInfo = data;
+
+				const extrasDictionary = Object.fromEntries(
+					Object.entries(extrasStuffInfo['extras']).sort(([, itemA], [, itemB]) => {
+						return itemA.displayName > itemB.displayName ? 1 : -1;
+					})
+				);
+
+				this.setState({ extrasDictionary: extrasDictionary });
+			})
+			.catch(error => {
+				console.log(error);
 			});
 
 		fetch(CAROUSEL_JSON_URL)
@@ -202,10 +221,11 @@ class Main extends Component {
 						<Routes location={this.state.displayLocation}>
 							<Route path="/" element={
 								<HomePage
+									carouselDictionary={this.state.carouselDictionary}
 									gameDictionary={this.state.gameDictionary}
 									codingDictionary={this.state.codingDictionary}
-									carouselDictionary={this.state.carouselDictionary}
 									newsDictionary={this.state.newsDictionary}
+									extrasDictionary={this.state.extrasDictionary}
 									miscDictionary={this.miscDictionary}
 								/>
 							} />
