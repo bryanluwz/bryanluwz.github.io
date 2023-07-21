@@ -1,3 +1,10 @@
 {
-    "extras-stuff": {}
+    "extras-stuff": {
+        "Utilities Page": {
+            "displayName": "Utilities Page",
+            "subtitle": "Just a page full of tools that you might find useful from time to time",
+            "routeLink": "https://bryanluwz.github.io/utilities-pages/",
+            "lastUpdatedDate": "21 July 2023"
+        }
+    }
 }
