@@ -17,6 +17,7 @@ import { AmnesiaButton } from '../components/others';
 import { HomePage, Error404Page, NewsPage, DisplayRowPage, DisplayTextTitleCardPage } from '../components/pages';
 import { CAROUSEL_JSON_URL, FUN_STUFF_JSON_URL, LOAD_INFO_JSON_URL, NEWS_JSON_URL, GITHUB_USERNAME, EXTRAS_JSON_URL } from './constants';
 import { formatRepoName } from './utils';
+import { Fade } from 'react-reveal';
 
 class Main extends Component {
 	constructor(props) {
@@ -32,7 +33,8 @@ class Main extends Component {
 			carouselDictionary: {},
 			newsDictionary: {},
 			extrasDictionary: {},
-			loadInfoComp: {}
+			loadInfoComp: {},
+			scrollToTopButtonIsVisible: false
 		};
 
 		this.miscDictionary = null;
@@ -40,9 +42,13 @@ class Main extends Component {
 		this.othersPageDictionary = null;
 
 		this.headerRef = createRef();
+		this.scrollToTopButtonRef = createRef();
 	}
 
 	componentDidMount() {
+		// Add event listener
+		window.addEventListener('scroll', this.handleScroll);
+
 		// Init sticky footer
 		const isStickyFooter = getCookieValue("isStickyFooter");
 		if (isStickyFooter) {
@@ -174,10 +180,40 @@ class Main extends Component {
 		}
 	}
 
+	componentWillUnmount() {
+		// Remove event listener
+		window.removeEventListener('scroll', this.handleScroll);
+	}
+
 	toggleStickyFooter = () => {
 		this.setState((prevState) => ({
 			isStickyFooter: !prevState.isStickyFooter
-		}), () => { setCookieValue("isStickyFooter", this.state.isStickyFooter); });
+		}), () => {
+			setCookieValue("isStickyFooter", this.state.isStickyFooter);
+			this.handleScroll();
+		});
+	};
+
+	handleScroll = () => {
+		if (window.scrollY > 300) {
+			this.scrollToTopButtonRef.current.style.opacity = 1;
+			this.scrollToTopButtonRef.current.style.pointerEvents = "all";
+		} else {
+			this.scrollToTopButtonRef.current.style.opacity = 0;
+			this.scrollToTopButtonRef.current.style.pointerEvents = "none";
+		}
+
+		// Get bounding client rect from footer
+		const footerRect = document.getElementById("footer").getBoundingClientRect();
+		console.log(footerRect.top);
+
+		if (footerRect.top < window.innerHeight) {
+			const offset = Math.max(0, window.innerHeight - footerRect.top);
+			this.scrollToTopButtonRef.current.style.bottom = (offset + 17) + "px";
+		}
+		else {
+			this.scrollToTopButtonRef.current.style.bottom = "17px";
+		}
 	};
 
 	render() {
@@ -231,9 +267,11 @@ class Main extends Component {
 							} />
 
 							<Route path='/others' element={
-								<DisplayTextTitleCardPage pageDictionary={this.othersPageDictionary} router={this.props.router} >
+								<DisplayTextTitleCardPage pageDictionary={this.othersPageDictionary} router={this.props.router} animation={true} left >
 									<Segment title="buttons!">
-										<AmnesiaButton router={this.props.router} buttonName={"cookie diet"} confirmName={"you sure?"} />
+										<Fade bottom>
+											<AmnesiaButton router={this.props.router} buttonName={"cookie diet"} confirmName={"you sure?"} />
+										</Fade>
 									</Segment>
 								</DisplayTextTitleCardPage>
 							} />
@@ -274,7 +312,7 @@ class Main extends Component {
 
 				{/* Footer */}
 				{this.state.isStickyFooter ?
-					< Footer ref={this.footerRef} isStickyFooter={this.state.isStickyFooter} toggleStickyFooter={this.toggleStickyFooter} />
+					< Footer isStickyFooter={this.state.isStickyFooter} toggleStickyFooter={this.toggleStickyFooter} />
 					:
 					<div
 						className={`${this.state.contentTransitionStage}`}
@@ -283,9 +321,20 @@ class Main extends Component {
 								this.setState({ contentTransitionStage: "fadeIn", displayLocation: this.props.router.location });
 							}
 						}}>
-						< Footer isStickyFooter={this.state.isStickyFooter} toggleStickyFooter={this.toggleStickyFooter} />
+						< Footer ref={this.footerRef} isStickyFooter={this.state.isStickyFooter} toggleStickyFooter={this.toggleStickyFooter} />
 					</div>
 				}
+
+				<button
+					ref={this.scrollToTopButtonRef}
+					className={`scroll-to-top-button ${this.state.scrollToTopButtonIsVisible ? "scroll-to-top-button-visible" : ""}`}
+					onClick={() => {
+						this.headerRef.current?.scrollIntoView({ behavior: 'smooth' });
+					}
+					}
+				>
+					<i className="fa fa-chevron-up" />
+				</button>
 			</Fragment >
 		);
 	}
