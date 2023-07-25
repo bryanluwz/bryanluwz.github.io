@@ -197,9 +197,11 @@ class Main extends Component {
 	handleScroll = () => {
 		if (window.scrollY > 300) {
 			this.scrollToTopButtonRef.current.style.opacity = 1;
+			this.scrollToTopButtonRef.current.style.transform = "scale(100%)";
 			this.scrollToTopButtonRef.current.style.pointerEvents = "all";
 		} else {
 			this.scrollToTopButtonRef.current.style.opacity = 0;
+			this.scrollToTopButtonRef.current.style.transform = "scale(0%)";
 			this.scrollToTopButtonRef.current.style.pointerEvents = "none";
 		}
 
