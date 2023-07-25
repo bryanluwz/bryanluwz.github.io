@@ -34,7 +34,18 @@ class Main extends Component {
 			newsDictionary: {},
 			extrasDictionary: {},
 			loadInfoComp: {},
-			scrollToTopButtonIsVisible: false
+			scrollToTopButtonIsVisible: false,
+			showHamburger: false
+		};
+
+		this.navs = {
+			"/": { name: "Home", link: "/", hideInNavBar: true },
+			"/about": { name: "About", link: "/about" },
+			"/fun-stuff": { name: "Fun", link: "/fun-stuff" },
+			"/coding-stuff": { name: "Code", link: "/coding-stuff" },
+			"/extras-stuff": { name: "Extras", link: "/extras-stuff" },
+			"/news": { name: "News", link: "/news" },
+			"/others": { name: "Others", link: "/others" }
 		};
 
 		this.miscDictionary = null;
@@ -48,6 +59,9 @@ class Main extends Component {
 	componentDidMount() {
 		// Add event listener
 		window.addEventListener('scroll', this.handleScroll);
+		window.addEventListener('resize', this.handleResize);
+
+		this.handleResize();
 
 		// Init sticky footer
 		const isStickyFooter = getCookieValue("isStickyFooter");
@@ -183,6 +197,7 @@ class Main extends Component {
 	componentWillUnmount() {
 		// Remove event listener
 		window.removeEventListener('scroll', this.handleScroll);
+		window.removeEventListener('resize', this.handleResize);
 	}
 
 	toggleStickyFooter = () => {
@@ -207,7 +222,6 @@ class Main extends Component {
 
 		// Get bounding client rect from footer
 		const footerRect = document.getElementById("footer").getBoundingClientRect();
-		console.log(footerRect.top);
 
 		if (footerRect.top < window.innerHeight) {
 			const offset = Math.max(0, window.innerHeight - footerRect.top);
@@ -215,6 +229,21 @@ class Main extends Component {
 		}
 		else {
 			this.scrollToTopButtonRef.current.style.bottom = "17px";
+		}
+	};
+
+	handleResize = () => {
+		// Check if width is greater than 666px
+		// Only set state if the state is different
+		if (window.innerWidth > 666) {
+			if (this.state.showHamburger) {
+				this.setState({ showHamburger: false });
+			}
+		}
+		else {
+			if (!this.state.showHamburger) {
+				this.setState({ showHamburger: true });
+			}
 		}
 	};
 
@@ -245,20 +274,13 @@ class Main extends Component {
 
 				<main ref={this.headerRef}>
 					{/* Header and top navigation */}
-					<Header imgSrc={this.miscDictionary?.header.imgSrc} />
-					<TopNavigationBar
-						pathname={this.props.router.location.pathname}
-						navs={
-							{
-								"/about": { name: "About", link: "/about" },
-								"/fun-stuff": { name: "Fun", link: "/fun-stuff" },
-								"/coding-stuff": { name: "Code", link: "/coding-stuff" },
-								"/extras-stuff": { name: "Extras", link: "/extras-stuff" },
-								"/news": { name: "News", link: "/news" },
-								"/others": { name: "Others", link: "/others" }
-							}
-						}
-					/>
+					<Header imgSrc={this.miscDictionary?.header.imgSrc} showHamburger={this.state.showHamburger} navs={this.navs} />
+					{!this.state.showHamburger &&
+						<TopNavigationBar
+							pathname={this.props.router.location.pathname}
+							navs={this.navs}
+						/>
+					}
 
 					{/* Content Pages */}
 					<div
