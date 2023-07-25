@@ -246,7 +246,19 @@ class Main extends Component {
 				<main ref={this.headerRef}>
 					{/* Header and top navigation */}
 					<Header imgSrc={this.miscDictionary?.header.imgSrc} />
-					<TopNavigationBar pathname={this.props.router.location.pathname} />
+					<TopNavigationBar
+						pathname={this.props.router.location.pathname}
+						navs={
+							{
+								"/about": { name: "About", link: "/about" },
+								"/fun-stuff": { name: "Fun", link: "/fun-stuff" },
+								"/coding-stuff": { name: "Code", link: "/coding-stuff" },
+								"/extras-stuff": { name: "Extras", link: "/extras-stuff" },
+								"/news": { name: "News", link: "/news" },
+								"/others": { name: "Others", link: "/others" }
+							}
+						}
+					/>
 
 					{/* Content Pages */}
 					<div
