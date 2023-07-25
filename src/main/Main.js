@@ -313,19 +313,30 @@ class Main extends Component {
 							} />
 
 							<Route path='/about' element={
-								<DisplayTextTitleCardPage pageDictionary={this.aboutPageDictionary} animation={true} left />
+								<DisplayTextTitleCardPage
+									pageDictionary={this.aboutPageDictionary}
+									animation={true} />
 							} />
 
 							<Route path='/coding-stuff' element={
-								<DisplayRowPage dictionary={this.state.codingDictionary} error404ImgSrc={this.miscDictionary?.error404.imgSrc} animation={true} left />
+								<DisplayRowPage
+									dictionary={this.state.codingDictionary}
+									error404ImgSrc={this.miscDictionary?.error404.imgSrc}
+									animation={true} />
 							} />
 
 							<Route path='/fun-stuff' element={
-								<DisplayRowPage dictionary={this.state.gameDictionary} error404ImgSrc={this.miscDictionary?.error404.imgSrc} animation={true} left />
+								<DisplayRowPage
+									dictionary={this.state.gameDictionary}
+									error404ImgSrc={this.miscDictionary?.error404.imgSrc}
+									animation={true} />
 							} />
 
 							<Route path='/extras-stuff' element={
-								<DisplayRowPage dictionary={this.state.extrasDictionary} error404ImgSrc={this.miscDictionary?.error404.imgSrc} animation={true} left />
+								<DisplayRowPage
+									dictionary={this.state.extrasDictionary}
+									error404ImgSrc={this.miscDictionary?.error404.imgSrc}
+									animation={true} />
 							} />
 
 							<Route path='/news/:newsKey?'
