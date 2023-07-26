@@ -13,11 +13,10 @@ import { Header } from '../components/header';
 import { Footer } from '../components/footer';
 import { TopNavigationBar } from '../components/nav';
 import { Segment } from '../components/segment';
-import { AmnesiaButton } from '../components/others';
+import { AmnesiaButton, ProgressBar } from '../components/others';
 import { HomePage, Error404Page, NewsPage, DisplayRowPage, DisplayTextTitleCardPage } from '../components/pages';
 import { CAROUSEL_JSON_URL, FUN_STUFF_JSON_URL, LOAD_INFO_JSON_URL, NEWS_JSON_URL, GITHUB_USERNAME, EXTRAS_JSON_URL } from './constants';
 import { formatRepoName } from './utils';
-import { Fade } from 'react-reveal';
 
 class Main extends Component {
 	constructor(props) {
@@ -35,7 +34,8 @@ class Main extends Component {
 			extrasDictionary: {},
 			loadInfoComp: {},
 			scrollToTopButtonIsVisible: false,
-			showHamburger: false
+			showHamburger: false,
+			isFetchDone: false
 		};
 
 		this.navs = {
@@ -45,7 +45,7 @@ class Main extends Component {
 			"/coding-stuff": { name: "Code", link: "/coding-stuff" },
 			"/extras-stuff": { name: "Extras", link: "/extras-stuff" },
 			"/news": { name: "News", link: "/news" },
-			"/others": { name: "Others", link: "/others" }
+			"/others": { name: "Others", link: "/others" },
 		};
 
 		this.miscDictionary = null;
@@ -53,6 +53,7 @@ class Main extends Component {
 		this.othersPageDictionary = null;
 
 		this.headerRef = createRef();
+		this.loadingProgressRef = createRef();
 		this.scrollToTopButtonRef = createRef();
 	}
 
@@ -77,110 +78,130 @@ class Main extends Component {
 		var extrasStuffInfo = null;
 		var loadInfoComp = null;
 
-		fetch(FUN_STUFF_JSON_URL)
-			.then(response => response.json())
-			.then(data => {
-				funStuffInfo = data;
+		(async () => {
+			this.loadingProgressRef.current?.setProgress(0.1);
 
-				const gameDictionary =
-					Object.fromEntries(
-						Object.entries(funStuffInfo['fun-stuff']).sort(([, itemA], [, itemB]) => {
+			await fetch(FUN_STUFF_JSON_URL)
+				.then(response => response.json())
+				.then(data => {
+					funStuffInfo = data;
+
+					const gameDictionary =
+						Object.fromEntries(
+							Object.entries(funStuffInfo['fun-stuff']).sort(([, itemA], [, itemB]) => {
+								return itemA.displayName > itemB.displayName ? 1 : -1;
+							})
+						);
+
+					this.setState({ gameDictionary: gameDictionary });
+				})
+				.catch(error => console.log(error));
+
+			this.loadingProgressRef.current?.setProgress(0.3);
+
+			await fetch(`https://api.github.com/users/${GITHUB_USERNAME}/repos`)
+				.then(response => response.json())
+				.then(data => {
+					const codingDictionary = {};
+					data.forEach(repo => {
+						const { name, description, pushed_at, html_url } = repo;
+
+						const formattedName = formatRepoName(name);
+
+						// Format the last updated date
+						const formattedDate = new Date(pushed_at).toLocaleDateString('en-UK', {
+							day: 'numeric',
+							month: 'long',
+							year: 'numeric'
+						});
+
+						codingDictionary[name] = {
+							displayName: formattedName,
+							subtitle: description,
+							lastUpdatedDate: formattedDate,
+							routeLink: html_url
+						};
+					});
+					this.setState({ codingDictionary: codingDictionary });
+				})
+				.catch(error => {
+					console.error('Error:', error);
+				});
+
+			this.loadingProgressRef.current?.setProgress(0.5);
+
+			await fetch(EXTRAS_JSON_URL)
+				.then(response => response.json())
+				.then(data => {
+					extrasStuffInfo = data;
+
+					const extrasDictionary = Object.fromEntries(
+						Object.entries(extrasStuffInfo['extras-stuff']).sort(([, itemA], [, itemB]) => {
 							return itemA.displayName > itemB.displayName ? 1 : -1;
 						})
 					);
 
-				this.setState({ gameDictionary: gameDictionary });
-			})
-			.catch(error => console.log(error));
-
-		fetch(`https://api.github.com/users/${GITHUB_USERNAME}/repos`)
-			.then(response => response.json())
-			.then(data => {
-				const codingDictionary = {};
-				data.forEach(repo => {
-					const { name, description, pushed_at, html_url } = repo;
-
-					const formattedName = formatRepoName(name);
-
-					// Format the last updated date
-					const formattedDate = new Date(pushed_at).toLocaleDateString('en-UK', {
-						day: 'numeric',
-						month: 'long',
-						year: 'numeric'
-					});
-
-					codingDictionary[name] = {
-						displayName: formattedName,
-						subtitle: description,
-						lastUpdatedDate: formattedDate,
-						routeLink: html_url
-					};
+					this.setState({ extrasDictionary: extrasDictionary });
+				})
+				.catch(error => {
+					console.log(error);
 				});
-				this.setState({ codingDictionary: codingDictionary });
-			})
-			.catch(error => {
-				console.error('Error:', error);
-			});
 
-		fetch(EXTRAS_JSON_URL)
-			.then(response => response.json())
-			.then(data => {
-				extrasStuffInfo = data;
+			this.loadingProgressRef.current?.setProgress(0.69);  // nice
 
-				const extrasDictionary = Object.fromEntries(
-					Object.entries(extrasStuffInfo['extras-stuff']).sort(([, itemA], [, itemB]) => {
-						return itemA.displayName > itemB.displayName ? 1 : -1;
-					})
-				);
+			await fetch(CAROUSEL_JSON_URL)
+				.then(response => response.json())
+				.then(data => {
+					carouselInfo = data;
 
-				this.setState({ extrasDictionary: extrasDictionary });
-			})
-			.catch(error => {
-				console.log(error);
-			});
+					const carouselDictionary = carouselInfo['carousel'];
 
-		fetch(CAROUSEL_JSON_URL)
-			.then(response => response.json())
-			.then(data => {
-				carouselInfo = data;
-
-				const carouselDictionary = carouselInfo['carousel'];
-
-				const shuffledCarouselDictionary = Object.fromEntries(
-					Object.entries(carouselDictionary).sort(() => Math.random() - 0.5)
-				);
-
-				this.setState({ carouselDictionary: shuffledCarouselDictionary });
-			})
-			.catch(error => console.log(error));
-
-		fetch(NEWS_JSON_URL)
-			.then(response => response.json())
-			.then(data => {
-				newsInfo = data;
-
-				const newsDictionary =
-					Object.fromEntries(
-						Object.entries(newsInfo['news']).sort(([, newsA], [, newsB]) => {
-							const newsDateA = new Date(newsA.lastUpdatedDate);
-							const newsDateB = new Date(newsB.lastUpdatedDate);
-							return newsDateB - newsDateA;
-						})
+					const shuffledCarouselDictionary = Object.fromEntries(
+						Object.entries(carouselDictionary).sort(() => Math.random() - 0.5)
 					);
 
-				this.setState({ newsDictionary: newsDictionary });
-			})
-			.catch(error => console.log(error));
+					this.setState({ carouselDictionary: shuffledCarouselDictionary });
+				})
+				.catch(error => console.log(error));
 
-		fetch(LOAD_INFO_JSON_URL)
-			.then(response => response.json())
-			.then(data => {
-				loadInfoComp = data;
-				this.miscDictionary = loadInfoComp['misc'];
-				this.aboutPageDictionary = loadInfoComp['about-page'];
-				this.othersPageDictionary = loadInfoComp['others-page'];
-			})
-			.catch(error => console.log(error));
+			this.loadingProgressRef.current?.setProgress(0.8);
+
+			await fetch(NEWS_JSON_URL)
+				.then(response => response.json())
+				.then(data => {
+					newsInfo = data;
+
+					const newsDictionary =
+						Object.fromEntries(
+							Object.entries(newsInfo['news']).sort(([, newsA], [, newsB]) => {
+								const newsDateA = new Date(newsA.lastUpdatedDate);
+								const newsDateB = new Date(newsB.lastUpdatedDate);
+								return newsDateB - newsDateA;
+							})
+						);
+
+					this.setState({ newsDictionary: newsDictionary });
+				})
+				.catch(error => console.log(error));
+
+			this.loadingProgressRef.current?.setProgress(0.9);
+
+			await fetch(LOAD_INFO_JSON_URL)
+				.then(response => response.json())
+				.then(data => {
+					loadInfoComp = data;
+					this.miscDictionary = loadInfoComp['misc'];
+					this.aboutPageDictionary = loadInfoComp['about-page'];
+					this.othersPageDictionary = loadInfoComp['others-page'];
+				})
+				.catch(error => console.log(error));
+
+			this.loadingProgressRef.current?.setProgress(1.0);
+
+			setTimeout(() => {
+				this.setState({ isFetchDone: true });
+			}, 100);
+		})();
 
 		refreshAllCookies();
 	}
@@ -283,77 +304,87 @@ class Main extends Component {
 					}
 
 					{/* Content Pages */}
+
 					<div
-						className={`${this.state.contentTransitionStage}`}
+						className={`${this.state.contentTransitionStage} ${this.state.isFetchDone ? "" : "loading-icon-container"}`}
 						onAnimationEnd={() => {
 							if (this.state.contentTransitionStage === "fadeOut") {
 								this.setState({ contentTransitionStage: "fadeIn", displayLocation: this.props.router.location });
 							}
 						}}>
-						<Routes location={this.state.displayLocation}>
-							<Route path="/" element={
-								<HomePage
-									carouselDictionary={this.state.carouselDictionary}
-									gameDictionary={this.state.gameDictionary}
-									codingDictionary={this.state.codingDictionary}
-									newsDictionary={this.state.newsDictionary}
-									extrasDictionary={this.state.extrasDictionary}
-									miscDictionary={this.miscDictionary}
-								/>
-							} />
-
-							<Route path='/others' element={
-								<DisplayTextTitleCardPage pageDictionary={this.othersPageDictionary} router={this.props.router} animation={true} left >
-									<Segment title="buttons!">
-										<Fade bottom>
-											<AmnesiaButton router={this.props.router} buttonName={"cookie diet"} confirmName={"you sure?"} />
-										</Fade>
-									</Segment>
-								</DisplayTextTitleCardPage>
-							} />
-
-							<Route path='/about' element={
-								<DisplayTextTitleCardPage
-									pageDictionary={this.aboutPageDictionary}
-									animation={true} />
-							} />
-
-							<Route path='/coding-stuff' element={
-								<DisplayRowPage
-									dictionary={this.state.codingDictionary}
-									error404ImgSrc={this.miscDictionary?.error404.imgSrc}
-									animation={true} />
-							} />
-
-							<Route path='/fun-stuff' element={
-								<DisplayRowPage
-									dictionary={this.state.gameDictionary}
-									error404ImgSrc={this.miscDictionary?.error404.imgSrc}
-									animation={true} />
-							} />
-
-							<Route path='/extras-stuff' element={
-								<DisplayRowPage
-									dictionary={this.state.extrasDictionary}
-									error404ImgSrc={this.miscDictionary?.error404.imgSrc}
-									animation={true} />
-							} />
-
-							<Route path='/news/:newsKey?'
-								element={
-									<NewsPage
-										footerRef={this.footerRef}
-										dictionary={this.state.newsDictionary}
+						{this.state.isFetchDone ?
+							<Routes location={this.state.displayLocation}>
+								<Route path="/" element={
+									<HomePage
+										carouselDictionary={this.state.carouselDictionary}
+										gameDictionary={this.state.gameDictionary}
+										codingDictionary={this.state.codingDictionary}
+										newsDictionary={this.state.newsDictionary}
+										extrasDictionary={this.state.extrasDictionary}
+										miscDictionary={this.miscDictionary}
 									/>
-								}
-							/>
+								} />
 
-							<Route path='*' element={
-								<Error404Page
-									customWarning={"Page not found OAO"}
-									imgSrc={this.miscDictionary?.error404.imgSrc} />
-							} />
-						</Routes>
+								<Route path='/others' element={
+									<DisplayTextTitleCardPage
+										pageDictionary={this.othersPageDictionary}
+										router={this.props.router}
+										animation={true}
+									>
+										<Segment title="buttons!" animation={true}>
+											<AmnesiaButton router={this.props.router} buttonName={"cookie diet"} confirmName={"you sure?"} />
+										</Segment>
+									</DisplayTextTitleCardPage>
+								} />
+
+								<Route path='/about' element={
+									<DisplayTextTitleCardPage
+										pageDictionary={this.aboutPageDictionary}
+										animation={true} />
+								} />
+
+								<Route path='/coding-stuff' element={
+									<DisplayRowPage
+										dictionary={this.state.codingDictionary}
+										error404ImgSrc={this.miscDictionary?.error404.imgSrc}
+										animation={true} />
+								} />
+
+								<Route path='/fun-stuff' element={
+									<DisplayRowPage
+										dictionary={this.state.gameDictionary}
+										error404ImgSrc={this.miscDictionary?.error404.imgSrc}
+										animation={true} />
+								} />
+
+								<Route path='/extras-stuff' element={
+									<DisplayRowPage
+										dictionary={this.state.extrasDictionary}
+										error404ImgSrc={this.miscDictionary?.error404.imgSrc}
+										animation={true} />
+								} />
+
+								<Route path='/news/:newsKey?'
+									element={
+										<NewsPage
+											footerRef={this.footerRef}
+											dictionary={this.state.newsDictionary}
+										/>
+									}
+								/>
+
+								<Route path='*' element={
+									<Error404Page
+										customWarning={"Page not found OAO"}
+										imgSrc={this.miscDictionary?.error404.imgSrc} />
+								} />
+							</Routes>
+							:
+							<Fragment>
+								<div>Loading...</div>
+								<ProgressBar ref={this.loadingProgressRef} />
+							</Fragment>
+						}
 					</div>
 				</main>
 
