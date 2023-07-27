@@ -295,7 +295,11 @@ class Main extends Component {
 
 				<main ref={this.headerRef}>
 					{/* Header and top navigation */}
-					<Header imgSrc={this.miscDictionary?.header.imgSrc} showHamburger={this.state.showHamburger} navs={this.navs} />
+					<Header
+						imgSrc={this.miscDictionary?.header.imgSrc}
+						showHamburger={this.state.showHamburger}
+						navs={this.navs}
+					/>
 					{!this.state.showHamburger &&
 						<TopNavigationBar
 							pathname={this.props.router.location.pathname}
