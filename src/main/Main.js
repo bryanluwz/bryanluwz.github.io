@@ -12,9 +12,8 @@ import { refreshAllCookies, getCookieValue, isCookie, setCookieValue } from '../
 import { Header } from '../components/header';
 import { Footer } from '../components/footer';
 import { TopNavigationBar } from '../components/nav';
-import { Segment } from '../components/segment';
-import { AmnesiaButton, ProgressBar } from '../components/others';
-import { HomePage, Error404Page, NewsPage, DisplayRowPage, DisplayTextTitleCardPage } from '../components/pages';
+import { ProgressBar } from '../components/others';
+import { HomePage, Error404Page, NewsPage, DisplayRowPage, AboutPage, OthersPage } from '../components/pages';
 import { CAROUSEL_JSON_URL, FUN_STUFF_JSON_URL, LOAD_INFO_JSON_URL, NEWS_JSON_URL, GITHUB_USERNAME, EXTRAS_JSON_URL } from './constants';
 import { formatRepoName } from './utils';
 
@@ -49,8 +48,6 @@ class Main extends Component {
 		};
 
 		this.miscDictionary = null;
-		this.aboutPageDictionary = null;
-		this.othersPageDictionary = null;
 
 		this.headerRef = createRef();
 		this.loadingProgressRef = createRef();
@@ -191,8 +188,6 @@ class Main extends Component {
 				.then(data => {
 					loadInfoComp = data;
 					this.miscDictionary = loadInfoComp['misc'];
-					this.aboutPageDictionary = loadInfoComp['about-page'];
-					this.othersPageDictionary = loadInfoComp['others-page'];
 				})
 				.catch(error => console.log(error));
 
@@ -330,21 +325,14 @@ class Main extends Component {
 								} />
 
 								<Route path='/others' element={
-									<DisplayTextTitleCardPage
-										pageDictionary={this.othersPageDictionary}
+									<OthersPage
 										router={this.props.router}
 										animation={true}
-									>
-										<Segment title="buttons!" animation={true}>
-											<AmnesiaButton router={this.props.router} buttonName={"cookie diet"} confirmName={"you sure?"} />
-										</Segment>
-									</DisplayTextTitleCardPage>
+									/>
 								} />
 
 								<Route path='/about' element={
-									<DisplayTextTitleCardPage
-										pageDictionary={this.aboutPageDictionary}
-										animation={true} />
+									<AboutPage animation={true} />
 								} />
 
 								<Route path='/coding-stuff' element={
