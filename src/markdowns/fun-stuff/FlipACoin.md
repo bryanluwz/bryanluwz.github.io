@@ -8,7 +8,7 @@ https://raw.githubusercontent.com/bryanluwz/gh-pages-common-public/main/images/F
 
 ## Route Link
 
-https://bryanluwz.github.io/flip-A-coin
+https://bryanluwz.github.io/flip-a-coin
 
 ## Date
 
