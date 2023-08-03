@@ -33,6 +33,7 @@
         },
         "Introducing Living RPS": {
             "contentSubtitle": "Survival Showdown: Rock, Paper, Scissors Battle for Life!",
+            "imgLink": "https://bryanluwz.github.io/living-rps",
             "contentBody": "\nWitness an epic clash between scissors ✂️, paper 📃, and rock 🪨! Experience the intense pursuit, cunning strategies, and unexpected twists as they battle for dominance. Prepare for a truly unique and captivating scene where the archaic game of chance becomes an exhilarating spectacle of animated drama.\n\n",
             "lastUpdatedDate": "17 July 2023"
         },
@@ -40,6 +41,12 @@
             "contentSubtitle": "Do many things!",
             "contentBody": "\nWe now have a Utilities Page, hooray!! Check it out under the \"Extras\" tab\n\n",
             "lastUpdatedDate": "21 July 2023"
+        },
+        "Animation Page": {
+            "contentSubtitle": "Satisfying Animations ASMR",
+            "imgLink": "https://bryanluwz.github.io/animation-pages",
+            "contentBody": "\nIt's just a bunch of animations\n\n",
+            "lastUpdatedDate": "3 August 2023"
         }
     }
 }

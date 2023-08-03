@@ -5,6 +5,12 @@
             "subtitle": "Just a page full of tools that you might find useful from time to time",
             "routeLink": "https://bryanluwz.github.io/utilities-pages/",
             "lastUpdatedDate": "21 July 2023"
+        },
+        "Animation Page": {
+            "displayName": "Animation Page",
+            "subtitle": "Just a page full of animations that's all",
+            "routeLink": "https://bryanluwz.github.io/animation-pages/",
+            "lastUpdatedDate": "3 August 2023"
         }
     }
 }
