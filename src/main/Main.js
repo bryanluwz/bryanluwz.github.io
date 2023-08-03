@@ -290,16 +290,22 @@ class Main extends Component {
 
 				<main ref={this.headerRef}>
 					{/* Header and top navigation */}
-					<Header
-						imgSrc={this.miscDictionary?.header.imgSrc}
-						showHamburger={this.state.showHamburger}
-						navs={this.navs}
-					/>
-					{!this.state.showHamburger &&
-						<TopNavigationBar
-							pathname={this.props.router.location.pathname}
-							navs={this.navs}
-						/>
+					{this.state.isFetchDone ?
+						<Fragment>
+							<Header
+								imgSrc={this.miscDictionary?.header.imgSrc}
+								showHamburger={this.state.showHamburger}
+								navs={this.navs}
+							/>
+							{!this.state.showHamburger &&
+								<TopNavigationBar
+									pathname={this.props.router.location.pathname}
+									navs={this.navs}
+								/>
+							}
+						</Fragment>
+						:
+						<Fragment />
 					}
 
 					{/* Content Pages */}
@@ -381,30 +387,38 @@ class Main extends Component {
 				</main>
 
 				{/* Footer */}
-				{this.state.isStickyFooter ?
-					< Footer isStickyFooter={this.state.isStickyFooter} toggleStickyFooter={this.toggleStickyFooter} />
-					:
-					<div
-						className={`${this.state.contentTransitionStage}`}
-						onAnimationEnd={() => {
-							if (this.state.contentTransitionStage === "fadeOut") {
-								this.setState({ contentTransitionStage: "fadeIn", displayLocation: this.props.router.location });
+				{
+					this.state.isFetchDone ?
+						<Fragment>
+							{
+								this.state.isStickyFooter ?
+									< Footer isStickyFooter={this.state.isStickyFooter} toggleStickyFooter={this.toggleStickyFooter} />
+									:
+									<div
+										className={`${this.state.contentTransitionStage}`}
+										onAnimationEnd={() => {
+											if (this.state.contentTransitionStage === "fadeOut") {
+												this.setState({ contentTransitionStage: "fadeIn", displayLocation: this.props.router.location });
+											}
+										}}>
+										< Footer ref={this.footerRef} isStickyFooter={this.state.isStickyFooter} toggleStickyFooter={this.toggleStickyFooter} />
+									</div>
 							}
-						}}>
-						< Footer ref={this.footerRef} isStickyFooter={this.state.isStickyFooter} toggleStickyFooter={this.toggleStickyFooter} />
-					</div>
-				}
 
-				<button
-					ref={this.scrollToTopButtonRef}
-					className={`scroll-to-top-button ${this.state.scrollToTopButtonIsVisible ? "scroll-to-top-button-visible" : ""}`}
-					onClick={() => {
-						this.headerRef.current?.scrollIntoView({ behavior: 'smooth' });
-					}
-					}
-				>
-					<i className="fa fa-chevron-up" />
-				</button>
+							<button
+								ref={this.scrollToTopButtonRef}
+								className={`scroll-to-top-button ${this.state.scrollToTopButtonIsVisible ? "scroll-to-top-button-visible" : ""}`}
+								onClick={() => {
+									this.headerRef.current?.scrollIntoView({ behavior: 'smooth' });
+								}
+								}
+							>
+								<i className="fa fa-chevron-up" />
+							</button>
+						</Fragment>
+						:
+						<Fragment />
+				}
 			</Fragment >
 		);
 	}
