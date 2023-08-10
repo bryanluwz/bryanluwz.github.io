@@ -295,6 +295,7 @@ class Main extends Component {
 							<Header
 								imgSrc={this.miscDictionary?.header.imgSrc}
 								showHamburger={this.state.showHamburger}
+								pathname={this.props.router.location.pathname}
 								navs={this.navs}
 							/>
 							{!this.state.showHamburger &&
